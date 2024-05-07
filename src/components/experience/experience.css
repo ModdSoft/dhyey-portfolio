@@ -1,0 +1,194 @@
+.main-container{
+    position: relative; 
+    z-index: 50; 
+    margin-top: 3rem;
+    margin-bottom: 3rem; 
+    border-top-width: 1px; 
+    border-color: #25213b;
+}
+.img-container{
+    position: absolute; 
+    top: 0; 
+}
+.top-container{
+    display: flex; 
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem; 
+    justify-content: center; 
+}
+.t-header-container{
+    margin-top: 3rem;
+    display: flex; 
+    align-items: center; 
+}
+.t-header-text{
+    width: 6rem; 
+    height: 2px;
+    background: #1a1443;
+}
+.t-header-texts{
+    padding: 0.5rem; 
+    padding-left: 1.25rem;
+    padding-right: 1.25rem; 
+    border-radius: 0.375rem; 
+    width: fit-content; 
+    font-size: 1.25rem;
+    line-height: 1.75rem; 
+    color: #ffffff; 
+    background: #1a1443;
+}
+.bottom-container{
+    padding-bottom: 2rem; 
+}
+.b-container{
+    display: grid ;
+    grid-template-columns: 0.6fr 0.6fr; 
+    gap: 2rem; 
+    flex-direction: row;
+    align-items: center;
+}
+.b-top-container{
+    order: 2;
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start; 
+}
+.b-a-container{
+    order: 1;
+}
+.animation-container{
+    width: 100%; 
+    height: 100%; 
+}
+.card-container{
+    display: flex; 
+    flex-direction: column;
+    gap: 1.5rem; 
+}
+.card-main-container{
+    position: relative; 
+    padding: 0.75rem;
+}
+.image-card-container{
+    position: absolute; 
+    bottom: 0; 
+    opacity: 0.8; 
+}
+.card-top-container{
+    display: flex; 
+    justify-content: center; 
+}
+.card-t-text{
+    font-size: 0.95rem;
+    line-height: 1rem; 
+    color: #16f2b3;
+}
+.card-bottom-container{
+    display: flex; 
+    padding-left: 0.75rem;
+    padding-right: 0.75rem; 
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem; 
+    column-gap: 2rem; 
+    align-items: center; 
+}
+.b-cardtop{
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms; 
+    transition-duration: 300ms; 
+    color: #7F00FF;
+}
+.top-p-tab{
+    margin-bottom: 0.5rem; 
+    font-size: 1.15rem;
+    line-height: 1.5rem; 
+    font-weight: 500; 
+    text-transform: uppercase;
+    color: #ffffff;
+}
+.bottom-p-tab{
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    color: #ffffff;
+}
+
+@media (max-width: 767px) {
+    .b-container {
+      grid-template-columns: 1fr; /* Change to a single column layout */
+    }
+  
+    .img-container {
+      width: 100%; /* Make the image full width on small screens */
+      height: auto; /* Allow the image to scale with its width */
+    }
+  
+    .t-header-container {
+      margin-top: 1.5rem; /* Adjust margin for smaller screens */
+    }
+  
+    .b-container {
+      gap: 1rem; /* Adjust gap between experience cards */
+    }
+  
+    .card-container {
+      align-items: center; /* Center experience cards on smaller screens */
+    }
+
+    .b-top-container{
+        order: 1;
+        display: flex; 
+        justify-content: center; 
+        align-items: flex-start; 
+    }
+    .b-a-container{
+        order: 2;
+    }
+  
+    .card-main-container {
+      padding: 1rem; /* Increase padding for experience cards */
+    }
+  
+    .image-card-container {
+      width: 100%; /* Make the image in experience card full width */
+    }
+  
+    .card-bottom-container {
+      padding: 1rem; /* Increase padding for experience card bottom container */
+      justify-content: center; /* Center content in experience card bottom container */
+      flex-direction: row; /* Change direction to column layout */
+      align-items: center; /* Center items in experience card bottom container */
+    }
+  
+    .b-cardtop {
+      font-size: 1.25rem; /* Increase font size for experience card top icon */
+    }
+  
+    .card-t-text {
+      font-size: 0.75rem;
+      line-height: 0.85rem;
+      color: #16f2b3;
+    }
+  
+    .top-p-tab {
+      font-size: 1rem;
+      line-height: 1.25rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+  
+    .bottom-p-tab {
+      font-size: 0.8rem;
+      line-height: 1rem;
+      color: #ffffff;
+    }
+  
+    .card-bottom-container {
+      display: flex;
+      padding-left: 0.50rem;
+      padding-right: 0.50rem;
+      padding-top: 1.15rem;
+      padding-bottom: 1.15rem;
+    }
+  }

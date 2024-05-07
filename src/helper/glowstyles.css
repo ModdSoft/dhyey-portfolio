@@ -1,0 +1,23 @@
+.glow-style{
+    position: relative; 
+  border-radius: 0.75rem; 
+  border-width: 1px; 
+  width: 100%; 
+  height: fit-content; 
+  color: #E5E7EB; 
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms; 
+  transition-duration: 300ms; 
+  cursor: pointer; 
+  border-color: #2a2e5a;
+  background: #0d111b; 
+  }
+  .glow-card {
+    /* Other styles */
+    transition: all 300ms;
+}
+
+.glow-card:hover {
+    box-shadow: 0 0 20px 5px rgba(30, 144, 255, 0.5);
+}

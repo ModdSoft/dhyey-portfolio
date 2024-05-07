@@ -10,6 +10,7 @@ import Work from "./components/work";
 import ContactUs from "./components/contactus/contactus";
 import Footer from "./components/footer";
 import Projects from "./components/projects";
+import Skills from "./components/skills";
 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -30,6 +31,7 @@ function App() {
         <Navbar />
         <Home />
         <About />
+        <Skills />
         <Education />
         <Experience />
         <Work />

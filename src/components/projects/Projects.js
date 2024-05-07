@@ -407,7 +407,7 @@ const Projects = () => {
                     </button>
                   </a>
                   <a
-                    href={projectData.websiteLive}
+                    href={projectData.websiteGithub}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

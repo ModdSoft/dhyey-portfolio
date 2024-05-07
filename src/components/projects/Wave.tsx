@@ -17,8 +17,8 @@ function Wave({ color, children }) {
 
   return (
     <>
-      <div style={{ marginTop: isDesktop ? "-180px" : "0", marginBottom: "-20px",marginLeft:"-150px",marginRight:"-150px"}}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <div style={{ marginTop: isDesktop ? "-10px" : "0", marginBottom: "-20px",marginLeft:"-150px",marginRight:"-150px"}}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" >
           <path
             fill={color}
             fillOpacity="1"

@@ -18,5 +18,5 @@ export const personalData = {
   instagram: "https://www.instagram.com/dhyey_modi/",
   linkedIn: "https://www.linkedin.com/in/dhyey-modi-28769b218",
   resume:
-    "https://drive.google.com/file/d/1_kGI-wCqiKnKiOa6h07_xwFSDo46WnoZ/view?usp=sharing",
+    "https://drive.google.com/file/d/1zXyovRs6uoHT2PRcE_dorXEmlRtGvRkn/view?usp=sharing",
 };

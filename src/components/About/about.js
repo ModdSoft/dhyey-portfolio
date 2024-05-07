@@ -1,7 +1,7 @@
 import React from "react";
 import { personalData } from "../../data/personal-data";
 import "./about.css";
-import Profile from "./profile.jpeg";
+import Profile2 from "./profile_pic.png";
 
 const About = () => {
   return (
@@ -16,13 +16,7 @@ const About = () => {
       <div className="below-container">
         <div className="right-section">
           <div className="image-container">
-            <img
-              src={Profile}
-              width={280}
-              height={280}
-              alt="Dhyey Modi"
-              className="image-style"
-            />
+            <img src={Profile2} alt="Dhyey Modi" className="image-style" />
           </div>
         </div>
         <div className="left-section">

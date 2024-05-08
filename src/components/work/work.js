@@ -47,7 +47,7 @@ const Work = () => {
                     Software Engineer
                   </div>
                   <div className="company-designation-year">
-                    08/2022 - Present
+                    04/2021 - Present
                   </div>
                 </div>
               </div>
@@ -77,22 +77,6 @@ const Work = () => {
                 scalability and long-term sustainability. My work on the Traxo
                 project has impacted the mass, facilitating efficient data
                 processing solutions for our client on a global scale.{" "}
-              </div>
-              <div className="company-subheader-text">
-                <div className="subheader-headerTexts">2.Kqeek</div>
-                As a key member of the development team, I played an integral
-                role in the React Native application development for the Kqeek
-                project. Collaborating closely with talented colleagues, I
-                embarked on a journey to create a dynamic and engaging mobile
-                application. My primary focus was on crafting diverse modules to
-                enrich the application's capabilities, thereby enhancing its
-                overall functionality and user experience. Additionally, I
-                dedicated myself to creating efficient and responsive UI
-                components, ensuring optimal performance across a wide range of
-                mobile devices. Through active participation in code reviews and
-                debugging sessions, I consistently upheld high code quality
-                standards and addressed any issues promptly, contributing to the
-                project's success and stability.{" "}
               </div>
             </div>
             <div className="wbi-secondcontainer">

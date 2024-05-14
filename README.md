@@ -1,70 +1,84 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Portfolio Website
 
-## Available Scripts
+Welcome to my portfolio website built using ReactJS! This project showcases my skills, experiences, and projects in a clean and modern design. Whether you're a potential employer, collaborator, or just curious about my work, this website provides a comprehensive overview of my capabilities and accomplishments.
 
-In the project directory, you can run:
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Responsive Design: Enjoy a seamless browsing experience across devices, from desktop to mobile.
+- Project Showcase: Explore my latest projects with detailed descriptions and live demos.
+- Skills Section: Discover the technologies and tools I specialize in.
+- About Me: Learn more about my background, interests, and professional journey.
+- Contact Form: Reach out to me directly through the integrated contact form.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Technology Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**ReactJS:** Utilizing the power of React for building dynamic and interactive user interfaces.
 
-### `npm run build`
+**HTML/CSS:** Structuring and styling the website for a visually appealing presentation.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**JavaScript:** Enhancing functionality and interactivity with JavaScript.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Netlify:** Hosted on Netlify for seamless deployment and continuous integration.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
 
-### `npm run eject`
+To run this project locally, follow these steps:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Clone the project
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+  git clone https://github.com/ModdSoft/dhyey-portfolio.git
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Go to the project directory
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+  cd portfolio
+```
 
-## Learn More
+- Install dependencies
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+  npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Start the server
 
-### Code Splitting
+```bash
+  npm start
+```
+- Open your browser and visit
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+  http://localhost:3000
+```
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Screenshots
 
-### Making a Progressive Web App
+![App Screenshot](https://i.postimg.cc/Pq3cWTXX/website-ss2.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Contributions and feedback are always welcome! If you find any bugs, have suggestions for improvements, or would like to contribute new features, please feel free to open an issue or submit a pull request. Here's how you can contribute:
 
-### Deployment
+Bug Reports: Report any bugs you encounter by opening an issue.
+- Please provide detailed information about the issue and steps to reproduce it.
+- Feature Requests: Have an idea for a new feature? Share it by opening an issue and describing the feature you'd like to see.
+- Pull Requests: Submit a pull request with your proposed changes. Make sure to follow the contribution guidelines and explain the purpose of your changes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+## Authors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [@dhyeymodi2001](https://github.com/dhyeymodi2001)
+
+
+## Contact
+
+For inquiries or collaborations, you can reach me via email at dhyeymodi21@gmail.com.
+
+Thank you for visiting! 🚀

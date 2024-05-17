@@ -11,7 +11,7 @@ import "./Home.css";
 
 function Home() {
   return (
-    <section className="hero-section">
+    <section id="home" className="hero-section">
       <div className="custom-divider">
         <div className="custom-divider-dot"></div>
         <div className="custom-divider-dot2"></div>

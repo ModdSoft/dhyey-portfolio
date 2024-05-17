@@ -34,7 +34,7 @@ const ContactUs = () => {
     });
   };
   return (
-    <div id="about" className="contactusContainer">
+    <div id="contactus" className="contactusContainer">
       <div className="c-header-container">
         <div className="c-header-container2">
           <span className="c-header-subtext"></span>

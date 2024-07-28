@@ -14,6 +14,8 @@ const ContactUs = () => {
     message: "",
   });
 
+  const [status, setStatus] = useState(""); // Add state for form status
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -22,17 +24,30 @@ const ContactUs = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you can implement the logic to send the message using formData
-    console.log("Form submitted:", formData);
-    // Reset form after submission
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
+
+    // Handle form submission to Formspree
+    const response = await fetch("https://formspree.io/f/xwpelyng", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
     });
+
+    if (response.ok) {
+      setStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
+    } else {
+      setStatus("error");
+    }
   };
+
   return (
     <div id="contactus" className="contactusContainer">
       <div className="c-header-container">
@@ -84,7 +99,7 @@ const ContactUs = () => {
               </div>
               <div className="info-item">
                 <a
-                  href={personalData.email}
+                  href={`mailto:${personalData.email}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="info-item"
@@ -96,9 +111,9 @@ const ContactUs = () => {
               <div className="info-item">
                 <CiLocationOn className="c-logo-style" size={50} />
                 <span className="logo-texts">
-                  9,shilpakunj society
+                  9, Shilpakunj Society
                   <br />
-                  Warasia Ring Road,Harni
+                  Warasia Ring Road, Harni
                   <br />
                   Vadodara 390022, Gujarat, India
                 </span>
@@ -113,6 +128,7 @@ const ContactUs = () => {
           <div className="say-hi-header">
             <span className="header-texts">Say Hi!</span>
           </div>
+
           <form className="contact-form" onSubmit={handleSubmit}>
             <input
               type="text"
@@ -143,6 +159,14 @@ const ContactUs = () => {
             <button type="submit" className="input-button-style">
               Send
             </button>
+            {status === "success" && (
+              <p className="form-status success">Thank you for your message!</p>
+            )}
+            {status === "error" && (
+              <p className="form-status error">
+                There was an error sending your message. Please try again.
+              </p>
+            )}
           </form>
         </div>
       </div>

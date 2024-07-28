@@ -72,7 +72,7 @@ const Projects = () => {
                   celebrations, and gatherings.
                   <br />
                   <span className="inside-text1-emphasis inside-text1-highlight">
-                    3. Automated Birthday Wishes:{" "}
+                    4. Automated Birthday Wishes:{" "}
                   </span>
                   A thoughtful feature that{" "}
                   <span className="inside-text1-emphasis">
@@ -87,7 +87,7 @@ const Projects = () => {
                   within the community.
                   <br />
                   <span className="inside-text1-emphasis inside-text1-highlight">
-                    4. Chatbot Support:{" "}
+                    5. Chatbot Support:{" "}
                   </span>
                   A{" "}
                   <span className="inside-text1-emphasis">
@@ -99,7 +99,7 @@ const Projects = () => {
                   </span>
                   <br />
                   <span className="inside-text1-emphasis inside-text1-highlight">
-                    5. History Section:{" "}
+                    6. History Section:{" "}
                   </span>
                   An educational component that offers insights into the{" "}
                   <span className="inside-text1-emphasis">
@@ -112,7 +112,7 @@ const Projects = () => {
                   of historical importance.
                   <br />
                   <span className="inside-text1-emphasis inside-text1-highlight">
-                    6. Volunteering Opportunities:{" "}
+                    7. Volunteering Opportunities:{" "}
                   </span>
                   The app facilitates community involvement by allowing users to
                   <span className="inside-text1-emphasis">
@@ -222,6 +222,306 @@ const Projects = () => {
                 <div className="button-containers">
                   <a
                     href={projectData.jjsgAdminPlayStore}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="p-button-style">
+                      <span className="p-buttonText">
+                        LIVE PROJECT
+                        <CiSaveUp1 className="p-logo-style" size={40} />
+                      </span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Wave color="#070422">
+        <div className="wave-container">
+          <div className="inside-container">
+            <div className="project-header">
+              Atharava Vidyalaya (Student's App + Teacher's App)
+            </div>
+            <div className="inside-bottom-container">
+              <div className="p-b-left-container">
+                <div className="inside-text1">
+                  The Atharava Vidyalaya Students App is a{" "}
+                  <span className="inside-text1-emphasis">
+                    comprehensive mobile{" "}
+                  </span>{" "}
+                  application designed to{" "}
+                  <span className="inside-text1-emphasis">streamline</span> and{" "}
+                  <span className="inside-text1-emphasis">enhance </span>the
+                  educational experience for students, teachers, and parents at
+                  Atharava Vidyalaya. Developed using{" "}
+                  <span className="inside-text1-emphasis">React Native</span>,
+                  the app serves as a{" "}
+                  <span className="inside-text1-emphasis">
+                    multifunctional tool
+                  </span>{" "}
+                  that integrates essential school activities into a
+                  user-friendly digital platform.
+                  <br />
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    1. Attendance Tracking:{" "}
+                  </span>
+                  Easily mark and monitor student attendance, ensuring{" "}
+                  <span className="inside-text1-emphasis">
+                    accurate records{" "}
+                  </span>
+                  and{" "}
+                  <span className="inside-text1-emphasis">prompt updates </span>
+                  for parents.
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    2. Homework Assignments:{" "}
+                  </span>
+                  Teachers can assign homework directly through the app, and
+                  students can{" "}
+                  <span className="inside-text1-emphasis">
+                    track their assignments{" "}
+                  </span>
+                  and <span className="inside-text1-emphasis">deadlines </span>
+                  effortlessly. <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    3. Notifications:{" "}
+                  </span>
+                  Stay informed with{" "}
+                  <span className="inside-text1-emphasis">
+                    real-time notifications{" "}
+                  </span>
+                  about important announcements, school events, and updates.
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    4. Circulars:{" "}
+                  </span>
+                  Access school{" "}
+                  <span className="inside-text1-emphasis">
+                    circulars digitally
+                  </span>{" "}
+                  ensuring that important information is always at your{" "}
+                  <span className="inside-text1-emphasis">fingertips.</span>
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    5. Fee Management:{" "}
+                  </span>
+                  Parents can view and manage school{" "}
+                  <span className="inside-text1-emphasis">fee payments</span>{" "}
+                  through the app, making{" "}
+                  <span className="inside-text1-emphasis">
+                    financial transactions{" "}
+                  </span>
+                  convenient and transparent.
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    6. Exam Schedules:{" "}
+                  </span>
+                  Students can check their{" "}
+                  <span className="inside-text1-emphasis">
+                    exam timetables{" "}
+                  </span>
+                  and{" "}
+                  <span className="inside-text1-emphasis">
+                    receive reminders
+                  </span>{" "}
+                  to stay prepared.
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    7. Activity Tracking:{" "}
+                  </span>
+                  Keep track of{" "}
+                  <span className="inside-text1-emphasis">
+                    school activities
+                  </span>{" "}
+                  and{" "}
+                  <span className="inside-text1-emphasis">
+                    extracurricular events
+                  </span>
+                  , promoting holistic development.
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    8. Gallery:{" "}
+                  </span>
+                  Explore a vibrant collection of images{" "}
+                  <span className="inside-text1-emphasis">
+                    capturing memorable moments{" "}
+                  </span>{" "}
+                  from school events and activities.
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    8. Birthday Notifications:{" "}
+                  </span>
+                  Receive automated{" "}
+                  <span className="inside-text1-emphasis">
+                    birthday wishes{" "}
+                  </span>
+                  , fostering a sense of community and celebration within the
+                  school.
+                  <br />
+                  <br />
+                  The app offers personalized content tailored to each student's
+                  class, providing a customized learning journey that caters to
+                  individual needs and preferences. With a focus on usability
+                  and accessibility, the app features an intuitive interface
+                  that makes navigation easy for users of all ages. Its clean
+                  and responsive design ensures a seamless experience on any
+                  device. Since its launch, the Atharava Vidyalaya Students App
+                  has garnered positive feedback from both students and
+                  teachers. With over 2000+ daily active users, the app has
+                  significantly improved communication and engagement within the
+                  school community. While the app currently meets the essential
+                  needs of the school, we are committed to continuously
+                  improving and evolving the platform based on user feedback and
+                  emerging technological trends.
+                </div>
+                <br />
+                <div className="inside-text1">
+                  The teachers' app for Atharava Vidyalaya offers{" "}
+                  <span className="inside-text1-emphasis">robust tools </span>{" "}
+                  for{" "}
+                  <span className="inside-text1-emphasis">
+                    efficient school management{" "}
+                  </span>{" "}
+                  and{" "}
+                  <span className="inside-text1-emphasis">communication</span>.{" "}
+                  <br />
+                  <br /> Administrators and teachers can effortlessly
+                  <span className="inside-text1-emphasis">
+                    {" "}
+                    manage student data{" "}
+                  </span>
+                  ,
+                  <span className="inside-text1-emphasis">
+                    {" "}
+                    track attendance{" "}
+                  </span>
+                  ,
+                  <span className="inside-text1-emphasis">
+                    {" "}
+                    assign homework{" "}
+                  </span>
+                  , and communicate with parents. The app ensures secure access,
+                  allowing only authorized staff to view and update information.
+                  <br />
+                  <br />
+                  Additionally, it enables{" "}
+                  <span className="inside-text1-emphasis">
+                    sending notifications
+                  </span>{" "}
+                  directly to students and parents, ensuring and{" "}
+                  <span className="inside-text1-emphasis">
+                    timely communication
+                  </span>{" "}
+                  and{" "}
+                  <span className="inside-text1-emphasis">
+                    enhanced engagement
+                  </span>{" "}
+                  within the school community.
+                </div>
+                <div className="button-containers">
+                  <a
+                    href={projectData.atharavaTeacherPlayStore}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="p-button-style">
+                      <span className="p-buttonText">
+                        STUDENT APP
+                        <CiSaveUp1 className="p-logo-style" size={40} />
+                      </span>
+                    </button>
+                  </a>
+                  <a
+                    href={projectData.atharavaTeacherPlayStore}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="p-button-style">
+                      <span className="p-buttonText">
+                        TEACHER APP
+                        <CiSaveUp1 className="p-logo-style" size={40} />
+                      </span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+              <div className="p-b-right-container">
+                <div className="p-img-top-container">
+                  <img
+                    src={Images.avstudents}
+                    alt="Main"
+                    className="jjsg-main-img"
+                  />
+                  <img
+                    src={Images.avteacher}
+                    alt="Main"
+                    className="jjsg-main-img"
+                  />
+                  <img
+                    src={Images.avfirst}
+                    alt="Main"
+                    className="jjsg-main-img"
+                  />
+                  <img
+                    src={Images.avsecond}
+                    alt="Main"
+                    className="jjsg-main-img"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Wave>
+      <div>
+        <div className="wave-container2">
+          <div className="inside-container">
+            <div className="project-header">Atharava Vidyalaya (Website)</div>
+            <div className="inside-bottom-container2">
+              <div className="p-b-right-container">
+                <div className="img-right-container">
+                  <img
+                    src={Images.avwebsite}
+                    className="image-right"
+                    alt="Website-SS"
+                  />
+                </div>
+              </div>
+              <div className="p-b-left-container">
+                <div className="inside-text1">
+                  The Atharava Vidyalaya website, built using{" "}
+                  <span className="inside-text1-emphasis">React JS</span>,{" "}
+                  serves as a{" "}
+                  <span className="inside-text1-emphasis">dynamic </span> and{" "}
+                  <span className="inside-text1-emphasis">responsive </span>
+                  digital platform for the school community. <br />
+                  <br /> It provides comprehensive information about the school,
+                  including academic programs, events, news, and announcements.
+                  The website's
+                  <span className="inside-text1-emphasis">
+                    {" "}
+                    intuitive design{" "}
+                  </span>
+                  ensures
+                  <span className="inside-text1-emphasis">
+                    {" "}
+                    easy navigation{" "}
+                  </span>
+                  and
+                  <span className="inside-text1-emphasis"> accessibility </span>
+                  for students, parents, and staff, enhancing their experience
+                  and engagement with the school. With real-time updates and a
+                  user-friendly interface, the website is an essential resource
+                  for staying connected with the latest happenings at Atharava
+                  Vidyalaya.
+                  <br />
+                </div>
+                <div className="button-containers">
+                  <a
+                    href={projectData.atharavaWebsite}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

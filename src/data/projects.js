@@ -5,7 +5,7 @@ export const projectData = {
   atharavaStudentPlayStore:
     "https://play.google.com/store/apps/details?id=com.moddsoftdevelopers.schoolapp",
   atharavaTeacherPlayStore:
-    "https://play.google.com/store/apps/details?id=com.moddsoftdevelopers.schoolapp",
+    "https://play.google.com/store/apps/details?id=com.moddsoftdevelopers.schooladminapp",
   atharavaWebsite: "https://atharavavidyalaya.com/",
   ratlerRushPlayStore:
     "https://play.google.com/store/apps/details?id=com.moddsoft.snakegame",

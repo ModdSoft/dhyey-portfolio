@@ -77,7 +77,13 @@ function Home() {
           </div>
 
           <div className="action-buttons">
-            <Link href="#contact" className="contact-button">
+            <Link
+              to="contactus"
+              smooth={true}
+              duration={500}
+              href="#contact"
+              className="contact-button"
+            >
               <button className="contact-button2">
                 <span>Contact me</span>
                 <RiContactsFill size={16} className="contact-button-icon" />

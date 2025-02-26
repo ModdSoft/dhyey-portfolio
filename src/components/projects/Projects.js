@@ -19,14 +19,466 @@ const Projects = () => {
       <Wave color="#070422">
         <div className="wave-container">
           <div className="inside-container">
-            <div className="project-header">
-              Jai Jai ShriGokulesh (User App)
-            </div>
+            <div className="project-header">Walmart Data Analysis</div>
             <div className="inside-bottom-container">
               <div className="p-b-left-container">
                 <div className="inside-text1">
-                  A{" "}
-                  <span className="inside-text1-emphasis">community app </span>{" "}
+                  The objective was to analyze{" "}
+                  <span className="inside-text1-emphasis">sales trends </span>,{" "}
+                  <span className="inside-text1-emphasis">
+                    customer behavior{" "}
+                  </span>
+                  and{" "}
+                  <span className="inside-text1-emphasis">
+                    revenue patterns{" "}
+                  </span>
+                  , to gain business insights. The project followed a structured
+                  workflow, incorporating{" "}
+                  <span className="inside-text1-emphasis">data extraction</span>
+                  , <span className="inside-text1-emphasis">cleaning</span>,{" "}
+                  <span className="inside-text1-emphasis">storage</span>,{" "}
+                  <span className="inside-text1-emphasis">visualization</span>{" "}
+                  and{" "}
+                  <span className="inside-text1-emphasis">
+                    dashboard creation
+                  </span>
+                  .
+                  <br />
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    1. Data Collection:{" "}
+                  </span>
+                  I obtained the Walmart dataset from Kaggle using the Kaggle
+                  API in VS Code. The dataset contained transactional data from
+                  multiple Walmart branches, including{" "}
+                  <span className="inside-text1-emphasis">sales figures,</span>{" "}
+                  <span className="inside-text1-emphasis">
+                    customer demographics
+                  </span>{" "}
+                  and{" "}
+                  <span className="inside-text1-emphasis">
+                    product details.
+                  </span>
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    2. Data Cleaning & Preprocessing:{" "}
+                  </span>
+                  Once the data was extracted, I performed preprocessing in
+                  Python using Pandas: <br />a{") "}Removed duplicates to ensure
+                  data accuracy.
+                  <br />b{") "}Handled missing values to prevent
+                  inconsistencies.
+                  <br />c{") "}Formatted the price column by removing dollar
+                  signs and converting it to float for analysis.
+                  <br />d{") "}Converted data types to ensure compatibility with
+                  SQL and visualization tools.
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    3. Storing Cleaned Data in MySQL:{" "}
+                  </span>
+                  After preprocessing, I stored the structured data in MySQL
+                  using <span className="inside-text1-emphasis">pymysql</span>{" "}
+                  and <span className="inside-text1-emphasis">SQLAlchemy</span>{" "}
+                  to enable efficient querying and analysis.
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    4. Data Visualization in Python:{" "}
+                  </span>
+                  To extract insights, I utilized Matplotlib and Seaborn for
+                  visualization. <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    5. Business Insights Using MySQL:{" "}
+                  </span>
+                  I queried the MySQL database to answer key business questions,
+                  such as:
+                  <br />a{") "} What is the busiest day of the week for each
+                  branch based on transaction volume?
+                  <br />b{") "}How many transactions occur in each shift
+                  (Morning, Afternoon, Evening) across branches?
+                  <br />c{") "}What is the total profit for each category,
+                  ranked from highest to lowest?
+                  <br />d{") "}Which branches experienced the largest decrease
+                  in revenue compared to the previous year?
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    6. Interactive Dashboard in Power BI:{" "}
+                  </span>
+                  To enhance data-driven decision-making, I exported the MySQL
+                  data to Power BI and created an interactive dashboard. <br />
+                  <br />
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    Key Takeaways & Impact:{" "}
+                  </span>
+                  <br />
+                  1. Enhanced my expertise in data extraction, cleaning, SQL
+                  querying, and visualization. <br />
+                  2. Gained insights into Walmart's sales patterns, helping
+                  understand branch-wise performance. <br />
+                  3. Showcased the power of data-driven decision-making in
+                  retail analytics. <br />
+                  <br />
+                  Tools Used: VS Code, Python, Jupyter Notebook, MySQL, Power
+                  BI, Pandas, Matplotlib, Seaborn
+                </div>
+                <div className="button-containers">
+                  <a
+                    href={projectData.walmartGithub}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="p-button-style">
+                      <span className="p-buttonText">
+                        SOURCE CODE
+                        <FaGithub className="p-logo-style" size={40} />
+                      </span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+              <div className="p-b-right-container">
+                <div className="p-img-top-container">
+                  <img
+                    src={Images.walmart_first}
+                    alt="Main"
+                    className="jjsg-main-img"
+                  />
+                  <img
+                    src={Images.walmart_second}
+                    alt="Main"
+                    className="jjsg-main-img"
+                  />
+                  <img
+                    src={Images.walmart_third}
+                    alt="Main"
+                    className="walmart-graph-img"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Wave>
+      <div>
+        <div className="wave-container2">
+          <div className="inside-container">
+            <div className="project-header">
+              Cricket Data Analysis : Best Playing XI from the 2022 World Cup
+            </div>
+            <div className="inside-bottom-container2">
+              <div className="p-b-right-container">
+                <div>
+                  <img
+                    src={Images.damain}
+                    alt="JJSG-Admin"
+                    className="jjsg-admin-img-style"
+                  />
+                </div>
+                <div>
+                  <img
+                    src={Images.dasecond}
+                    alt="JJSG-Admin"
+                    className="jjsg-admin-img-style"
+                  />
+                </div>
+                <div>
+                  <img
+                    src={Images.dathird}
+                    alt="JJSG-Admin"
+                    className="jjsg-admin-img-style"
+                  />
+                </div>
+              </div>
+              <div className="p-b-left-container">
+                <div className="inside-text1">
+                  I created a{" "}
+                  <span className="inside-text1-emphasis">
+                    comprehensive data analysis
+                  </span>{" "}
+                  project focused on the 2022 World Cup, where I aimed to
+                  extract and analyze{" "}
+                  <span className="inside-text1-emphasis">
+                    player statistics
+                  </span>{" "}
+                  to conclude the best playing XI in cricket. The project
+                  involved several key steps: <br />
+                  <br />{" "}
+                  <span className="inside-text1-emphasis2">
+                    1.Data Collection:
+                  </span>{" "}
+                  I initiated the project by gathering data from the{" "}
+                  <span className="inside-text1-emphasis">
+                    ESPN Cricinfo website
+                  </span>{" "}
+                  , utilizing web scraping techniques. For this, I employed{" "}
+                  <span className="inside-text1-emphasis">BrightData</span> to
+                  efficiently extract match statistics, player performance data,
+                  and other relevant metrics.
+                  <br />
+                  <span className="inside-text1-emphasis2">
+                    2.Data Cleaning and Transformation:
+                  </span>{" "}
+                  Once the data was collected, I used{" "}
+                  <span className="inside-text1-emphasis">Python</span> with the{" "}
+                  <span className="inside-text1-emphasis">Pandas</span> library
+                  for{" "}
+                  <span className="inside-text1-emphasis">
+                    data cleaning and transformation
+                  </span>{" "}
+                  with the . This process involved handling missing values,
+                  removing duplicates, and ensuring the data was in a usable
+                  format. I transformed the raw data into{" "}
+                  <span className="inside-text1-emphasis">
+                    structured tables
+                  </span>{" "}
+                  that included relevant statistics for each player.
+                  <br />
+                  <span className="inside-text1-emphasis2">
+                    3.Data Export and Transformation in Power BI:
+                  </span>{" "}
+                  After cleaning the data, I exported the files to{" "}
+                  <span className="inside-text1-emphasis">Power BI</span> for
+                  further analysis. In Power BI, I performed additional data
+                  transformation, ensuring that the data was organized for{" "}
+                  <span className="inside-text1-emphasis">
+                    effective modeling
+                  </span>{" "}
+                  and{" "}
+                  <span className="inside-text1-emphasis">visualization</span> .
+                  <br />
+                  <span className="inside-text1-emphasis2">
+                    4.Dashboard Creation:
+                  </span>{" "}
+                  With the data models in place, I designed and built an{" "}
+                  <span className="inside-text1-emphasis">
+                    interactive dashboard
+                  </span>{" "}
+                  in Power BI. This dashboard included various visualizations
+                  such as{" "}
+                  <span className="inside-text1-emphasis">
+                    bar charts, scatter plots, and tables
+                  </span>{" "}
+                  , allowing for a comprehensive view of player performances
+                  throughout the tournament.
+                  <br />
+                  <span className="inside-text1-emphasis2">
+                    5.Insights Collection and Final Selection:
+                  </span>{" "}
+                  Finally, I{" "}
+                  <span className="inside-text1-emphasis">
+                    analyzed the insights
+                  </span>{" "}
+                  generated from the dashboard to evaluate player performances
+                  based on various{" "}
+                  <span className="inside-text1-emphasis">metrics</span> ,
+                  including runs scored, wickets taken, and overall
+                  contributions to their teams. Based on this analysis, I
+                  selected my final XI players, highlighting their strengths and
+                  contributions during the World Cup.
+                  <br />
+                  <br />
+                  This project not only enhanced my{" "}
+                  <span className="inside-text1-emphasis">
+                    data analysis
+                  </span>{" "}
+                  skills but also provided valuable insights into player
+                  performance, showcasing the power of{" "}
+                  <span className="inside-text1-emphasis">
+                    data-driven decision-making
+                  </span>{" "}
+                  in sports. I would like to thank{" "}
+                  <span className="inside-text1-emphasis">CodeBasics</span> and{" "}
+                  <span className="inside-text1-emphasis">Dhawal Sir</span> for
+                  their insightful videos on data analysis and web scraping
+                  techniques. Their content provided valuable guidance and
+                  inspiration.
+                  <br />
+                  <br />
+                </div>
+                <div className="button-containers">
+                  <a
+                    href={projectData.worldcupGithub}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="p-button-style">
+                      <span className="p-buttonText">
+                        SOURCE CODE
+                        <FaGithub className="p-logo-style" size={40} />
+                      </span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Wave color="#070422">
+        <div className="wave-container">
+          <div className="inside-container">
+            <div className="project-header">Blinkit Outlet Analysis</div>
+            <div className="inside-bottom-container">
+              <div className="p-b-left-container">
+                <div className="inside-text1">
+                  The objective was to analyze{" "}
+                  <span className="inside-text1-emphasis">sales trends </span>,{" "}
+                  <span className="inside-text1-emphasis">
+                    outlet performance{" "}
+                  </span>
+                  and{" "}
+                  <span className="inside-text1-emphasis">product demand </span>
+                  to gain business insights. The project followed a structured
+                  workflow, incorporating{" "}
+                  <span className="inside-text1-emphasis">data extraction</span>
+                  , <span className="inside-text1-emphasis">cleaning</span>,{" "}
+                  <span className="inside-text1-emphasis">storage</span>,{" "}
+                  <span className="inside-text1-emphasis">visualization</span>{" "}
+                  and{" "}
+                  <span className="inside-text1-emphasis">
+                    dashboard creation
+                  </span>
+                  to support Blinkit's rapid 10-minute grocery delivery model.
+                  <br />
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    1. Data Collection:{" "}
+                  </span>
+                  I obtained the Blinkit dataset, which contained data on{" "}
+                  <span className="inside-text1-emphasis">sales figures,</span>{" "}
+                  <span className="inside-text1-emphasis">
+                    outlet locations
+                  </span>{" "}
+                  and{" "}
+                  <span className="inside-text1-emphasis">
+                    product details.
+                  </span>
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    2. Data Cleaning & Transformation:{" "}
+                  </span>
+                  Once the data was extracted, I performed preprocessing in
+                  Python using Pandas: <br />a{") "}Removed duplicate entries to
+                  ensure data accuracy.
+                  <br />b{") "}Handled missing values to prevent
+                  inconsistencies.
+                  <br />c{") "}Standardized data types for compatibility with
+                  SQL and Power BI.
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    3. Advanced Data Analysis & Machine Learning:{" "}
+                  </span>
+                  <br />a{") "}Sales Prediction for New Outlets (Regression
+                  Model)
+                  <br />
+                  •Predicted sales for new Blinkit outlets based on location,
+                  size, and type.
+                  <br />
+                  •Trained a Linear Regression, Random Forest, and XGBoost
+                  model.
+                  <br />
+                  •Evaluated performance using R² score and RMSE.
+                  <br />b{") "}Product Demand Clustering (K-Means Clustering)
+                  <br />
+                  •Grouped outlets based on similar sales behavior.
+                  <br />
+                  •Helped optimize inventory management and marketing
+                  strategies.
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    4. Interactive Dashboard in Power BI:{" "}
+                  </span>
+                  To present findings effectively, I created an interactive
+                  Power BI dashboard.
+                  <br />
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    Key Takeaways & Impact:{" "}
+                  </span>
+                  <br />
+                  1. Strengthened my expertise in data extraction, cleaning, SQL
+                  querying, machine learning, and visualization. <br />
+                  2. Gained valuable insights into Blinkit’s store performance
+                  and inventory management. <br />
+                  3. Showcased the role of data-driven decision-making in
+                  optimizing Blinkit’s operations. <br />
+                  <br />
+                  Tools Used: VS Code, Python, Jupyter Notebook, MySQL, Power
+                  BI, Pandas, NumPy, scikit-learn, XGBoost, Matplotlib, Seaborn
+                </div>
+                <div className="button-containers">
+                  <a
+                    href={projectData.blinkitGithub}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="p-button-style">
+                      <span className="p-buttonText">
+                        SOURCE CODE
+                        <FaGithub className="p-logo-style" size={40} />
+                      </span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+              <div className="p-b-right-container">
+                <div className="p-img-top-container">
+                  <img
+                    src={Images.blinkit_first}
+                    alt="Main"
+                    className="jjsg-main-img"
+                  />
+                  <img
+                    src={Images.blinkit_second}
+                    alt="Main"
+                    className="jjsg-main-img"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Wave>
+      <div>
+        <div className="wave-container2">
+          <div className="inside-container">
+            <div className="project-header">
+              Jai Jai ShriGokulesh (User App + Admin App)
+            </div>
+            <div className="inside-bottom-container2">
+              <div className="p-b-right-container">
+                <div>
+                  <img
+                    src={Images.jjsgmultiscreen}
+                    alt="Main"
+                    className="jjsg-main-img"
+                  />
+                </div>
+                <div>
+                  <img
+                    src={Images.jjsgAdmin}
+                    alt="Main"
+                    className="jjsg-main-img"
+                  />
+                </div>
+                <div>
+                  <img
+                    src={Images.jjsgside}
+                    alt="Main"
+                    className="jjsg-main-img"
+                  />
+                </div>
+                <div>
+                  <img
+                    src={Images.jjsgmain}
+                    alt="Main"
+                    className="jjsg-main-img"
+                  />
+                </div>
+              </div>
+              <div className="p-b-left-container">
+                <div className="inside-text1">
+                  A <span className="inside-text1-emphasis">community app</span>{" "}
                   for the Jai Jai ShriGokulesh community designed to enhance the
                   community's{" "}
                   <span className="inside-text1-emphasis">engagement</span> and{" "}
@@ -34,8 +486,8 @@ const Projects = () => {
                   <br />
                   <br />
                   <span className="inside-text1-emphasis inside-text1-highlight">
-                    1. Community-Centric Marketplace:{" "}
-                  </span>
+                    1. Community-Centric Marketplace:
+                  </span>{" "}
                   The app serves as a dedicated marketplace for the{" "}
                   <span className="inside-text1-emphasis">
                     community's products
@@ -44,8 +496,8 @@ const Projects = () => {
                   seamlessly.
                   <br />
                   <span className="inside-text1-emphasis inside-text1-highlight">
-                    2. Event Section:{" "}
-                  </span>
+                    2. Event Section:
+                  </span>{" "}
                   A dynamic section where users can discover{" "}
                   <span className="inside-text1-emphasis">past</span>,{" "}
                   <span className="inside-text1-emphasis">live</span> and{" "}
@@ -59,26 +511,27 @@ const Projects = () => {
                   <span className="inside-text1-emphasis">
                     images and videos
                   </span>{" "}
-                  for a recap. <br />
+                  for a recap.
+                  <br />
                   <span className="inside-text1-emphasis inside-text1-highlight">
-                    3. Gallery Section:{" "}
-                  </span>
+                    3. Gallery Section:
+                  </span>{" "}
                   An interactive space within the app where users can explore a
                   rich collection of{" "}
                   <span className="inside-text1-emphasis">
                     images and videos
-                  </span>
+                  </span>{" "}
                   capturing memorable moments from community events,
                   celebrations, and gatherings.
                   <br />
                   <span className="inside-text1-emphasis inside-text1-highlight">
-                    4. Automated Birthday Wishes:{" "}
-                  </span>
+                    4. Automated Birthday Wishes:
+                  </span>{" "}
                   A thoughtful feature that{" "}
                   <span className="inside-text1-emphasis">
                     automatically generates
                   </span>{" "}
-                  and sends birthday wishes to users in the form of
+                  and sends birthday wishes to users in the form of{" "}
                   <span className="inside-text1-emphasis">customized PDFs</span>
                   , enhancing{" "}
                   <span className="inside-text1-emphasis">
@@ -87,8 +540,8 @@ const Projects = () => {
                   within the community.
                   <br />
                   <span className="inside-text1-emphasis inside-text1-highlight">
-                    5. Chatbot Support:{" "}
-                  </span>
+                    5. Chatbot Support:
+                  </span>{" "}
                   A{" "}
                   <span className="inside-text1-emphasis">
                     user-friendly chatbot
@@ -97,10 +550,11 @@ const Projects = () => {
                   <span className="inside-text1-emphasis">
                     provide assistance
                   </span>
+                  .
                   <br />
                   <span className="inside-text1-emphasis inside-text1-highlight">
-                    6. History Section:{" "}
-                  </span>
+                    6. History Section:
+                  </span>{" "}
                   An educational component that offers insights into the{" "}
                   <span className="inside-text1-emphasis">
                     community's rich history
@@ -112,12 +566,10 @@ const Projects = () => {
                   of historical importance.
                   <br />
                   <span className="inside-text1-emphasis inside-text1-highlight">
-                    7. Volunteering Opportunities:{" "}
-                  </span>
-                  The app facilitates community involvement by allowing users to
-                  <span className="inside-text1-emphasis">
-                    easily apply
+                    7. Volunteering Opportunities:
                   </span>{" "}
+                  The app facilitates community involvement by allowing users to{" "}
+                  <span className="inside-text1-emphasis">easily apply</span>{" "}
                   for volunteering opportunities, fostering a spirit of{" "}
                   <span className="inside-text1-emphasis">
                     service and collaboration
@@ -129,70 +581,20 @@ const Projects = () => {
                   of community life, your app serves as a valuable tool for
                   fostering connection, engagement, and growth within the Jai
                   Jai Shri Gokulesh community.
-                </div>
-                <div className="button-containers">
-                  <a
-                    href={projectData.jjsgUserPlayStore}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <button className="p-button-style">
-                      <span className="p-buttonText">
-                        LIVE PROJECT
-                        <CiSaveUp1 className="p-logo-style" size={40} />
-                      </span>
-                    </button>
-                  </a>
-                </div>
-              </div>
-              <div className="p-b-right-container">
-                <div className="p-img-top-container">
-                  <img
-                    src={Images.jjsgmultiscreen}
-                    alt="Main"
-                    className="jjsg-main-img"
-                  />
-                  <img
-                    src={Images.jjsgside}
-                    alt="Main"
-                    className="jjsg-main-img"
-                  />
-                  <img
-                    src={Images.jjsgmain}
-                    alt="Main"
-                    className="jjsg-main-img"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Wave>
-      <div>
-        <div className="wave-container2">
-          <div className="inside-container">
-            <div className="project-header">Jai Jai ShriGokulesh (Admin)</div>
-            <div className="inside-bottom-container2">
-              <div className="p-b-right-container">
-                <div>
-                  <img
-                    src={Images.jjsgAdmin}
-                    alt="JJSG-Admin"
-                    className="jjsg-admin-img-style"
-                  />
-                </div>
-              </div>
-              <div className="p-b-left-container">
-                <div className="inside-text1">
+                  <br />
+                  <br />
                   The admin app for the Jai Jai Shri Gokulesh community provides{" "}
-                  <span className="inside-text1-emphasis">powerful tools </span>{" "}
+                  <span className="inside-text1-emphasis">
+                    powerful tools
+                  </span>{" "}
                   for{" "}
                   <span className="inside-text1-emphasis">
-                    seamless management{" "}
+                    seamless management
                   </span>{" "}
-                  and <span className="inside-text1-emphasis">engagement</span>.{" "}
+                  and <span className="inside-text1-emphasis">engagement</span>.
                   <br />
-                  <br /> Administrators can efficiently oversee{" "}
+                  <br />
+                  Administrators can efficiently oversee{" "}
                   <span className="inside-text1-emphasis">
                     community operations
                   </span>
@@ -213,13 +615,27 @@ const Projects = () => {
                   <span className="inside-text1-emphasis">
                     timely communication
                   </span>{" "}
-                  and
+                  and{" "}
                   <span className="inside-text1-emphasis">
                     enhanced engagement
                   </span>
                   .
+                  <br />
+                  <br />
                 </div>
                 <div className="button-containers">
+                  <a
+                    href={projectData.jjsgUserPlayStore}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="p-button-style">
+                      <span className="p-buttonText">
+                        USER APP
+                        <CiSaveUp1 className="p-logo-style" size={40} />
+                      </span>
+                    </button>
+                  </a>
                   <a
                     href={projectData.jjsgAdminPlayStore}
                     target="_blank"
@@ -227,7 +643,7 @@ const Projects = () => {
                   >
                     <button className="p-button-style">
                       <span className="p-buttonText">
-                        LIVE PROJECT
+                        ADMIN APP
                         <CiSaveUp1 className="p-logo-style" size={40} />
                       </span>
                     </button>
@@ -423,7 +839,7 @@ const Projects = () => {
                 </div>
                 <div className="button-containers">
                   <a
-                    href={projectData.atharavaTeacherPlayStore}
+                    href={projectData.atharavaStudentPlayStore}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

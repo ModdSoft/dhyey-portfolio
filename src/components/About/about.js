@@ -25,6 +25,7 @@ const About = () => {
             <p className="description-text">{personalData.description}</p>
             <p className="description-text">{personalData.goals}</p>
             <p className="description-text">{personalData.extra_curricular}</p>
+            <p className="description-text">{personalData.extra_curricular2}</p>
             <p className="description-text">{personalData.connect}</p>
           </div>
         </div>

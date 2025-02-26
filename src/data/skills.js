@@ -4,7 +4,6 @@ export const skillsData = [
   "Javascript",
   "Typescript",
   "React",
-  "Angular",
   "Tailwind",
   "MySQL",
   "Git",
@@ -13,6 +12,8 @@ export const skillsData = [
   "C",
   "C++",
   "Java",
+  "Python",
+  "PowerBi",
 ];
 
 // AVAILABLE SKILLS
@@ -52,7 +53,6 @@ export const skillsData = [
   C
   C++
   C#
-  Python
   Java
   Julia
   Matlab

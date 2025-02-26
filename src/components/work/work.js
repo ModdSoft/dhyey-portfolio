@@ -61,28 +61,29 @@ const Work = () => {
               </div>
               <div className="company-subheader-text">
                 <div className="subheader-headerTexts">1. Traxo</div>
-                As a Software Engineer in the Traxo project, I played a pivotal
-                role in developing custom Java parsers, aimed at optimizing data
-                processing workflows for an international client. Leveraging my
-                expertise, I implemented robust parsing algorithms to
-                effectively handle diverse data inputs, ensuring accurate
-                information extraction. Through meticulous testing and
-                debugging, I maintained parser reliability, significantly
-                minimizing errors and enhancing the overall user experience.
-                Notably, my efforts resulted in a remarkable 50% increase in
-                system performance and a 40% reduction in processing time,
-                thereby enabling real-time data processing capabilities.
-                Furthermore, my ongoing support and optimization initiatives for
-                the parsers have significantly contributed to the project's
-                scalability and long-term sustainability. My work on the Traxo
-                project has impacted the mass, facilitating efficient data
-                processing solutions for our client on a global scale.{" "}
+                As a Software Engineer on the Traxo project, I played a crucial
+                role in developing custom Java parsers designed to optimize data
+                processing workflows for an international client. My work
+                involved designing and implementing efficient parsing algorithms
+                to process diverse data inputs, ensuring high-quality, accurate
+                data extraction. By focusing on enhancing the parser’s
+                performance, I reduced processing time by 40% and boosted system
+                performance by 50%, enabling real-time data processing
+                capabilities. My contributions were critical to improving data
+                reliability and scalability, which helped our client manage
+                large volumes of data more efficiently. Additionally, I focused
+                on continuous optimization, ensuring the system’s long-term
+                sustainability and expanding its capacity to handle future data
+                challenges. Through this work, I not only enhanced data
+                processing workflows but also contributed to building a
+                scalable, data-driven solution that significantly impacted the
+                client’s operations on a global scale.{" "}
               </div>
             </div>
             <div className="wbi-secondcontainer">
               <div className="second-topcontainer">
                 <div className="achievment-badge">
-                  <div>Star Employee Of The Year 2023</div>
+                  <div>Star Employee Of The Year 2022</div>
                 </div>
               </div>
             </div>

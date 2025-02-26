@@ -72,6 +72,7 @@ import vuetifyjs from "../images/svg/skills/vuetifyjs.svg";
 import webix from "../images/svg/skills/webix.svg";
 import wolframalpha from "../images/svg/skills/wolframalpha.svg";
 import wordpress from "../images/svg/skills/wordpress.svg";
+import powerbi from "../images/svg/skills/powerBI.svg";
 
 export const skillsImage = (skill) => {
   const skillID = skill.toLowerCase();
@@ -224,6 +225,8 @@ export const skillsImage = (skill) => {
       return wolframalpha;
     case "canva":
       return canva;
+    case "powerbi":
+      return powerbi;
     default:
       break;
   }

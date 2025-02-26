@@ -29,8 +29,11 @@ function Home() {
           <h1 className="hero-title">
             Hello, <br />
             This is <span className="highlight2">{personalData.name}</span>
-            {` , I'm a Professional `}
-            <span className="highlight">{personalData.designation}</span>.
+            {` , a `}
+            <span className="highlight">{personalData.designation},</span> with
+            a strong <br />
+            foundation in{" "}
+            <span className="highlight">Software Development.</span>
           </h1>
 
           <div className="social-links">
@@ -121,7 +124,7 @@ function Home() {
             <code className="code-input-container">
               <div className="blink">
                 <span className="container1-span1">const</span>
-                <span className="container1-span2">developer</span>
+                <span className="container1-span2">dataAnalyst</span>
                 <span className="container1-span3">=</span>
                 <span className="container1-span4">{"{"}</span>
               </div>
@@ -134,6 +137,22 @@ function Home() {
               <div className="container3">
                 <span className="container3-span1">Skills:</span>
                 <span className="container3-span2">{`['`}</span>
+                <span className="container2-span3">MySQL</span>
+                <span className="container3-span2">{"', '"}</span>
+                <span className="container2-span3">Python</span>
+                <span className="container3-span2">{"', '"}</span>
+                <span className="container2-span3">Power BI</span>
+                <span className="container3-span2">{"', '"}</span>
+                <span className="container2-span3">Tableau</span>
+                <span className="container3-span2">{"', '"}</span>
+                <span className="container2-span3">Data Visualization</span>
+                <span className="container3-span2">{"', '"}</span>
+                <span className="container2-span3">Machine Learning</span>
+                <span className="container3-span2">{"', '"}</span>
+                <span className="container2-span3">Data Visualization</span>
+                <span className="container3-span2">{"', '"}</span>
+                <span className="container2-span3">ETL</span>
+                <span className="container3-span2">{"', '"}</span>
                 <span className="container2-span3">Java</span>
                 <span className="container3-span2">{"', '"}</span>
                 <span className="container2-span3">React Native</span>
@@ -149,8 +168,6 @@ function Home() {
                 <span className="container2-span3">HTML</span>
                 <span className="container3-span2">{"', '"}</span>
                 <span className="container2-span3">CSS</span>
-                <span className="container3-span2">{"', '"}</span>
-                <span className="container2-span3">MySQL</span>
                 <span className="container3-span2">{"', '"}</span>
                 <span className="container2-span3">MongoDB</span>
                 <span className="container3-span2">{`']`}</span>

@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="belowText">
         View the code on{" "}
         <a
-          href={personalData.github}
+          href={personalData.portfoliogithub}
           target="_blank"
           rel="noopener noreferrer"
           className="linkingText"

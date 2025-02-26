@@ -94,7 +94,7 @@ const ContactUs = () => {
                   className="info-item"
                 >
                   <IoMdCall className="c-logo-style" size={50} />
-                  <span className="logo-texts">+91 8320658316</span>
+                  <span className="logo-texts">+1 (647) 761-5235</span>
                 </a>
               </div>
               <div className="info-item">
@@ -111,11 +111,11 @@ const ContactUs = () => {
               <div className="info-item">
                 <CiLocationOn className="c-logo-style" size={50} />
                 <span className="logo-texts">
-                  9, Shilpakunj Society
+                  6087 Eaglewood Drive
                   <br />
-                  Warasia Ring Road, Harni
+                  Niagara Falls
                   <br />
-                  Vadodara 390022, Gujarat, India
+                  ON L2G 7T2, Canada
                 </span>
               </div>
             </div>

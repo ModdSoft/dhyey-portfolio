@@ -11,6 +11,14 @@ const Images = {
   rattlerRush: require("./rattler-rush.png"),
   jjsgAdmin: require("./jjsg-admin.png"),
   kidsApp: require("./abc-kidsapp.png"),
+  damain: require("./da-main.png"),
+  dasecond: require("./da-second.png"),
+  dathird: require("./da-third.png"),
+  walmart_first: require("./Walmart_Dashboard.png"),
+  walmart_second: require("./Walmart Workflow.png"),
+  walmart_third: require("./walmart_histograms.png"),
+  blinkit_first: require("./blinkit_first.png"),
+  blinkit_second: require("./blinkit_dashboard.png"),
 };
 
 export default Images;

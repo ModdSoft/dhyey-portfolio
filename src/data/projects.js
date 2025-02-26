@@ -15,4 +15,8 @@ export const projectData = {
   kidsGithub: "https://github.com/ModdSoft/Kids-Learning-App",
   websiteLive: "https://dhyeymodi.netlify.app/",
   websiteGithub: "https://github.com/ModdSoft/dhyey-portfolio",
+  worldcupGithub:
+    "https://github.com/dhyeymodi2001/Cricket-T20-WorldCup-Analysis",
+  walmartGithub: "https://github.com/dhyeymodi2001/Walmart-Data-Analysis",
+  blinkitGithub: "https://github.com/dhyeymodi2001/Blinkit-Sales-Analysis",
 };

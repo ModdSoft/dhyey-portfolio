@@ -1,215 +1,236 @@
 .projectContainer {
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.p-header-container {
+  display: flex;
+}
+
+.p-header-container2 {
+  display: flex;
+  align-items: center;
+}
+
+.p-header-text {
+  padding: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  border-radius: 0.375rem;
+  width: fit-content;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: #ffffff;
+  background: #1a1443;
+}
+
+.p-header-subtext {
+  width: 5rem;
+  height: 2px;
+  background: #1a1443;
+}
+.p-header-subtext2 {
+  width: 70rem;
+  height: 2px;
+  background: #1a1443;
+}
+.wave-container {
+  margin-left: -5rem;
+  margin-right: -5rem;
+  background-color: #070422;
+}
+.wave-container2 {
+  margin-left: -5rem;
+  margin-right: -5rem;
+  background-color: #0d1224;
+}
+.inside-container {
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+.project-header {
+  color: #ffffff;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 500;
+  display: flex;
+  margin-bottom: 3rem;
+}
+.inside-bottom-container {
+  display: flex;
+  flex-direction: row;
+}
+.inside-bottom-container2 {
+  display: flex;
+  flex-direction: row;
+}
+.p-b-left-container {
+  flex: 1;
+  margin-left: 4rem;
+}
+.p-b-right-container {
+  flex: 1;
+}
+.inside-text1 {
+  color: #ffffff;
+  font-weight: 300;
+  font-size: medium;
+}
+.inside-text1-emphasis {
+  color: #16f2b3;
+}
+.inside-text1-emphasis2 {
+  color: #ffffff;
+  font-weight: 500;
+  text-decoration: dotted;
+  text-decoration-line: underline;
+  text-decoration-color: #ffffff;
+}
+
+.inside-text1-highlight {
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: #ffffff;
+  text-decoration-style: solid;
+}
+.p-button-style {
+  background-color: #16f2b3;
+  border-radius: 20px;
+  border-color: #16f2b3;
+  margin: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  cursor: pointer;
+}
+.p-buttonText {
+  color: black;
+  font-size: small;
+  letter-spacing: 2px;
+}
+.p-logo-style {
+  vertical-align: middle;
+  color: black;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  transition-duration: 300ms;
+  cursor: pointer;
+}
+.button-containers {
+  margin-top: 2.5rem;
+}
+.img-right-container {
+  margin-left: 4rem;
+}
+.image-right {
+  height: 350px;
+  width: 470px;
+}
+.jjsg-main-img {
+  height: 250px;
+  width: 500px;
+  border-radius: 20px;
+  margin-left: 4rem;
+  margin-bottom: 1rem;
+}
+.walmart-graph-img {
+  height: 500px;
+  width: 500px;
+  border-radius: 20px;
+  margin-left: 4rem;
+  margin-bottom: 1rem;
+}
+.p-img-top-container {
+  display: flex;
+  flex-direction: column;
+}
+.jjsg-admin-img-style {
+  height: 250px;
+  width: 500px;
+  border-radius: 20px;
+  margin-right: 4rem;
+  margin-left: 6rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 767px) {
+  .p-b-left-container,
+  .p-b-right-container {
+    width: 100%;
+    margin-bottom: 0;
   }
-  
-  .p-header-container {
-    display: flex;
-  }
-  
-  .p-header-container2 {
-    display: flex;
-    align-items: center;
-  }
-  
-  .p-header-text {
-    padding: 0.5rem;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-    border-radius: 0.375rem;
-    width: fit-content;
-    font-size: 1.25rem;
-    line-height: 1.75rem;
+
+  .project-header {
     color: #ffffff;
-    background: #1a1443;
-  }
-  
-  .p-header-subtext {
-    width: 5rem;
-    height: 2px;
-    background: #1a1443;
-  }
-  .p-header-subtext2 {
-    width: 70rem;
-    height: 2px;
-    background: #1a1443;
-  }
-  .wave-container{
-    margin-left: -5rem;
-    margin-right: -5rem;
-    background-color: #070422;
-  }
-  .wave-container2{
-    margin-left: -5rem;
-    margin-right: -5rem;
-    background-color: #0d1224;
-  }
-  .inside-container{
-    margin-left: 5rem;
-    margin-right: 5rem;
-  }
-  .project-header{
-    color: #ffffff;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
+    justify-content: left;
+    align-items: start;
+    font-size: 1.5rem;
     font-weight: 500;
     display: flex;
     margin-bottom: 3rem;
   }
-  .inside-bottom-container{
+  .inside-bottom-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
   }
-  .inside-bottom-container2{
-    display: flex;
-    flex-direction: row;
-  }
-  .p-b-left-container{
-    flex: 1;
-    margin-left: 4rem;
-  }
-  .p-b-right-container{
-    flex: 1;
-  }
-  .inside-text1{
-    color: #ffffff;
-    font-weight: 300;
-    font-size: medium;
-  }
-  .inside-text1-emphasis{
-    color: #16f2b3;
-  }
-  .inside-text1-highlight{
-    font-weight: 800;
-    text-decoration: underline;
-    text-decoration-color: #ffffff;
-    text-decoration-style: solid;
-  }
-  .p-button-style{
-    background-color: #16f2b3;
-    border-radius: 20px;
-    border-color: #16f2b3;
-    margin: 10px;
-    padding-right: 10px;
-    padding-left: 10px;
-    cursor: pointer;
-  }
-  .p-buttonText{
-    color: black;
-    font-size: small;
-    letter-spacing: 2px;
-  }
-  .p-logo-style{ 
-    vertical-align: middle;
-    color: black;
-    padding: 0.5rem; 
-    border-radius: 9999px;
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 300ms; 
-    transition-duration: 300ms; 
-    cursor: pointer; 
-  }
-  .button-containers{
-    margin-top: 2.5rem;
-  }
-  .img-right-container{
-    margin-left: 4rem;
-  }
-  .image-right{
-    height: 350px;
-    width: 470px;
-  }
-  .jjsg-main-img{
-    height: 250px;
-    width: 500px;
-    border-radius: 20px;
-    margin-left: 4rem;
-    margin-bottom: 1rem;
-  }
-  .p-img-top-container{
+  .inside-bottom-container2 {
     display: flex;
     flex-direction: column;
   }
-  .jjsg-admin-img-style{
-    height: 250px;
-    width: 500px;
+  .jjsg-main-img {
+    height: 180px;
+    width: 280px;
     border-radius: 20px;
-    margin-right: 4rem;
-    margin-left: 6rem;
+    margin-left: 0rem;
     margin-bottom: 1rem;
   }
-
-  @media (max-width: 767px) {
-  
-    .p-b-left-container,
-    .p-b-right-container {
-      width: 100%;
-      margin-bottom: 0;
-    }
-
-    .project-header{
-      color: #ffffff;
-      justify-content: left;
-      align-items: start;
-      font-size: 1.5rem;
-      font-weight: 500;
-      display: flex;
-      margin-bottom: 3rem;
-    }
-    .inside-bottom-container{
-      display: flex;
-      flex-direction: column-reverse;
-    }
-    .inside-bottom-container2{
-      display: flex;
-      flex-direction: column;
-    }
-    .jjsg-main-img{
-      height: 180px;
-      width: 280px;
-      border-radius: 20px;
-      margin-left: 0rem;
-      margin-bottom: 1rem;
-    }
-    .jjsg-admin-img-style{
-      height: 180px;
-      width: 280px;
-      border-radius: 20px;
-      margin-right: 0rem;
-      margin-left: 0rem;
-      margin-bottom: 1rem;
-    }
-    .p-b-left-container{
-      margin-left: 0rem;
-    }
-    .inside-text1{
-      color: #ffffff;
-      font-weight: 300;
-      font-size: small;
-    }
-    .button-containers{
-      margin-top: 1.5rem;
-      display: flex;
-      flex-direction: row;
-    }
-    .p-button-style{
-      margin: 10px;
-      padding-right: 2px;
-      padding-left: 5px;
-    }
-    .p-buttonText{
-      color: black;
-      font-size: small;
-      letter-spacing: 1px;
-    }
-    .image-right{
-      height: 220px;
-      width: 300px;
-    }
-    .img-right-container{
-      margin-left: 0rem;
-    }
+  .walmart-graph-img {
+    height: 400px;
+    width: 280px;
+    border-radius: 20px;
+    margin-left: 0rem;
+    margin-bottom: 1rem;
   }
+  .jjsg-admin-img-style {
+    height: 180px;
+    width: 280px;
+    border-radius: 20px;
+    margin-right: 0rem;
+    margin-left: 0rem;
+    margin-bottom: 1rem;
+  }
+  .p-b-left-container {
+    margin-left: 0rem;
+  }
+  .inside-text1 {
+    color: #ffffff;
+    font-weight: 300;
+    font-size: small;
+  }
+  .button-containers {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: row;
+  }
+  .p-button-style {
+    margin: 10px;
+    padding-right: 2px;
+    padding-left: 5px;
+  }
+  .p-buttonText {
+    color: black;
+    font-size: small;
+    letter-spacing: 1px;
+  }
+  .image-right {
+    height: 220px;
+    width: 300px;
+  }
+  .img-right-container {
+    margin-left: 0rem;
+  }
+}

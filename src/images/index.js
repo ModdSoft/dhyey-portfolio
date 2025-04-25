@@ -19,6 +19,15 @@ const Images = {
   walmart_third: require("./walmart_histograms.png"),
   blinkit_first: require("./blinkit_first.png"),
   blinkit_second: require("./blinkit_dashboard.png"),
+  house_price_website: require("./House_price_prediction_web.png"),
+  kaggle_screenshot: require("./kaggle_screenshot.png"),
+  medium_screenshot: require("./medium_screenshot.png"),
+  house_price_dashboard: require("./house_price_dashboard1.png"),
+  house_price_dashboard2: require("./house_price_prediction2.png"),
+  bus_route_medium: require("./bus_rote_medium.png"),
+  bus_route_web1: require("./bus_route_website1.png"),
+  bus_route_web2: require("./bus_route_website2.png"),
+  bus_route_main: require("./bus_route_optimization.jpg"),
 };
 
 export default Images;

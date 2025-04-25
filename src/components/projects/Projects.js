@@ -2,7 +2,7 @@ import React from "react";
 import Wave from "./Wave.tsx";
 import "./Projects.css";
 import { CiSaveUp1 } from "react-icons/ci";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaKaggle, FaMedium } from "react-icons/fa";
 import Images from "../../images/index.js";
 import { projectData } from "../../data/projects.js";
 
@@ -19,7 +19,328 @@ const Projects = () => {
       <Wave color="#070422">
         <div className="wave-container">
           <div className="inside-container">
-            <div className="project-header">Walmart Data Analysis</div>
+            <div className="project-header">
+              🏡 House Price Prediction System
+            </div>
+            <div className="inside-bottom-container">
+              <div className="p-b-left-container">
+                <div className="inside-text1">
+                  The objective was to build an end-to-end,{" "}
+                  <span className="inside-text1-emphasis">
+                    AI-powered house price prediction system{" "}
+                  </span>
+                  using{" "}
+                  <span className="inside-text1-emphasis">
+                    advanced machine learning techniques{" "}
+                  </span>
+                  and deploy it for real-world use. The project evolved from a
+                  Kaggle competition and emphasized{" "}
+                  <span className="inside-text1-emphasis">scalability</span>,{" "}
+                  <span className="inside-text1-emphasis">usability</span>, and{" "}
+                  <span className="inside-text1-emphasis">impact.</span>
+                  <br />
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    1. Data Collection:{" "}
+                  </span>
+                  Started with the{" "}
+                  <span className="inside-text1-emphasis">
+                    Kaggle House Prices: Advanced Regression Techniques dataset.
+                  </span>{" "}
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    2. Data Cleaning & Feature Engineering (Python + Pandas):{" "}
+                  </span>
+                  <br />a{") "}Removed outliers and handled missing values.
+                  <br />b{") "}Converted categorical variables using One-Hot
+                  Encoding.
+                  <br />c{") "}Engineered key features like:
+                  <br />
+                  &nbsp; &nbsp; •TotalLotArea = LotFrontage × LotArea.
+                  <br />
+                  &nbsp; &nbsp; •TotalPorchSF = Sum of all porch-related areas.
+                  <br />
+                  &nbsp; &nbsp; •Bathrooms = Full + 0.5 × Half Bathrooms.
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    3. Modeling & Evaluation (scikit-learn + XGBoost):{" "}
+                  </span>
+                  <br />a{") "}Tried multiple models: Linear Regression, Random
+                  Forest, Gradient Boosting.
+                  <br />b{") "}XGBoost selected as best performer with R² =
+                  0.9146.
+                  <br />c{") "}Evaluated using RMSE and MAE for precision.
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    4. API Development & Deployment (Flask + Render):{" "}
+                  </span>
+                  Built a lightweight Flask API to serve predictions. Also i
+                  hosted it on Render for accessibility.
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    5. Interactive Web App (React.js + Netlify):{" "}
+                  </span>
+                  <br />a{") "} Created a user-friendly web interface to enter
+                  house details and get predictions instantly
+                  <br />b{") "}Deployed via Netlify.
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    6. Power BI Dashboard:{" "}
+                  </span>
+                  Visualized important patterns in the dataset—e.g., price
+                  distribution by neighborhood, correlation heatmaps, etc.
+                  Empowered business users to explore data independently. <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    7. Documentation (Medium Article):{" "}
+                  </span>
+                  Wrote a detailed Medium article outlining the full journey:
+                  technical decisions, challenges, and insights. <br />
+                  <br />
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    Key Takeaways & Impact:{" "}
+                  </span>
+                  <br />
+                  1. Achieved global top 1% (Rank 60 of 7,040) on Kaggle. <br />
+                  2. Built a scalable, real-world AI system from scratch. <br />
+                  3. Applied end-to-end data science: from preprocessing to
+                  model deployment and dashboarding. <br />
+                  4. Strengthened skills in Python, XGBoost, Flask, React, Power
+                  BI, and deployment. <br />
+                  <br />
+                  Tools Used: VS Code, Python, Jupyter Notebook, Pandas,
+                  XGBoost, Flask, React.js, Power BI, SQL, Render, Netlify, VS
+                  Code, Medium
+                </div>
+                <div className="button-containers">
+                  <a
+                    href={projectData.housePriceLive}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="p-button-style">
+                      <span className="p-buttonText">
+                        LIVE DEMO
+                        <CiSaveUp1 className="p-logo-style" size={40} />
+                      </span>
+                    </button>
+                  </a>
+                  <a
+                    href={projectData.housePriceMedium}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="p-button-style">
+                      <span className="p-buttonText">
+                        Medium Article
+                        <FaMedium className="p-logo-style" size={40} />
+                      </span>
+                    </button>
+                  </a>
+                  <a
+                    href={projectData.housePriceKaggle}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="p-button-style">
+                      <span className="p-buttonText">
+                        Kaggle Competition
+                        <FaKaggle className="p-logo-style" size={40} />
+                      </span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+              <div className="p-b-right-container">
+                <div className="p-img-top-container">
+                  <img
+                    src={Images.house_price_dashboard}
+                    alt="Main"
+                    className="jjsg-main-img"
+                  />
+                  <img
+                    src={Images.house_price_dashboard2}
+                    alt="Main"
+                    className="jjsg-main-img"
+                  />
+                  <img
+                    src={Images.kaggle_screenshot}
+                    alt="Main"
+                    className="jjsg-main-img"
+                  />
+                  <img
+                    src={Images.house_price_website}
+                    alt="Main"
+                    className="jjsg-main-img"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Wave>
+      <div>
+        <div className="wave-container2">
+          <div className="inside-container">
+            <div className="project-header">
+              🚌 Bus Route Optimization System
+            </div>
+            <div className="inside-bottom-container2">
+              <div className="p-b-right-container">
+                <div>
+                  <img
+                    src={Images.bus_route_main}
+                    alt="JJSG-Admin"
+                    className="jjsg-admin-img-style"
+                  />
+                </div>
+                <div>
+                  <img
+                    src={Images.bus_route_web1}
+                    alt="JJSG-Admin"
+                    className="jjsg-admin-img-style"
+                  />
+                </div>
+                <div>
+                  <img
+                    src={Images.bus_route_web2}
+                    alt="JJSG-Admin"
+                    className="jjsg-admin-img-style"
+                  />
+                </div>
+                <div>
+                  <img
+                    src={Images.bus_route_medium}
+                    alt="JJSG-Admin"
+                    className="jjsg-admin-img-style"
+                  />
+                </div>
+              </div>
+              <div className="p-b-left-container">
+                <div className="inside-text1">
+                  the main objective was to optimize urban public bus schedules
+                  using operations research techniques, reduce operational
+                  costs, and enhance service quality. Inspired by the
+                  inefficiencies of fixed scheduling systems highlighted in a
+                  research study on Addis Ababa's ACBSE, this project brings
+                  mathematical rigor and real-world usability together.
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    1. Problem Foundation:
+                  </span>
+                  <br />
+                  &nbsp; a{") "}Based on the paper:{" "}
+                  <span className="inside-text1-emphasis">
+                    Modeling and Analysis of Bus Scheduling Systems of Urban
+                    Public Bus Transport
+                  </span>{" "}
+                  <br />
+                  &nbsp; b{") "}Identified key issues:
+                  <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp;•Overcrowded buses during peak
+                  hours.
+                  <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp;•Underutilized buses during
+                  off-peak times.
+                  <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp;•High fuel and maintenance costs
+                  due to inefficient routing.
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    2.Modeling & Optimization (Google OR-Tools):
+                  </span>{" "}
+                  <br />
+                  Implemented two optimization strategies: <br />
+                  &nbsp; &nbsp; •Linear Programming (LP) for minimizing total
+                  trips.
+                  <br />
+                  &nbsp; &nbsp; •Extended LP with Cost & Fleet Constraints for
+                  realistic operational modeling
+                  <br />
+                  Objective was to minimize total operating cost while
+                  satisfying passenger demand and ensuring service consistency.
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    3.Deployment & User Interface (Flask + React):
+                  </span>{" "}
+                  <br />
+                  &nbsp; a{") "}Web App: Upload your route demand CSV → Get
+                  optimized scheduling instantly
+                  <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; •Hosted on Netlify
+                  <br />
+                  &nbsp; b{") "}Backend API: Built with Flask, deployed via
+                  Render
+                  <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; •Handles input parsing, model
+                  execution, and returns route-wise bus assignments.
+                  <br />
+                  &nbsp; c{") "}Output Visualization: Clean, tabular format with
+                  route/shift-wise breakdown of bus utilization.
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    4.Documentation & Resources:
+                  </span>{" "}
+                  <br />
+                  &nbsp; a{") "}Medium Article: End-to-end explanation of model
+                  logic, implementation, and deployment.
+                  <br />
+                  &nbsp; b{") "}GitHub Repository: Full codebase (API + web +
+                  optimizer)
+                  <br />
+                  <br />
+                  <span className="inside-text1-emphasis inside-text1-highlight">
+                    Key Takeaways & Impact:{" "}
+                  </span>
+                  <br />
+                  1. Reduced operating cost by 33.74% <br />
+                  2. Improved bus utilization and reduced peak-hour congestion.{" "}
+                  <br />
+                  3. Achieved demand-driven dynamic scheduling across 93 routes
+                  and 4 daily shifts. <br />
+                  4. Transformed research into a live, functional platform for
+                  route optimization. <br />
+                  <br />
+                  Tools Used: Python, Google OR-Tools, Flask, React.js, Netlify,
+                  Render, Pandas, VS Code.
+                  <br />
+                  <br />
+                </div>
+                <div className="button-containers">
+                  <a
+                    href={projectData.busRouteLive}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="p-button-style">
+                      <span className="p-buttonText">
+                        LIVE DEMO
+                        <CiSaveUp1 className="p-logo-style" size={40} />
+                      </span>
+                    </button>
+                  </a>
+                  <a
+                    href={projectData.busRouteMedium}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="p-button-style">
+                      <span className="p-buttonText">
+                        Medium Article
+                        <FaMedium className="p-logo-style" size={40} />
+                      </span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Wave color="#070422">
+        <div className="wave-container">
+          <div className="inside-container">
+            <div className="project-header">🛒 Walmart Data Analysis</div>
             <div className="inside-bottom-container">
               <div className="p-b-left-container">
                 <div className="inside-text1">
@@ -163,7 +484,7 @@ const Projects = () => {
         <div className="wave-container2">
           <div className="inside-container">
             <div className="project-header">
-              Cricket Data Analysis : Best Playing XI from the 2022 World Cup
+              🏏 Cricket Data Analysis : Best Playing XI from the 2022 World Cup
             </div>
             <div className="inside-bottom-container2">
               <div className="p-b-right-container">
@@ -317,7 +638,7 @@ const Projects = () => {
       <Wave color="#070422">
         <div className="wave-container">
           <div className="inside-container">
-            <div className="project-header">Blinkit Outlet Analysis</div>
+            <div className="project-header">🛵 Blinkit Outlet Analysis</div>
             <div className="inside-bottom-container">
               <div className="p-b-left-container">
                 <div className="inside-text1">
@@ -443,7 +764,7 @@ const Projects = () => {
         <div className="wave-container2">
           <div className="inside-container">
             <div className="project-header">
-              Jai Jai ShriGokulesh (User App + Admin App)
+              🤝 Jai Jai ShriGokulesh (User App + Admin App)
             </div>
             <div className="inside-bottom-container2">
               <div className="p-b-right-container">
@@ -658,7 +979,7 @@ const Projects = () => {
         <div className="wave-container">
           <div className="inside-container">
             <div className="project-header">
-              Atharava Vidyalaya (Student's App + Teacher's App)
+              📚 Atharava Vidyalaya (Student's App + Teacher's App)
             </div>
             <div className="inside-bottom-container">
               <div className="p-b-left-container">
@@ -895,7 +1216,9 @@ const Projects = () => {
       <div>
         <div className="wave-container2">
           <div className="inside-container">
-            <div className="project-header">Atharava Vidyalaya (Website)</div>
+            <div className="project-header">
+              🧑🏻‍🏫 Atharava Vidyalaya (Website)
+            </div>
             <div className="inside-bottom-container2">
               <div className="p-b-right-container">
                 <div className="img-right-container">
@@ -957,7 +1280,7 @@ const Projects = () => {
       <Wave color="#070422">
         <div className="wave-container">
           <div className="inside-container">
-            <div className="project-header">Rattler Rush</div>
+            <div className="project-header">🐍 Rattler Rush</div>
             <div className="inside-bottom-container">
               <div className="p-b-left-container">
                 <div className="inside-text1">
@@ -1027,7 +1350,7 @@ const Projects = () => {
       <div>
         <div className="wave-container2">
           <div className="inside-container">
-            <div className="project-header">Fun ABC Learning for Kids</div>
+            <div className="project-header">🔤 Fun ABC Learning for Kids</div>
             <div className="inside-bottom-container2">
               <div className="p-b-right-container">
                 <div>
@@ -1087,7 +1410,7 @@ const Projects = () => {
       <Wave color="#070422">
         <div className="wave-container">
           <div className="inside-container">
-            <div className="project-header">This Website</div>
+            <div className="project-header">🌐 This Website</div>
             <div className="inside-bottom-container">
               <div className="p-b-left-container">
                 <div className="inside-text1">

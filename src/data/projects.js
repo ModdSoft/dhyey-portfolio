@@ -19,4 +19,12 @@ export const projectData = {
     "https://github.com/dhyeymodi2001/Cricket-T20-WorldCup-Analysis",
   walmartGithub: "https://github.com/dhyeymodi2001/Walmart-Data-Analysis",
   blinkitGithub: "https://github.com/dhyeymodi2001/Blinkit-Sales-Analysis",
+  housePriceLive: "https://house-price-prediction1.netlify.app/",
+  housePriceKaggle:
+    "https://www.kaggle.com/competitions/home-data-for-ml-course",
+  housePriceMedium:
+    "https://medium.com/@dhyeymodi21/building-a-house-price-prediction-app-from-dataset-to-deployment-aebf68a9ae5c",
+  busRouteLive: "https://bus-route-optimizer.netlify.app/",
+  busRouteMedium:
+    "https://medium.com/@dhyeymodi21/bus-route-optimization-7faceecafbac",
 };

@@ -36,9 +36,9 @@ const Timeline = styled.div`
     width: 2px;
     background: linear-gradient(
       180deg,
-      rgba(99, 102, 241, 0),
-      rgba(99, 102, 241, 0.45),
-      rgba(34, 211, 238, 0)
+      rgba(249, 115, 22, 0),
+      rgba(249, 115, 22, 0.45),
+      rgba(244, 63, 94, 0)
     );
   }
 `;
@@ -68,7 +68,7 @@ const TimelineItem = styled(motion.article)`
       ${({ theme }) => theme.accent},
       ${({ theme }) => theme.accentAlt}
     );
-    box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.15);
+    box-shadow: 0 0 0 6px rgba(249, 115, 22, 0.15);
   }
 `;
 
@@ -156,7 +156,7 @@ const SummaryItem = styled.li`
       ${({ theme }) => theme.accent},
       ${({ theme }) => theme.accentAlt}
     );
-    box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 0 0 6px rgba(249, 115, 22, 0.1);
   }
 `;
 

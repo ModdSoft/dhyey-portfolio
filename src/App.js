@@ -35,10 +35,10 @@ const GridOverlay = styled.div`
   pointer-events: none;
   background-size: 120px 120px;
   background-image: linear-gradient(
-      rgba(148, 163, 184, 0.08) 1px,
+      rgba(255, 211, 182, 0.08) 1px,
       transparent 1px
     ),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(255, 211, 182, 0.08) 1px, transparent 1px);
   mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
   z-index: 0;
 `;

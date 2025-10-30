@@ -54,7 +54,7 @@ const PortraitOverlay = styled.div`
       rgba(15, 23, 42, 0.15),
       rgba(15, 23, 42, 0.8)
     ),
-    radial-gradient(circle at top right, rgba(99, 102, 241, 0.35), transparent);
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.3), transparent);
 `;
 
 const PortraitFooter = styled.div`

@@ -8,8 +8,8 @@ const Header = styled.header`
   z-index: 10;
   backdrop-filter: blur(18px);
   background: ${({ elevated }) =>
-    elevated ? "rgba(2, 6, 23, 0.9)" : "rgba(2, 6, 23, 0.4)"};
-  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    elevated ? "rgba(18, 12, 9, 0.92)" : "rgba(18, 12, 9, 0.55)"};
+  border-bottom: 1px solid rgba(255, 211, 182, 0.18);
   transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
   box-shadow: ${({ elevated }) =>
     elevated ? "0 12px 40px rgba(15, 23, 42, 0.35)" : "none"};
@@ -36,8 +36,8 @@ const Logo = styled(Link)`
   color: ${({ theme }) => theme.accentAlt};
   padding: 0.4rem 0.8rem;
   border-radius: 999px;
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(33, 24, 19, 0.7);
+  border: 1px solid rgba(255, 211, 182, 0.25);
   cursor: pointer;
 `;
 
@@ -71,8 +71,8 @@ const NavLink = styled(Link)`
 
 const MenuButton = styled.button`
   display: none;
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(33, 24, 19, 0.7);
+  border: 1px solid rgba(255, 211, 182, 0.25);
   border-radius: 12px;
   padding: 0.6rem 0.7rem;
   cursor: pointer;
@@ -114,8 +114,8 @@ const MobileMenu = styled.div`
     margin: 0 1.2rem 1.2rem;
     padding: 1rem;
     border-radius: 20px;
-    background: rgba(2, 6, 23, 0.92);
-    border: 1px solid rgba(148, 163, 184, 0.2);
+    background: rgba(20, 14, 10, 0.92);
+    border: 1px solid rgba(255, 211, 182, 0.2);
   }
 `;
 

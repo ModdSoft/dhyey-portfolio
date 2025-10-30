@@ -117,7 +117,7 @@ const HighlightItem = styled.li`
     height: 0.45rem;
     border-radius: 50%;
     background: ${({ theme }) => theme.accent};
-    box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.12);
+    box-shadow: 0 0 0 6px rgba(249, 115, 22, 0.12);
   }
 `;
 
@@ -130,7 +130,7 @@ const ChipSet = styled.div`
 const Chip = styled.span`
   padding: 0.45rem 0.85rem;
   border-radius: 999px;
-  background: rgba(99, 102, 241, 0.16);
+  background: rgba(249, 115, 22, 0.16);
   color: ${({ theme }) => theme.accent};
   font-size: 0.8rem;
   font-weight: 600;
@@ -194,7 +194,7 @@ const skillGroups = [
       "Operationalised quality checks and governance to keep self-serve data trustworthy.",
     ],
     tools: ["Python", "SQL", "Power BI", "Tableau", "dbt", "Snowflake"],
-    accent: "linear-gradient(135deg, rgba(14, 165, 233, 0.2), transparent)",
+    accent: "linear-gradient(135deg, rgba(249, 115, 22, 0.18), transparent)",
   },
   {
     title: "AI, LLMOps & Automation",
@@ -207,7 +207,7 @@ const skillGroups = [
       "Measured AI output quality with human-in-the-loop reviews to continually raise trust.",
     ],
     tools: ["LangChain", "OpenAI API", "Azure OpenAI", "RAG Pipelines", "Vector Stores", "Prompt Engineering"],
-    accent: "linear-gradient(135deg, rgba(99, 102, 241, 0.24), transparent)",
+    accent: "linear-gradient(135deg, rgba(244, 63, 94, 0.2), transparent)",
   },
   {
     title: "Product Engineering & Delivery",
@@ -220,7 +220,7 @@ const skillGroups = [
       "Collaborated with stakeholders to translate requirements into roadmap-ready user stories.",
     ],
     tools: ["React", "TypeScript", "Node.js", "GraphQL", "Docker", "GitHub Actions"],
-    accent: "linear-gradient(135deg, rgba(236, 72, 153, 0.22), transparent)",
+    accent: "linear-gradient(135deg, rgba(251, 191, 36, 0.2), transparent)",
   },
 ];
 

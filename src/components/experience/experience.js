@@ -38,7 +38,7 @@ const ExperienceCard = styled(motion.article)`
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(99, 102, 241, 0.12);
+    background: rgba(249, 115, 22, 0.12);
     opacity: 0;
     transition: opacity 0.35s ease;
     z-index: 0;
@@ -124,7 +124,7 @@ const BulletItem = styled.li`
     height: 0.45rem;
     border-radius: 50%;
     background: ${({ theme }) => theme.accent};
-    box-shadow: 0 0 0 5px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 0 0 5px rgba(249, 115, 22, 0.1);
   }
 `;
 

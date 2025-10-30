@@ -59,7 +59,7 @@ const InfoItem = styled.a`
   gap: 0.9rem;
   padding: 1rem 1.2rem;
   border-radius: 18px;
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  border: 1px solid rgba(255, 211, 182, 0.2);
   background: rgba(15, 23, 42, 0.55);
   color: ${({ theme }) => theme.textPrimary};
   transition: transform 0.25s ease, border 0.25s ease, color 0.25s ease;
@@ -96,7 +96,7 @@ const IconWrapper = styled.span`
   border-radius: 14px;
   display: grid;
   place-items: center;
-  background: rgba(99, 102, 241, 0.16);
+  background: rgba(249, 115, 22, 0.16);
   color: ${({ theme }) => theme.accent};
 `;
 
@@ -143,7 +143,7 @@ const Input = styled.input`
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.accent};
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.25);
   }
 `;
 
@@ -162,7 +162,7 @@ const TextArea = styled.textarea`
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.accent};
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.25);
   }
 `;
 

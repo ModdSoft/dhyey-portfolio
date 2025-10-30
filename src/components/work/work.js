@@ -44,7 +44,7 @@ const LogoWrapper = styled.div`
   height: clamp(110px, 12vw, 140px);
   border-radius: 24px;
   overflow: hidden;
-  border: 1px solid rgba(148, 163, 184, 0.22);
+  border: 1px solid rgba(255, 211, 182, 0.22);
   background: rgba(15, 23, 42, 0.6);
   display: grid;
   place-items: center;
@@ -62,8 +62,8 @@ const LogoFallback = styled.div`
   border-radius: 24px;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.6), rgba(14, 165, 233, 0.45));
-  border: 1px solid rgba(148, 163, 184, 0.24);
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.6), rgba(244, 63, 94, 0.45));
+  border: 1px solid rgba(255, 211, 182, 0.24);
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -125,8 +125,8 @@ const ImpactCard = styled(motion.div)`
     inset: 0;
     background: linear-gradient(
       135deg,
-      rgba(99, 102, 241, 0.18),
-      rgba(34, 211, 238, 0.12)
+    rgba(249, 115, 22, 0.18),
+    rgba(244, 63, 94, 0.12)
     );
     opacity: 0.25;
   }
@@ -176,7 +176,7 @@ const BulletItem = styled.li`
     height: 0.5rem;
     border-radius: 50%;
     background: ${({ theme }) => theme.accent};
-    box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.14);
+    box-shadow: 0 0 0 6px rgba(249, 115, 22, 0.14);
   }
 `;
 
@@ -192,7 +192,7 @@ const Metric = styled.div`
   padding: 1rem 1.2rem;
   border-radius: 18px;
   background: rgba(15, 23, 42, 0.5);
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  border: 1px solid rgba(255, 211, 182, 0.2);
   display: flex;
   flex-direction: column;
   gap: 0.25rem;

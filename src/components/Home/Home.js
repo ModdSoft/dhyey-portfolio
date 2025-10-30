@@ -171,8 +171,8 @@ const InfoPanel = styled(motion.div)`
   padding: clamp(1.2rem, 2.5vw, 1.8rem);
   border-radius: clamp(16px, 2.5vw, 20px);
   backdrop-filter: blur(18px);
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(100, 116, 139, 0.35);
+  background: rgba(28, 21, 18, 0.68);
+  border: 1px solid rgba(251, 191, 36, 0.28);
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
@@ -208,7 +208,7 @@ const GlowAccent = styled.div`
   inset: -40%;
   background: radial-gradient(
     circle at top right,
-    rgba(99, 102, 241, 0.25),
+    rgba(249, 115, 22, 0.25),
     transparent 65%
   );
   filter: blur(80px);
@@ -240,15 +240,15 @@ const HeroScene = () => {
         intensity={1.4}
         penumbra={1}
         castShadow
-        color="#6366f1"
+        color="#f97316"
       />
-      <pointLight position={[-8, -6, -10]} intensity={1.1} color="#22d3ee" />
+      <pointLight position={[-8, -6, -10]} intensity={1.1} color="#f43f5e" />
       <Suspense fallback={null}>
         <Float speed={1.5} rotationIntensity={1.2} floatIntensity={2.3}>
           <mesh castShadow>
             <icosahedronGeometry args={[1.15, 1]} />
             <meshStandardMaterial
-              color="#7c3aed"
+              color="#fb923c"
               metalness={0.55}
               roughness={0.25}
               envMapIntensity={1}
@@ -260,7 +260,7 @@ const HeroScene = () => {
           <mesh scale={[2.4, 2.4, 2.4]}>
             <torusKnotGeometry args={[0.48, 0.14, 220, 32]} />
             <meshStandardMaterial
-              color="#22d3ee"
+              color="#f43f5e"
               metalness={0.3}
               roughness={0.1}
               transparent
@@ -281,7 +281,7 @@ const HeroScene = () => {
           <pointsMaterial
             size={0.035}
             sizeAttenuation
-            color="#38bdf8"
+            color="#facc15"
             transparent
             opacity={0.85}
           />

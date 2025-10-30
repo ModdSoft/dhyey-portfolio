@@ -1,72 +1,285 @@
 import React from "react";
-import "./experience.css";
-import { experiences } from "./../../data/experience";
-import AnimationLottie from "../../helper/animation-lottie";
-import experience from "./../../animation/lottie/code.json";
-import GlowCard from "../../helper/glow-card";
-import { BsPersonWorkspace } from "react-icons/bs";
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import { experiences } from "../../data/experience";
+import {
+  SectionWrapper,
+  SectionIntro,
+  SectionEyebrow,
+  SectionHeading,
+  SectionDescription,
+} from "../common/Section";
+
+const Layout = styled.div`
+  display: grid;
+  grid-template-columns: minmax(340px, 1.35fr) minmax(260px, 0.85fr);
+  gap: clamp(2rem, 4vw, 3rem);
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const ExperienceList = styled.div`
+  display: grid;
+  gap: 1.4rem;
+`;
+
+const ExperienceCard = styled(motion.article)`
+  border-radius: clamp(18px, 2.8vw, 24px);
+  padding: clamp(1.6rem, 3vw, 2.3rem);
+  background: ${({ theme }) => theme.surface};
+  border: 1px solid ${({ theme }) => theme.border};
+  box-shadow: ${({ theme }) => theme.shadowSoft};
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(99, 102, 241, 0.12);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 0;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+`;
+
+const ExperienceContent = styled.div`
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const ExperienceHeader = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: baseline;
+  justify-content: space-between;
+`;
+
+const ExperienceRole = styled.h3`
+  margin: 0;
+  font-size: clamp(1.2rem, 2.2vw, 1.4rem);
+  color: ${({ theme }) => theme.textPrimary};
+  font-weight: 600;
+`;
+
+const ExperienceCompany = styled.span`
+  font-size: 1rem;
+  color: ${({ theme }) => theme.textSecondary};
+`;
+
+const ExperienceDuration = styled.span`
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: ${({ theme }) => theme.textMuted};
+`;
+
+const TagRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+`;
+
+const Tag = styled.span`
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  background: ${({ theme }) => theme.accentSoft};
+  color: ${({ theme }) => theme.accent};
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+`;
+
+const BulletList = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.65rem;
+`;
+
+const BulletItem = styled.li`
+  position: relative;
+  padding-left: 1.2rem;
+  color: ${({ theme }) => theme.textSecondary};
+  line-height: 1.6;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.accent};
+    box-shadow: 0 0 0 5px rgba(99, 102, 241, 0.1);
+  }
+`;
+
+const SummaryPanel = styled(motion.div)`
+  border-radius: clamp(18px, 3vw, 24px);
+  padding: clamp(1.8rem, 3vw, 2.4rem);
+  background: ${({ theme }) => theme.panelGradient};
+  border: 1px solid ${({ theme }) => theme.border};
+  box-shadow: ${({ theme }) => theme.cardGlow};
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+`;
+
+const SummaryTitle = styled.h3`
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.textPrimary};
+`;
+
+const SummaryText = styled.p`
+  margin: 0;
+  color: ${({ theme }) => theme.textSecondary};
+  line-height: 1.65;
+`;
+
+const MetricRow = styled.div`
+  display: grid;
+  gap: 0.85rem;
+`;
+
+const Metric = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.95rem 1.1rem;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+`;
+
+const MetricValue = styled.span`
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.textPrimary};
+`;
+
+const MetricLabel = styled.span`
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.textMuted};
+`;
 
 const Experience = () => {
-  return (
-    <div id="experience" className="main-container">
-      <img
-        src="/section.svg"
-        alt="Experience"
-        width={1572}
-        height={795}
-        className="img-container"
-      />
-      <div className="top-container">
-        <div className="t-header-container">
-          <span className="t-header-text"></span>
-          <span className="t-header-texts">INTERNSHIPS</span>
-          <span className="t-header-text"></span>
-        </div>
-      </div>
+  const contributions = {
+    1: [
+      "Delivered Android features that improved user flows and streamlined onboarding.",
+      "Built modular UI components with clean architecture patterns to accelerate delivery.",
+      "Collaborated with backend engineers to integrate APIs and optimize data handling.",
+    ],
+    2: [
+      "Supported full-stack product initiatives across web and mobile surfaces.",
+      "Implemented reusable interface elements and refactored code for maintainability.",
+      "Partnered with senior engineers to document workflows and deployment practices.",
+    ],
+  };
 
-      <div className="bottom-container">
-        <div className="b-container">
-          <div className="b-top-container">
-            <div className="animation-container">
-              <AnimationLottie animationPath={experience} />
-            </div>
-          </div>
-          <div className="b-a-container">
-            <div className="card-container">
-              {experiences.map((experience) => (
-                <GlowCard
-                  key={experience.id}
-                  identifier={`experience-${experience.id}`}
-                >
-                  <div className="card-main-container">
-                    <img
-                      src="/blur-23.svg"
-                      alt="Hero"
-                      width={1080}
-                      height={200}
-                      className="image-card-container"
-                    />
-                    <div className="card-top-container">
-                      <p className="card-t-text">{experience.duration}</p>
-                    </div>
-                    <div className="card-bottom-container">
-                      <div className="b-cardtop">
-                        {" "}
-                        <BsPersonWorkspace size={36} />
-                      </div>
-                      <div>
-                        <p className="top-p-tab">{experience.title}</p>
-                        <p className="bottom-p-tab">{experience.company}</p>
-                      </div>
-                    </div>
+  const metrics = [
+    { value: "2", label: "High-impact internships" },
+    { value: "Multi-stack", label: "Android · Web · APIs" },
+    { value: "Product-first", label: "User-centric delivery" },
+  ];
+
+  return (
+    <SectionWrapper id="experience">
+      <SectionIntro>
+        <SectionEyebrow>Experience</SectionEyebrow>
+        <SectionHeading
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
+          Building polished, data-informed products through immersive internships.
+        </SectionHeading>
+        <SectionDescription
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+        >
+          My internship journeys sharpened my ability to ship high-quality features,
+          collaborate closely with stakeholders, and align technology with business value.
+        </SectionDescription>
+      </SectionIntro>
+
+      <Layout>
+        <ExperienceList>
+          {experiences.map((item, index) => (
+            <ExperienceCard
+              key={item.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 0.65, delay: index * 0.1, ease: "easeOut" }}
+              whileHover={{ translateY: -8 }}
+            >
+              <ExperienceContent>
+                <ExperienceHeader>
+                  <div>
+                    <ExperienceRole>{item.title}</ExperienceRole>
+                    <ExperienceCompany>{item.company}</ExperienceCompany>
                   </div>
-                </GlowCard>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                  <ExperienceDuration>{item.duration}</ExperienceDuration>
+                </ExperienceHeader>
+                <TagRow>
+                  <Tag>Internship</Tag>
+                  <Tag>Product</Tag>
+                  <Tag>Engineering</Tag>
+                </TagRow>
+                <BulletList>
+                  {(contributions[item.id] || []).map((line) => (
+                    <BulletItem key={line}>{line}</BulletItem>
+                  ))}
+                </BulletList>
+              </ExperienceContent>
+            </ExperienceCard>
+          ))}
+        </ExperienceList>
+
+        <SummaryPanel
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
+        >
+          <SummaryTitle>Internship Highlights</SummaryTitle>
+          <SummaryText>
+            At Rinira Innovations I grew from building Android experiences to shaping
+            product-ready software stacks—balancing delivery speed with code quality and
+            collaborative practices.
+          </SummaryText>
+          <MetricRow>
+            {metrics.map((metric) => (
+              <Metric key={metric.label}>
+                <MetricValue>{metric.value}</MetricValue>
+                <MetricLabel>{metric.label}</MetricLabel>
+              </Metric>
+            ))}
+          </MetricRow>
+        </SummaryPanel>
+      </Layout>
+    </SectionWrapper>
   );
 };
 

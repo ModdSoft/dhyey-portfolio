@@ -1,231 +1,425 @@
-import React from "react";
+import React, { Suspense, useMemo } from "react";
+import styled from "styled-components";
 import { personalData } from "../../data/personal-data";
 import { Link } from "react-scroll";
+import { motion } from "framer-motion";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
-import { RiInstagramFill } from "react-icons/ri";
-import { MdDownload } from "react-icons/md";
-import { RiContactsFill } from "react-icons/ri";
+import { RiInstagramFill, RiContactsFill } from "react-icons/ri";
+import { MdDownload, MdAlternateEmail } from "react-icons/md";
 import { IoMdCall } from "react-icons/io";
-import { MdAlternateEmail } from "react-icons/md";
-import "./Home.css";
+import { Canvas } from "@react-three/fiber";
+import { Float, OrbitControls } from "@react-three/drei";
+
+const Section = styled.section`
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+  padding: clamp(4rem, 8vw, 6rem) 0 clamp(5rem, 8vw, 7rem);
+`;
+
+const LeftColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2rem);
+`;
+
+const Badge = styled.span`
+  align-self: flex-start;
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+  background: ${({ theme }) => theme.accentSoft};
+  color: ${({ theme }) => theme.accent};
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+`;
+
+const Heading = styled(motion.h1)`
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  line-height: 1.08;
+  color: ${({ theme }) => theme.textPrimary};
+  margin: 0;
+  text-wrap: balance;
+`;
+
+const Accent = styled.span`
+  background: linear-gradient(
+    135deg,
+    ${({ theme }) => theme.accent},
+    ${({ theme }) => theme.accentAlt}
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+`;
+
+const SubHeading = styled(motion.p)`
+  margin: 0;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.7;
+  color: ${({ theme }) => theme.textSecondary};
+  max-width: 34rem;
+`;
+
+const Actions = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+`;
+
+const PrimaryButton = styled(motion.button)`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    ${({ theme }) => theme.accent},
+    ${({ theme }) => theme.accentAlt}
+  );
+  color: ${({ theme }) => theme.body};
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    background 0.25s ease;
+  box-shadow: 0 18px 35px rgba(79, 70, 229, 0.35);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(79, 70, 229, 0.45);
+  }
+
+  &:active {
+    transform: translateY(0px) scale(0.99);
+  }
+`;
+
+const SecondaryLink = styled(motion.a)`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid ${({ theme }) => theme.border};
+  background: ${({ theme }) => theme.surface};
+  color: ${({ theme }) => theme.textPrimary};
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border 0.25s ease,
+    color 0.25s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: ${({ theme }) => theme.accent};
+    color: ${({ theme }) => theme.accent};
+    box-shadow: ${({ theme }) => theme.cardGlow};
+  }
+`;
+
+const SocialBar = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.4rem;
+  border-radius: 999px;
+  background: ${({ theme }) => theme.surface};
+  border: 1px solid ${({ theme }) => theme.border};
+  width: fit-content;
+  margin-top: 0.5rem;
+  box-shadow: ${({ theme }) => theme.shadowSoft};
+`;
+
+const SocialLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  border: 1px solid ${({ theme }) => theme.border};
+  color: ${({ theme }) => theme.textPrimary};
+  transition: border 0.25s ease, color 0.25s ease, transform 0.25s ease,
+    background 0.25s ease;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.accent};
+    color: ${({ theme }) => theme.accent};
+    transform: translateY(-2px);
+    background: ${({ theme }) => theme.accentSoft};
+  }
+`;
+
+const RightColumn = styled.div`
+  position: relative;
+  width: 100%;
+  min-height: clamp(360px, 45vw, 520px);
+  border-radius: clamp(18px, 3vw, 28px);
+  overflow: hidden;
+  background: ${({ theme }) => theme.panelGradient};
+  border: 1px solid ${({ theme }) => theme.border};
+  box-shadow: ${({ theme }) => theme.cardGlow};
+`;
+
+const CanvasContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+`;
+
+const CanvasOverlay = styled.div`
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(15, 23, 42, 0.05),
+    transparent 45%
+  );
+  z-index: 1;
+`;
+
+const InfoPanel = styled(motion.div)`
+  position: absolute;
+  bottom: clamp(1.4rem, 3vw, 2rem);
+  left: clamp(1.4rem, 3vw, 2rem);
+  right: clamp(1.4rem, 3vw, 2rem);
+  padding: clamp(1.2rem, 2.5vw, 1.8rem);
+  border-radius: clamp(16px, 2.5vw, 20px);
+  backdrop-filter: blur(18px);
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(100, 116, 139, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  z-index: 2;
+`;
+
+const InfoTitle = styled.span`
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: ${({ theme }) => theme.textMuted};
+`;
+
+const InfoContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+`;
+
+const InfoHighlight = styled.span`
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  font-weight: 600;
+  color: ${({ theme }) => theme.textPrimary};
+`;
+
+const InfoSubtext = styled.span`
+  font-size: 0.95rem;
+  color: ${({ theme }) => theme.textSecondary};
+`;
+
+const GlowAccent = styled.div`
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(
+    circle at top right,
+    rgba(99, 102, 241, 0.25),
+    transparent 65%
+  );
+  filter: blur(80px);
+  opacity: 0.7;
+  pointer-events: none;
+`;
+
+const HeroScene = () => {
+  const particlePositions = useMemo(() => {
+    const points = new Float32Array(400 * 3);
+    for (let i = 0; i < 400; i += 1) {
+      const radius = 1.8 + Math.random() * 1.6;
+      const angle = Math.random() * Math.PI * 2;
+      const y = (Math.random() - 0.5) * 2.4;
+      points[i * 3] = Math.cos(angle) * radius;
+      points[i * 3 + 1] = y;
+      points[i * 3 + 2] = Math.sin(angle) * radius;
+    }
+    return points;
+  }, []);
+
+  return (
+    <Canvas dpr={[1, 2]}>
+      <color attach="background" args={["#020617"]} />
+      <ambientLight intensity={0.3} />
+      <spotLight
+        position={[8, 12, 15]}
+        angle={0.45}
+        intensity={1.4}
+        penumbra={1}
+        castShadow
+        color="#6366f1"
+      />
+      <pointLight position={[-8, -6, -10]} intensity={1.1} color="#22d3ee" />
+      <Suspense fallback={null}>
+        <Float speed={1.5} rotationIntensity={1.2} floatIntensity={2.3}>
+          <mesh castShadow>
+            <icosahedronGeometry args={[1.15, 1]} />
+            <meshStandardMaterial
+              color="#7c3aed"
+              metalness={0.55}
+              roughness={0.25}
+              envMapIntensity={1}
+            />
+          </mesh>
+        </Float>
+
+        <Float speed={2} rotationIntensity={0.65} floatIntensity={1.1}>
+          <mesh scale={[2.4, 2.4, 2.4]}>
+            <torusKnotGeometry args={[0.48, 0.14, 220, 32]} />
+            <meshStandardMaterial
+              color="#22d3ee"
+              metalness={0.3}
+              roughness={0.1}
+              transparent
+              opacity={0.45}
+            />
+          </mesh>
+        </Float>
+
+        <points>
+          <bufferGeometry attach="geometry">
+            <bufferAttribute
+              attach="attributes-position"
+              array={particlePositions}
+              count={particlePositions.length / 3}
+              itemSize={3}
+            />
+          </bufferGeometry>
+          <pointsMaterial
+            size={0.035}
+            sizeAttenuation
+            color="#38bdf8"
+            transparent
+            opacity={0.85}
+          />
+        </points>
+      </Suspense>
+      <OrbitControls enableZoom={false} enablePan={false} />
+    </Canvas>
+  );
+};
 
 function Home() {
   return (
-    <section id="home" className="hero-section">
-      <div className="custom-divider">
-        <div className="custom-divider-dot"></div>
-        <div className="custom-divider-dot2"></div>
-      </div>
-      <img
-        src="/hero.svg"
-        alt="Hero"
-        className="hero-background"
-        width={1572}
-        height={795}
-      />
-
-      <div className="hero-content">
-        <div className="hero-info">
-          <h1 className="hero-title">
-            Hello, <br />
-            This is <span className="highlight2">{personalData.name}</span>
-            {` , a `}
-            <span className="highlight">{personalData.designation},</span> with
-            a strong <br />
-            foundation in{" "}
-            <span className="highlight">Software Development.</span>
-          </h1>
-
-          <div className="social-links">
-            <a
-              href={personalData.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              <BsGithub color="#EC4899" />
-            </a>
-            <a
-              href={personalData.linkedIn}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              <BsLinkedin color="#EC4899" />
-            </a>
-            <a
-              href={personalData.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              <RiInstagramFill color="#EC4899" />
-            </a>
-            <a
-              href={`tel:${personalData.phone}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              <IoMdCall color="#EC4899" />
-            </a>
-            <a
-              href={personalData.email}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              <MdAlternateEmail color="#EC4899" />
-            </a>
-          </div>
-
-          <div className="action-buttons">
-            <Link
-              to="contactus"
-              smooth={true}
-              duration={500}
-              href="#contact"
-              className="contact-button"
-            >
-              <button className="contact-button2">
-                <span>Contact me</span>
-                <RiContactsFill size={16} className="contact-button-icon" />
-              </button>
-            </Link>
-
-            <a
-              href={personalData.resume}
-              target="_blank"
-              download
-              rel="noopener noreferrer"
-              className="contact-button"
-            >
-              <button className="contact-button2 resume-button-temp">
-                <span>Get Resume</span>
-                <MdDownload size={16} className="resume-button-icon" />
-              </button>
-            </a>
-          </div>
-        </div>
-
-        <div className="custom-container">
-          <div className="code-custom-content">
-            <div className="code-bulb">
-              <div className="bulb-color red"></div>
-              <div className="bulb-color orange"></div>
-              <div className="bulb-color green"></div>
-            </div>
-          </div>
-          <div className="custom-divider2">
-            <div className="custom-divider-dot3"></div>
-            <div className="custom-divider-dot4"></div>
-          </div>
-          <div className="code-content">
-            <code className="code-input-container">
-              <div className="blink">
-                <span className="container1-span1">const</span>
-                <span className="container1-span2">dataAnalyst</span>
-                <span className="container1-span3">=</span>
-                <span className="container1-span4">{"{"}</span>
-              </div>
-              <div>
-                <span className="container2-span1">Full Name:</span>
-                <span className="container2-span2">{`'`}</span>
-                <span className="container2-span3">Dhyey Modi</span>
-                <span className="container2-span4">{`',`}</span>
-              </div>
-              <div className="container3">
-                <span className="container3-span1">Skills:</span>
-                <span className="container3-span2">{`['`}</span>
-                <span className="container2-span3">MySQL</span>
-                <span className="container3-span2">{"', '"}</span>
-                <span className="container2-span3">Python</span>
-                <span className="container3-span2">{"', '"}</span>
-                <span className="container2-span3">Power BI</span>
-                <span className="container3-span2">{"', '"}</span>
-                <span className="container2-span3">Tableau</span>
-                <span className="container3-span2">{"', '"}</span>
-                <span className="container2-span3">Data Visualization</span>
-                <span className="container3-span2">{"', '"}</span>
-                <span className="container2-span3">Machine Learning</span>
-                <span className="container3-span2">{"', '"}</span>
-                <span className="container2-span3">Data Visualization</span>
-                <span className="container3-span2">{"', '"}</span>
-                <span className="container2-span3">ETL</span>
-                <span className="container3-span2">{"', '"}</span>
-                <span className="container2-span3">Java</span>
-                <span className="container3-span2">{"', '"}</span>
-                <span className="container2-span3">React Native</span>
-                <span className="container3-span2">{"', '"}</span>
-                <span className="container2-span3">Redux</span>
-                <span className="container3-span2">{"', '"}</span>
-                <span className="container2-span3">C++</span>
-                <span className="container3-span2">{"', '"}</span>
-                <span className="container2-span3">TypeScript</span>
-                <span className="container3-span2">{"', '"}</span>
-                <span className="container2-span3">C</span>
-                <span className="container3-span2">{"', '"}</span>
-                <span className="container2-span3">HTML</span>
-                <span className="container3-span2">{"', '"}</span>
-                <span className="container2-span3">CSS</span>
-                <span className="container3-span2">{"', '"}</span>
-                <span className="container2-span3">MongoDB</span>
-                <span className="container3-span2">{`']`}</span>
-              </div>
-              <div>
-                <span className="container2-span1">HardWorker:</span>
-                <span className="container4-span1">true</span>
-                <span className="container2-span4">,</span>
-              </div>
-              <div>
-                <span className="container2-span1">quickLearner:</span>
-                <span className="container4-span1">true</span>
-                <span className="container2-span4">,</span>
-              </div>
-              <div>
-                <span className="container2-span1">problemSolver:</span>
-                <span className="container4-span1">true</span>
-                <span className="container2-span4">,</span>
-              </div>
-              <div>
-                <span className="container2-span1">hireable:</span>
-                <span className="container4-span1">function</span>
-                <span className="container2-span4">{"() {"}</span>
-              </div>
-              <div>
-                <span className="container5-span1">return</span>
-                <span className="container2-span4">{`(`}</span>
-              </div>
-              <div>
-                <span className="container6-span1">this.</span>
-                <span className="container6-span2">hardWorker</span>
-                <span className="container2-span3">&amp;&amp;</span>
-              </div>
-              <div>
-                <span className="container6-span1">this.</span>
-                <span className="container6-span2">problemSolver</span>
-                <span className="container2-span3">&amp;&amp;</span>
-              </div>
-              <div>
-                <span className="container6-span1">this.</span>
-                <span className="container6-span2">skills.length</span>
-                <span className="container6-span2 container2-span3">&gt;=</span>
-                <span className="container4-span1">5</span>
-              </div>
-              <div>
-                <span className="container7-span1">{`);`}</span>
-              </div>
-              <div>
-                <span className="container7-span2">{`};`}</span>
-              </div>
-              <div>
-                <span className="container2-span4">{`};`}</span>
-              </div>
-            </code>
-          </div>
-        </div>
-      </div>
-    </section>
+    <Section id="home">
+      <GlowAccent />
+      <LeftColumn>
+        <Badge>Data Analyst · Builder</Badge>
+        <Heading
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          Hello, I’m <Accent>{personalData.name}</Accent>. I design intelligent
+          data products that bridge <Accent>analytics</Accent> and{" "}
+          <Accent>software craftsmanship</Accent>.
+        </Heading>
+        <SubHeading
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+        >
+          With a strong foundation in full-stack engineering and advanced data
+          analysis, I turn complex datasets into elegant, actionable solutions
+          that drive business impact.
+        </SubHeading>
+        <Actions>
+          <Link to="contactus" smooth duration={600} offset={-60}>
+            <PrimaryButton whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+              <RiContactsFill size={18} />
+              Let’s collaborate
+            </PrimaryButton>
+          </Link>
+          <SecondaryLink
+            href={personalData.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <MdDownload size={18} />
+            Download résumé
+          </SecondaryLink>
+        </Actions>
+        <SocialBar
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+        >
+          <SocialLink
+            href={personalData.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <BsGithub size={18} />
+          </SocialLink>
+          <SocialLink
+            href={personalData.linkedIn}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <BsLinkedin size={18} />
+          </SocialLink>
+          <SocialLink
+            href={personalData.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <RiInstagramFill size={18} />
+          </SocialLink>
+          <SocialLink href={`tel:${personalData.phone}`} aria-label="Phone">
+            <IoMdCall size={18} />
+          </SocialLink>
+          <SocialLink
+            href={personalData.email}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Email"
+          >
+            <MdAlternateEmail size={18} />
+          </SocialLink>
+        </SocialBar>
+      </LeftColumn>
+      <RightColumn>
+        <CanvasContainer>
+          <HeroScene />
+        </CanvasContainer>
+        <CanvasOverlay />
+        <InfoPanel
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.4, ease: "easeOut" }}
+        >
+          <InfoTitle>Currently</InfoTitle>
+          <InfoContent>
+            <InfoHighlight>Exploring intelligent analytics pipelines</InfoHighlight>
+            <InfoSubtext>
+              Building systems that blend predictive modelling, dashboarding, and
+              user-focused engineering.
+            </InfoSubtext>
+          </InfoContent>
+        </InfoPanel>
+      </RightColumn>
+    </Section>
   );
 }
 

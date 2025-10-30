@@ -1,11 +1,196 @@
 import React, { useState } from "react";
-import "./contactus.css";
+import styled from "styled-components";
+import { motion } from "framer-motion";
 import { BiLogoLinkedin } from "react-icons/bi";
 import { CiLocationOn } from "react-icons/ci";
 import { IoLogoGithub, IoMdCall } from "react-icons/io";
 import { MdAlternateEmail } from "react-icons/md";
-import logo from "./back-img.png";
 import { personalData } from "../../data/personal-data";
+import {
+  SectionWrapper,
+  SectionIntro,
+  SectionEyebrow,
+  SectionHeading,
+  SectionDescription,
+} from "../common/Section";
+
+const ContactGrid = styled.div`
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(320px, 1.1fr);
+  gap: clamp(2rem, 4vw, 3rem);
+
+  @media (max-width: 960px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const InfoCard = styled(motion.div)`
+  border-radius: clamp(18px, 3vw, 26px);
+  padding: clamp(1.8rem, 3vw, 2.6rem);
+  background: ${({ theme }) => theme.panelGradient};
+  border: 1px solid ${({ theme }) => theme.border};
+  box-shadow: ${({ theme }) => theme.cardGlow};
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+`;
+
+const InfoHeading = styled.h3`
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.textPrimary};
+`;
+
+const InfoDescription = styled.p`
+  margin: 0;
+  color: ${({ theme }) => theme.textSecondary};
+  line-height: 1.65;
+`;
+
+const InfoList = styled.div`
+  display: grid;
+  gap: 1.1rem;
+`;
+
+const InfoItem = styled.a`
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1.2rem;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(15, 23, 42, 0.55);
+  color: ${({ theme }) => theme.textPrimary};
+  transition: transform 0.25s ease, border 0.25s ease, color 0.25s ease;
+  text-decoration: none;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: ${({ theme }) => theme.accent};
+    color: ${({ theme }) => theme.accent};
+  }
+`;
+
+const InfoDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4;
+`;
+
+const InfoLabel = styled.span`
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.textMuted};
+`;
+
+const InfoValue = styled.span`
+  font-size: 1rem;
+  color: ${({ theme }) => theme.textPrimary};
+`;
+
+const IconWrapper = styled.span`
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: rgba(99, 102, 241, 0.16);
+  color: ${({ theme }) => theme.accent};
+`;
+
+const FormCard = styled(motion.form)`
+  border-radius: clamp(18px, 2.8vw, 24px);
+  padding: clamp(1.8rem, 3vw, 2.5rem);
+  background: ${({ theme }) => theme.surface};
+  border: 1px solid ${({ theme }) => theme.border};
+  box-shadow: ${({ theme }) => theme.shadowSoft};
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+`;
+
+const FormHeading = styled.h3`
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.textPrimary};
+`;
+
+const InputGroup = styled.div`
+  display: grid;
+  gap: 1rem;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid ${({ theme }) => theme.border};
+  background: rgba(15, 23, 42, 0.35);
+  color: ${({ theme }) => theme.textPrimary};
+  font-size: 0.95rem;
+  transition: border 0.25s ease, box-shadow 0.25s ease;
+
+  &:focus {
+    outline: none;
+    border-color: ${({ theme }) => theme.accent};
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+  }
+`;
+
+const TextArea = styled.textarea`
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid ${({ theme }) => theme.border};
+  background: rgba(15, 23, 42, 0.35);
+  color: ${({ theme }) => theme.textPrimary};
+  font-size: 0.95rem;
+  resize: vertical;
+  min-height: 140px;
+  transition: border 0.25s ease, box-shadow 0.25s ease;
+
+  &:focus {
+    outline: none;
+    border-color: ${({ theme }) => theme.accent};
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+  }
+`;
+
+const SubmitButton = styled.button`
+  align-self: flex-start;
+  padding: 0.9rem 1.8rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(
+    135deg,
+    ${({ theme }) => theme.accent},
+    ${({ theme }) => theme.accentAlt}
+  );
+  color: ${({ theme }) => theme.body};
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 20px 35px rgba(79, 70, 229, 0.35);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 40px rgba(79, 70, 229, 0.45);
+  }
+
+  &:active {
+    transform: translateY(0px) scale(0.99);
+  }
+`;
+
+const StatusMessage = styled.span`
+  font-size: 0.9rem;
+  color: ${({ success, theme }) =>
+    success ? theme.accent : "rgb(248, 113, 113)"};
+`;
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -14,163 +199,177 @@ const ContactUs = () => {
     message: "",
   });
 
-  const [status, setStatus] = useState(""); // Add state for form status
+  const [status, setStatus] = useState("");
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Handle form submission to Formspree
-    const response = await fetch("https://formspree.io/f/xwpelyng", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      setStatus("success");
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch("https://formspree.io/f/xwpelyng", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-    } else {
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
       setStatus("error");
     }
   };
 
   return (
-    <div id="contactus" className="contactusContainer">
-      <div className="c-header-container">
-        <div className="c-header-container2">
-          <span className="c-header-subtext"></span>
-          <span className="c-header-text">LET'S CONNECT</span>
-          <span className="c-header-subtext"></span>
-        </div>
-      </div>
-      <div className="c-main-container">
-        <div className="left-container">
-          <div className="say-hi-header">
-            <span className="header-texts">Connect With Me!</span>
-          </div>
-          <div className="left-top-container">
-            <div className="contact-info">
-              <div className="info-item">
-                <a
-                  href={personalData.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="info-item"
-                >
-                  <IoLogoGithub className="c-logo-style" size={50} />
-                  <span className="logo-texts">Github</span>
-                </a>
-              </div>
-              <div className="info-item">
-                <a
-                  href={personalData.linkedIn}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="info-item"
-                >
-                  <BiLogoLinkedin className="c-logo-style" size={50} />
-                  <span className="logo-texts">LinkedIn</span>
-                </a>
-              </div>
-              <div className="info-item">
-                <a
-                  href={`tel:${personalData.phone}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="info-item"
-                >
-                  <IoMdCall className="c-logo-style" size={50} />
-                  <span className="logo-texts">+1 (647) 761-5235</span>
-                </a>
-              </div>
-              <div className="info-item">
-                <a
-                  href={`mailto:${personalData.email}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="info-item"
-                >
-                  <MdAlternateEmail className="c-logo-style" size={50} />
-                  <span className="logo-texts">dhyeymodi21@gmail.com</span>
-                </a>
-              </div>
-              <div className="info-item">
-                <CiLocationOn className="c-logo-style" size={50} />
-                <span className="logo-texts">
-                  6087 Eaglewood Drive
-                  <br />
-                  Niagara Falls
-                  <br />
-                  ON L2G 7T2, Canada
-                </span>
-              </div>
-            </div>
-            <div className="image-container">
-              <img src={logo} className="img-logo" alt="Logo" />
-            </div>
-          </div>
-        </div>
-        <div className="right-container">
-          <div className="say-hi-header">
-            <span className="header-texts">Say Hi!</span>
-          </div>
+    <SectionWrapper id="contactus">
+      <SectionIntro>
+        <SectionEyebrow>Connect</SectionEyebrow>
+        <SectionHeading
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
+          Let’s build the next data-driven experience together.
+        </SectionHeading>
+        <SectionDescription
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+        >
+          Whether you want to validate an idea, modernize analytics, or collaborate
+          on novel experiences, I’d love to hear from you.
+        </SectionDescription>
+      </SectionIntro>
 
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <input
+      <ContactGrid>
+        <InfoCard
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
+          <InfoHeading>Direct lines</InfoHeading>
+          <InfoDescription>
+            Prefer a dedicated channel? Reach out via any of the platforms below and
+            I’ll respond promptly.
+          </InfoDescription>
+          <InfoList>
+            <InfoItem
+              href={personalData.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconWrapper>
+                <IoLogoGithub size={20} />
+              </IconWrapper>
+              <InfoDetails>
+                <InfoLabel>GitHub</InfoLabel>
+                <InfoValue>{personalData.github.replace("https://", "")}</InfoValue>
+              </InfoDetails>
+            </InfoItem>
+            <InfoItem
+              href={personalData.linkedIn}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconWrapper>
+                <BiLogoLinkedin size={20} />
+              </IconWrapper>
+              <InfoDetails>
+                <InfoLabel>LinkedIn</InfoLabel>
+                <InfoValue>
+                  {personalData.linkedIn.replace("https://www.", "")}
+                </InfoValue>
+              </InfoDetails>
+            </InfoItem>
+            <InfoItem href={`tel:${personalData.phone}`}>
+              <IconWrapper>
+                <IoMdCall size={20} />
+              </IconWrapper>
+              <InfoDetails>
+                <InfoLabel>Call</InfoLabel>
+                <InfoValue>{personalData.phone}</InfoValue>
+              </InfoDetails>
+            </InfoItem>
+            <InfoItem href={personalData.email}>
+              <IconWrapper>
+                <MdAlternateEmail size={20} />
+              </IconWrapper>
+              <InfoDetails>
+                <InfoLabel>Email</InfoLabel>
+                <InfoValue>dhyeymodi21@gmail.com</InfoValue>
+              </InfoDetails>
+            </InfoItem>
+            <InfoItem as="div">
+              <IconWrapper>
+                <CiLocationOn size={20} />
+              </IconWrapper>
+              <InfoDetails>
+                <InfoLabel>Location</InfoLabel>
+                <InfoValue>{personalData.address}</InfoValue>
+              </InfoDetails>
+            </InfoItem>
+          </InfoList>
+        </InfoCard>
+
+        <FormCard
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.75, delay: 0.1, ease: "easeOut" }}
+        >
+          <FormHeading>Send a message</FormHeading>
+          <InputGroup>
+            <Input
               type="text"
-              placeholder="Name*"
-              className="input-style"
+              placeholder="Name *"
               name="name"
               value={formData.name}
               onChange={handleChange}
               required
             />
-            <input
+            <Input
               type="email"
-              placeholder="Email*"
-              className="input-style"
+              placeholder="Email *"
               name="email"
               value={formData.email}
               onChange={handleChange}
               required
             />
-            <textarea
-              placeholder="Message*"
-              className="input-style"
+            <TextArea
+              placeholder="Share a bit about your project or question *"
               name="message"
               value={formData.message}
               onChange={handleChange}
               required
-            ></textarea>
-            <button type="submit" className="input-button-style">
-              Send
-            </button>
-            {status === "success" && (
-              <p className="form-status success">Thank you for your message!</p>
-            )}
-            {status === "error" && (
-              <p className="form-status error">
-                There was an error sending your message. Please try again.
-              </p>
-            )}
-          </form>
-        </div>
-      </div>
-    </div>
+            />
+          </InputGroup>
+          <SubmitButton type="submit">Submit request</SubmitButton>
+          {status === "success" && (
+            <StatusMessage success>
+              Thank you! I’ll be in touch very soon.
+            </StatusMessage>
+          )}
+          {status === "error" && (
+            <StatusMessage>
+              Something went wrong. Please try again or reach me directly via email.
+            </StatusMessage>
+          )}
+        </FormCard>
+      </ContactGrid>
+    </SectionWrapper>
   );
 };
 

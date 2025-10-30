@@ -1,6 +1,6 @@
-import "./App.css";
 import styled, { ThemeProvider } from "styled-components";
 import { darkTheme } from "./utils/Theme";
+import { GlobalStyles } from "./styles/GlobalStyles";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -12,33 +12,91 @@ import Footer from "./components/footer";
 import Projects from "./components/projects";
 import Skills from "./components/skills";
 
-const Body = styled.div`
-  background-color: ${({ theme }) => theme.bg};
+const AppShell = styled.div`
+  position: relative;
+  min-height: 100vh;
   width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  padding: 0px 60px;
+  overflow: hidden;
+  background-color: ${({ theme }) => theme.body};
+`;
 
-  @media (max-width: 767px) {
-    padding: 0px 20px;
+const BackgroundGlimmer = styled.div`
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: ${({ theme }) => theme.heroGradient};
+  opacity: 0.85;
+  z-index: 0;
+`;
+
+const GridOverlay = styled.div`
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-size: 120px 120px;
+  background-image: linear-gradient(
+      rgba(148, 163, 184, 0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
+  z-index: 0;
+`;
+
+const Content = styled.main`
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.5rem 6rem;
+
+  @media (max-width: 768px) {
+    padding: 0 1.2rem 4rem;
+  }
+`;
+
+const SectionDivider = styled.div`
+  height: 1px;
+  margin: 6rem 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    ${({ theme }) => theme.border},
+    transparent
+  );
+
+  @media (max-width: 768px) {
+    margin: 4rem 0;
   }
 `;
 
 function App() {
   return (
     <ThemeProvider theme={darkTheme}>
-      <Body>
+      <GlobalStyles />
+      <AppShell>
+        <BackgroundGlimmer />
+        <GridOverlay />
         <Navbar />
-        <Home />
-        <About />
-        <Skills />
-        <Education />
-        <Experience />
-        <Work />
-        <Projects />
-        <ContactUs />
-      </Body>
-      <Footer />
+        <Content>
+          <Home />
+          <SectionDivider />
+          <About />
+          <SectionDivider />
+          <Skills />
+          <SectionDivider />
+          <Education />
+          <SectionDivider />
+          <Experience />
+          <SectionDivider />
+          <Work />
+          <SectionDivider />
+          <Projects />
+          <SectionDivider />
+          <ContactUs />
+        </Content>
+        <Footer />
+      </AppShell>
     </ThemeProvider>
   );
 }

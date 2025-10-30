@@ -1,29 +1,62 @@
 import React from "react";
-import "./footer.css";
+import styled from "styled-components";
 import { personalData } from "../../data/personal-data";
 
-const Footer = () => {
-  return (
-    <div className="footerContainer">
-      <div className="aboveText">© Portfolio Website For Dhyey Modi</div>
-      <div className="belowText">
-        View the code on{" "}
-        <a
-          href={personalData.portfoliogithub}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="linkingText"
-        >
-          <span className="linkText2">GitHub.</span>
-        </a>
-      </div>
-      <div className="linkText">Made with ❤️ by Dhyey Modi</div>
-      <div className="linkText3">
-        All logos, trademarks, and brandnames are the property of their
-        respective owners.
-      </div>
-    </div>
-  );
-};
+const FooterWrapper = styled.footer`
+  position: relative;
+  margin-top: 6rem;
+  padding: 3rem 1.5rem;
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(18px);
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+  color: ${({ theme }) => theme.textSecondary};
+  text-align: center;
+`;
+
+const Signature = styled.span`
+  font-size: 0.95rem;
+  color: ${({ theme }) => theme.textPrimary};
+`;
+
+const ExternalLink = styled.a`
+  color: ${({ theme }) => theme.accent};
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+
+  &:hover {
+    opacity: 0.75;
+  }
+`;
+
+const Disclaimer = styled.span`
+  font-size: 0.8rem;
+  opacity: 0.75;
+`;
+
+const Footer = () => (
+  <FooterWrapper>
+    <Signature>© {new Date().getFullYear()} Dhyey Modi — Portfolio</Signature>
+    <span>
+      Crafted with curiosity and intention. View the source on{" "}
+      <ExternalLink
+        href={personalData.portfoliogithub}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </ExternalLink>
+      .
+    </span>
+    <span>Made with thoughtful engineering & a lot of ☕️.</span>
+    <Disclaimer>
+      Logos and trademarks belong to their respective owners.
+    </Disclaimer>
+  </FooterWrapper>
+);
 
 export default Footer;

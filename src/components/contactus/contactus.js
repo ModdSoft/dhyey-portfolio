@@ -118,6 +118,13 @@ const FormHeading = styled.h3`
   color: ${({ theme }) => theme.textPrimary};
 `;
 
+const FormCopy = styled.p`
+  margin: 0;
+  font-size: 0.95rem;
+  color: ${({ theme }) => theme.textSecondary};
+  line-height: 1.6;
+`;
+
 const InputGroup = styled.div`
   display: grid;
   gap: 1rem;
@@ -331,10 +338,14 @@ const ContactUs = () => {
           transition={{ duration: 0.75, delay: 0.1, ease: "easeOut" }}
         >
           <FormHeading>Send a message</FormHeading>
+          <FormCopy>
+            Share a short brief, your desired timeline, or the challenge you’re solving.
+            I’ll respond within 24 hours to plan next steps.
+          </FormCopy>
           <InputGroup>
             <Input
               type="text"
-              placeholder="Name *"
+              placeholder="Full name *"
               name="name"
               value={formData.name}
               onChange={handleChange}
@@ -342,29 +353,29 @@ const ContactUs = () => {
             />
             <Input
               type="email"
-              placeholder="Email *"
+              placeholder="Work email *"
               name="email"
               value={formData.email}
               onChange={handleChange}
               required
             />
             <TextArea
-              placeholder="Share a bit about your project or question *"
+              placeholder="How can I help? *"
               name="message"
               value={formData.message}
               onChange={handleChange}
               required
             />
           </InputGroup>
-          <SubmitButton type="submit">Submit request</SubmitButton>
+          <SubmitButton type="submit">Send message</SubmitButton>
           {status === "success" && (
             <StatusMessage success>
-              Thank you! I’ll be in touch very soon.
+              Thanks for reaching out—I’ll get back to you within the next business day.
             </StatusMessage>
           )}
           {status === "error" && (
             <StatusMessage>
-              Something went wrong. Please try again or reach me directly via email.
+              Something went wrong. Please try again or drop a note at dhyeymodi21@gmail.com.
             </StatusMessage>
           )}
         </FormCard>

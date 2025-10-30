@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
-import { personalData } from "../../data/personal-data";
 
 const Header = styled.header`
   position: sticky;
@@ -67,36 +66,6 @@ const NavLink = styled(Link)`
     color: ${({ theme }) => theme.accent};
     background: ${({ theme }) => theme.accentSoft};
     transform: translateY(-2px);
-  }
-`;
-
-const ResumeLink = styled.a`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.65rem 1.1rem;
-  border-radius: 999px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.body};
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.accent},
-    ${({ theme }) => theme.accentAlt}
-  );
-  box-shadow: 0 18px 35px rgba(79, 70, 229, 0.35);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  border: none;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 20px 40px rgba(79, 70, 229, 0.45);
-  }
-
-  @media (max-width: 900px) {
-    display: none;
   }
 `;
 
@@ -166,22 +135,6 @@ const MobileLink = styled(Link)`
   }
 `;
 
-const MobileResume = styled.a`
-  padding: 0.75rem 1rem;
-  border-radius: 14px;
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.accent},
-    ${({ theme }) => theme.accentAlt}
-  );
-  color: ${({ theme }) => theme.body};
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-align: center;
-  text-transform: uppercase;
-`;
-
 const navItems = [
   { label: "About", to: "about" },
   { label: "Skills", to: "skills" },
@@ -228,13 +181,6 @@ const Navbar = () => {
             </NavLink>
           ))}
         </NavLinks>
-        <ResumeLink
-          href={personalData.resume}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Resume
-        </ResumeLink>
         <MenuButton
           type="button"
           onClick={() => setMenuOpen((prev) => !prev)}
@@ -260,13 +206,6 @@ const Navbar = () => {
             {item.label}
           </MobileLink>
         ))}
-        <MobileResume
-          href={personalData.resume}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Download Resume
-        </MobileResume>
       </MobileMenu>
     </Header>
   );

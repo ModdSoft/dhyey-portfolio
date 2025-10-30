@@ -10,10 +10,17 @@ import {
   SectionDescription,
 } from "../common/Section";
 
-const Layout = styled.div`
+const RolesStack = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 4vw, 3.5rem);
+`;
+
+const RoleLayout = styled.div`
   display: grid;
   grid-template-columns: minmax(260px, 0.9fr) minmax(360px, 1.35fr);
   gap: clamp(2rem, 4vw, 3rem);
+  align-items: stretch;
 
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
@@ -49,11 +56,24 @@ const LogoWrapper = styled.div`
   }
 `;
 
-const CompanyName = styled.h3`
-  margin: 0;
-  font-size: clamp(1.3rem, 2.4vw, 1.6rem);
-  color: ${({ theme }) => theme.textPrimary};
-  font-weight: 600;
+const LogoFallback = styled.div`
+  width: clamp(110px, 12vw, 140px);
+  height: clamp(110px, 12vw, 140px);
+  border-radius: 24px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.6), rgba(14, 165, 233, 0.45));
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #0f172a;
+`;
+
+const CompanyMeta = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 `;
 
 const Role = styled.span`
@@ -61,6 +81,13 @@ const Role = styled.span`
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: ${({ theme }) => theme.textMuted};
+`;
+
+const CompanyName = styled.h3`
+  margin: 0;
+  font-size: clamp(1.3rem, 2.4vw, 1.6rem);
+  color: ${({ theme }) => theme.textPrimary};
+  font-weight: 600;
 `;
 
 const Tenure = styled.span`
@@ -184,91 +211,132 @@ const MetricLabel = styled.span`
   color: ${({ theme }) => theme.textMuted};
 `;
 
-const Work = () => {
-  const highlights = [
-    "Architected high-performance Java parsers that reduced processing time by 40% while boosting system throughput by 50%.",
-    "Enabled real-time global data ingestion pipelines powering mission-critical analytics experiences for enterprise clients.",
-    "Built scalable, maintainable components with continuous optimization to support fast-growing datasets and deployments.",
-  ];
+const roles = [
+  {
+    id: "rinira",
+    company: "Rinira Technologies Pvt. Ltd.",
+    role: "Software Engineer",
+    tenure: "April 2021 — Present",
+    badge: "Star Employee of the Year · 2022",
+    logo: CompanyLogo,
+    impactTitle: "Featured project: Traxo",
+    impactIntro:
+      "Led the engineering of data ingestion workflows powering global travel intelligence for enterprise stakeholders.",
+    highlights: [
+      "Architected high-performance Java parsers that reduced processing time by 40% while boosting system throughput by 50%.",
+      "Enabled real-time global data ingestion pipelines powering mission-critical analytics experiences for enterprise clients.",
+      "Built scalable, maintainable components with continuous optimization to support fast-growing datasets and deployments.",
+    ],
+    metrics: [
+      { value: "40%", label: "Faster ingestion" },
+      { value: "50%", label: "System lift" },
+      { value: "Global", label: "Client impact" },
+    ],
+  },
+  {
+    id: "nobel",
+    company: "Nobel AI Legal",
+    role: "Data Analyst Intern",
+    tenure: "March 2025 - Present",
+    badge: null,
+    logo: null,
+    impactTitle: "AI-first legal intelligence",
+    impactIntro:
+      "Designed AI workflows that accelerate legal clause discovery and convert unstructured case data into reliable insight.",
+    highlights: [
+      "Created domain-specific LLM pipelines that extract, classify, and summarise critical clauses across 1,000+ legal documents.",
+      "Implemented retrieval-augmented (RAG) workflows to surface relevant precedents, elevating contextual accuracy of AI responses.",
+      "Built AI-powered chatbots and bespoke LLM tooling that streamline research for legal teams and reduce repetitive analysis.",
+      "Delivered interactive Power BI dashboards that visualise AI findings, cutting legal report turnaround by 60%.",
+      "Partnered with cross-functional stakeholders to review outputs, identify gaps, and update standardized documentation.",
+    ],
+    metrics: [
+      { value: "1K+", label: "Legal docs parsed" },
+      { value: "60%", label: "Faster reports" },
+      { value: "RAG", label: "Contextual accuracy" },
+    ],
+  },
+];
 
-  const metrics = [
-    { value: "40%", label: "Faster ingestion" },
-    { value: "50%", label: "System lift" },
-    { value: "Global", label: "Client impact" },
-  ];
+const Work = () => (
+  <SectionWrapper id="work">
+    <SectionIntro>
+      <SectionEyebrow>Work Experience</SectionEyebrow>
+      <SectionHeading
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+      >
+        Engineering and analytics roles where measurable outcomes matter most.
+      </SectionHeading>
+      <SectionDescription
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+      >
+        From enterprise data platforms to AI-native legal tooling, I focus on building
+        systems that deliver clarity, speed, and trust for stakeholders.
+      </SectionDescription>
+    </SectionIntro>
 
-  return (
-    <SectionWrapper id="work">
-      <SectionIntro>
-        <SectionEyebrow>Work Experience</SectionEyebrow>
-        <SectionHeading
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-        >
-          Engineering resilient data platforms at Rinira Technologies.
-        </SectionHeading>
-        <SectionDescription
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
-        >
-          As a Software Engineer I’ve been trusted with building mission-critical
-          parsers and back-end components that drive accurate, timely insights for
-          global partners.
-        </SectionDescription>
-      </SectionIntro>
+    <RolesStack>
+      {roles.map((role, index) => (
+        <RoleLayout key={role.id}>
+          <CompanyCard
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
+          >
+            {role.logo ? (
+              <LogoWrapper>
+                <img src={role.logo} alt={`${role.company} logo`} />
+              </LogoWrapper>
+            ) : (
+              <LogoFallback>{role.company.charAt(0)}</LogoFallback>
+            )}
+            <CompanyMeta>
+              <Role>{role.role}</Role>
+              <CompanyName>{role.company}</CompanyName>
+              <Tenure>{role.tenure}</Tenure>
+            </CompanyMeta>
+            {role.badge && <Badge>{role.badge}</Badge>}
+          </CompanyCard>
 
-      <Layout>
-        <CompanyCard
-          initial={{ opacity: 0, y: 26 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-        >
-          <LogoWrapper>
-            <img src={CompanyLogo} alt="Rinira Technologies logo" />
-          </LogoWrapper>
-          <div>
-            <Role>Software Engineer</Role>
-            <CompanyName>Rinira Technologies Pvt. Ltd.</CompanyName>
-            <Tenure>April 2021 &mdash; Present</Tenure>
-          </div>
-          <Badge>Star Employee of the Year · 2022</Badge>
-        </CompanyCard>
-
-        <ImpactCard
-          initial={{ opacity: 0, y: 26 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.75, delay: 0.1, ease: "easeOut" }}
-        >
-          <ImpactContent>
-            <ImpactHeading>Featured project: Traxo</ImpactHeading>
-            <ImpactIntro>
-              Led the engineering of data ingestion workflows powering global travel
-              intelligence for enterprise stakeholders.
-            </ImpactIntro>
-            <BulletList>
-              {highlights.map((item) => (
-                <BulletItem key={item}>{item}</BulletItem>
-              ))}
-            </BulletList>
-            <MetricGrid>
-              {metrics.map((metric) => (
-                <Metric key={metric.label}>
-                  <MetricValue>{metric.value}</MetricValue>
-                  <MetricLabel>{metric.label}</MetricLabel>
-                </Metric>
-              ))}
-            </MetricGrid>
-          </ImpactContent>
-        </ImpactCard>
-      </Layout>
-    </SectionWrapper>
-  );
-};
+          <ImpactCard
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{
+              duration: 0.75,
+              delay: index * 0.1 + 0.1,
+              ease: "easeOut",
+            }}
+          >
+            <ImpactContent>
+              <ImpactHeading>{role.impactTitle}</ImpactHeading>
+              <ImpactIntro>{role.impactIntro}</ImpactIntro>
+              <BulletList>
+                {role.highlights.map((item) => (
+                  <BulletItem key={item}>{item}</BulletItem>
+                ))}
+              </BulletList>
+              <MetricGrid>
+                {role.metrics.map((metric) => (
+                  <Metric key={`${role.id}-${metric.label}`}>
+                    <MetricValue>{metric.value}</MetricValue>
+                    <MetricLabel>{metric.label}</MetricLabel>
+                  </Metric>
+                ))}
+              </MetricGrid>
+            </ImpactContent>
+          </ImpactCard>
+        </RoleLayout>
+      ))}
+    </RolesStack>
+  </SectionWrapper>
+);
 
 export default Work;

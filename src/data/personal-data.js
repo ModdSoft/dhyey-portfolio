@@ -15,7 +15,7 @@ export const personalData = {
   email:
     "mailto:dhyeymodi21@gmail.com?body=Hey!%20I%20came%20across%20your%20portfolio%20website%2C%20and%20wanted%20to%20get%20in%20touch%20with%20you.",
   phone: "+1 (647) 761-5235",
-  address: "6087 Eaglewood Drive, Niagara Falls, ON L2G 7T2, Canada",
+  address: "3590 Kaneff Crescent, Mississauga, ON L5A 3X3, Canada",
   github: "https://github.com/dhyeymodi2001",
   portfoliogithub: "https://github.com/ModdSoft/dhyey-portfolio",
   instagram: "https://www.instagram.com/dhyey_modi/",

@@ -5,7 +5,7 @@ import { Link } from "react-scroll";
 import { motion } from "framer-motion";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { RiInstagramFill, RiContactsFill } from "react-icons/ri";
-import { MdDownload, MdAlternateEmail } from "react-icons/md";
+import { MdAlternateEmail } from "react-icons/md";
 import { IoMdCall } from "react-icons/io";
 import { Canvas } from "@react-three/fiber";
 import { Float, OrbitControls } from "@react-three/drei";
@@ -98,29 +98,6 @@ const PrimaryButton = styled(motion.button)`
 
   &:active {
     transform: translateY(0px) scale(0.99);
-  }
-`;
-
-const SecondaryLink = styled(motion.a)`
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  padding: 0.85rem 1.5rem;
-  border-radius: 999px;
-  border: 1px solid ${({ theme }) => theme.border};
-  background: ${({ theme }) => theme.surface};
-  color: ${({ theme }) => theme.textPrimary};
-  font-weight: 500;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border 0.25s ease,
-    color 0.25s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-    border-color: ${({ theme }) => theme.accent};
-    color: ${({ theme }) => theme.accent};
-    box-shadow: ${({ theme }) => theme.cardGlow};
   }
 `;
 
@@ -346,16 +323,6 @@ function Home() {
               Let’s collaborate
             </PrimaryButton>
           </Link>
-          <SecondaryLink
-            href={personalData.resume}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <MdDownload size={18} />
-            Download résumé
-          </SecondaryLink>
         </Actions>
         <SocialBar
           initial={{ opacity: 0, y: 16 }}

@@ -38,7 +38,7 @@ const ExperienceCard = styled(motion.article)`
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(249, 115, 22, 0.12);
+    background: rgba(34, 211, 238, 0.12);
     opacity: 0;
     transition: opacity 0.35s ease;
     z-index: 0;
@@ -124,7 +124,7 @@ const BulletItem = styled.li`
     height: 0.45rem;
     border-radius: 50%;
     background: ${({ theme }) => theme.accent};
-    box-shadow: 0 0 0 5px rgba(249, 115, 22, 0.1);
+    box-shadow: 0 0 0 5px rgba(34, 211, 238, 0.1);
   }
 `;
 
@@ -183,21 +183,26 @@ const MetricLabel = styled.span`
 const Experience = () => {
   const contributions = {
     1: [
-      "Delivered Android features that improved user flows and streamlined onboarding.",
-      "Built modular UI components with clean architecture patterns to accelerate delivery.",
-      "Collaborated with backend engineers to integrate APIs and optimize data handling.",
+      "Built Android features with Kotlin and Jetpack components, keeping flows smooth and offline-first.",
+      "Refactored UI layers into reusable modules, reducing feature delivery time for the team.",
+      "Integrated REST APIs, tightened error handling, and profiled app performance to improve reliability.",
     ],
     2: [
-      "Supported full-stack product initiatives across web and mobile surfaces.",
-      "Implemented reusable interface elements and refactored code for maintainability.",
-      "Partnered with senior engineers to document workflows and deployment practices.",
+      "Shipped full-stack features across React and Node.js, aligning closely with user requirements.",
+      "Improved CI pipelines and testing coverage to make releases predictable.",
+      "Documented deployment workflows and paired with senior engineers to tune system performance.",
     ],
   };
 
+  const tagMap = {
+    1: ["Android", "Kotlin", "Offline-first"],
+    2: ["Full-stack", "React", "Node.js"],
+  };
+
   const metrics = [
-    { value: "2", label: "High-impact internships" },
-    { value: "Multi-stack", label: "Android · Web · APIs" },
-    { value: "Product-first", label: "User-centric delivery" },
+    { value: "2", label: "Engineering internships" },
+    { value: "Full-stack", label: "Mobile · Web · APIs" },
+    { value: "Reliable", label: "DX & quality focus" },
   ];
 
   return (
@@ -210,7 +215,7 @@ const Experience = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          Building polished, data-informed products through immersive internships.
+          Shipping reliable software through hands-on engineering roles.
         </SectionHeading>
         <SectionDescription
           initial={{ opacity: 0, y: 16 }}
@@ -218,8 +223,8 @@ const Experience = () => {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
         >
-          My internship journeys sharpened my ability to ship high-quality features,
-          collaborate closely with stakeholders, and align technology with business value.
+          These roles sharpened how I design features end to end, keep quality high,
+          and collaborate across disciplines to deliver production-ready outcomes.
         </SectionDescription>
       </SectionIntro>
 
@@ -243,9 +248,9 @@ const Experience = () => {
                   <ExperienceDuration>{item.duration}</ExperienceDuration>
                 </ExperienceHeader>
                 <TagRow>
-                  <Tag>Internship</Tag>
-                  <Tag>Product</Tag>
-                  <Tag>Engineering</Tag>
+                  {(tagMap[item.id] || ["Engineering"]).map((tag) => (
+                    <Tag key={tag}>{tag}</Tag>
+                  ))}
                 </TagRow>
                 <BulletList>
                   {(contributions[item.id] || []).map((line) => (
@@ -263,11 +268,11 @@ const Experience = () => {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.75, ease: "easeOut" }}
         >
-          <SummaryTitle>Internship Highlights</SummaryTitle>
+          <SummaryTitle>Engineering Highlights</SummaryTitle>
           <SummaryText>
-            At Rinira Innovations I grew from building Android experiences to shaping
-            product-ready software stacks—balancing delivery speed with code quality and
-            collaborative practices.
+            I moved from Android into full-stack delivery - owning code quality,
+            deployment rituals, and the collaboration needed to keep shipping faster
+            without sacrificing reliability.
           </SummaryText>
           <MetricRow>
             {metrics.map((metric) => (

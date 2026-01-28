@@ -44,7 +44,7 @@ const LogoWrapper = styled.div`
   height: clamp(110px, 12vw, 140px);
   border-radius: 24px;
   overflow: hidden;
-  border: 1px solid rgba(255, 211, 182, 0.22);
+  border: 1px solid ${({ theme }) => theme.border};
   background: rgba(15, 23, 42, 0.6);
   display: grid;
   place-items: center;
@@ -62,8 +62,8 @@ const LogoFallback = styled.div`
   border-radius: 24px;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.6), rgba(244, 63, 94, 0.45));
-  border: 1px solid rgba(255, 211, 182, 0.24);
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.6), rgba(168, 85, 247, 0.45));
+  border: 1px solid ${({ theme }) => theme.border};
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -125,8 +125,8 @@ const ImpactCard = styled(motion.div)`
     inset: 0;
     background: linear-gradient(
       135deg,
-    rgba(249, 115, 22, 0.18),
-    rgba(244, 63, 94, 0.12)
+      rgba(34, 211, 238, 0.18),
+      rgba(168, 85, 247, 0.12)
     );
     opacity: 0.25;
   }
@@ -176,7 +176,7 @@ const BulletItem = styled.li`
     height: 0.5rem;
     border-radius: 50%;
     background: ${({ theme }) => theme.accent};
-    box-shadow: 0 0 0 6px rgba(249, 115, 22, 0.14);
+    box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.14);
   }
 `;
 
@@ -192,7 +192,7 @@ const Metric = styled.div`
   padding: 1rem 1.2rem;
   border-radius: 18px;
   background: rgba(15, 23, 42, 0.5);
-  border: 1px solid rgba(255, 211, 182, 0.2);
+  border: 1px solid ${({ theme }) => theme.border};
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -216,7 +216,7 @@ const roles = [
     id: "rinira",
     company: "Rinira Technologies Pvt. Ltd.",
     role: "Software Engineer",
-    tenure: "April 2021 — Present",
+    tenure: "April 2021 - Present",
     badge: "Star Employee of the Year · 2022",
     logo: CompanyLogo,
     impactTitle: "Featured project: Traxo",
@@ -236,24 +236,23 @@ const roles = [
   {
     id: "nobel",
     company: "Nobel AI Legal",
-    role: "Data Analyst Intern",
+    role: "Software Engineer, AI Platform",
     tenure: "March 2025 - Present",
     badge: null,
     logo: null,
     impactTitle: "AI-first legal intelligence",
     impactIntro:
-      "Designed AI workflows that accelerate legal clause discovery and convert unstructured case data into reliable insight.",
+      "Built AI services and tooling that accelerate legal research - keeping retrieval, responses, and observability tightly aligned.",
     highlights: [
-      "Created domain-specific LLM pipelines that extract, classify, and summarise critical clauses across 1,000+ legal documents.",
-      "Implemented retrieval-augmented (RAG) workflows to surface relevant precedents, elevating contextual accuracy of AI responses.",
-      "Built AI-powered chatbots and bespoke LLM tooling that streamline research for legal teams and reduce repetitive analysis.",
-      "Delivered interactive Power BI dashboards that visualise AI findings, cutting legal report turnaround by 60%.",
-      "Partnered with cross-functional stakeholders to review outputs, identify gaps, and update standardized documentation.",
+      "Engineered RAG microservices with FastAPI and TypeScript that extract, classify, and summarise clauses across 1,000+ legal documents.",
+      "Implemented vector search guardrails, monitoring, and evaluation loops to keep LLM responses grounded and reviewable.",
+      "Built AI-powered chat and internal tooling in React to streamline researcher workflows and reduce repetitive analysis.",
+      "Automated reporting and documentation so outputs stay reproducible and stakeholder-ready.",
     ],
     metrics: [
-      { value: "1K+", label: "Legal docs parsed" },
-      { value: "60%", label: "Faster reports" },
-      { value: "RAG", label: "Contextual accuracy" },
+      { value: "1K+/day", label: "Docs processed" },
+      { value: "60%", label: "Faster research" },
+      { value: "Guardrails", label: "LLM reliability" },
     ],
   },
 ];
@@ -268,7 +267,7 @@ const Work = () => (
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
       >
-        Engineering and analytics roles where measurable outcomes matter most.
+        Software engineering roles where production impact comes first.
       </SectionHeading>
       <SectionDescription
         initial={{ opacity: 0, y: 16 }}
@@ -276,8 +275,8 @@ const Work = () => (
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
       >
-        From enterprise data platforms to AI-native legal tooling, I focus on building
-        systems that deliver clarity, speed, and trust for stakeholders.
+        From enterprise ingestion pipelines to AI-native legal tooling, I build systems
+        that keep latency low, observability high, and users confident.
       </SectionDescription>
     </SectionIntro>
 

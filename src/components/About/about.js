@@ -54,7 +54,7 @@ const PortraitOverlay = styled.div`
       rgba(15, 23, 42, 0.15),
       rgba(15, 23, 42, 0.8)
     ),
-    radial-gradient(circle at top right, rgba(249, 115, 22, 0.3), transparent);
+    radial-gradient(circle at top right, rgba(34, 211, 238, 0.24), transparent);
 `;
 
 const PortraitFooter = styled.div`
@@ -166,10 +166,10 @@ const About = () => {
   ];
 
   const focusAreas = [
-    "Advanced analytics & BI storytelling",
-    "Predictive modelling & machine learning",
-    "Scalable data engineering pipelines",
-    "Full-stack product development",
+    "Systems & API design for performant services",
+    "Frontend engineering with React and TypeScript",
+    "Cloud-native delivery, CI/CD, and observability",
+    "AI-assisted product features with safe guardrails",
   ];
 
   return (
@@ -182,8 +182,7 @@ const About = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          Crafting insight-led products that align data strategy with human
-          impact.
+          Designing software that balances reliability, velocity, and user delight.
         </SectionHeading>
         <SectionDescription
           initial={{ opacity: 0, y: 16 }}
@@ -191,8 +190,9 @@ const About = () => {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
         >
-          From rigorous analytics to polished software delivery, I translate data
-          complexity into compelling solutions that empower decision-makers.
+          From architecture to delivery, I build systems that hold up in
+          production - translating complex ideas into intuitive experiences that
+          teams can ship and scale.
         </SectionDescription>
       </SectionIntro>
 
@@ -206,12 +206,12 @@ const About = () => {
           <PortraitImage src={Profile2} alt={personalData.name} />
           <PortraitOverlay />
           <PortraitFooter>
-            <PortraitRole>Data Analyst · Software Engineer</PortraitRole>
+            <PortraitRole>Software Engineer · Full-stack</PortraitRole>
             <PortraitName>{personalData.name}</PortraitName>
             <PillRow>
-              <Pill>M.Tech in Data Analysis</Pill>
-              <Pill>Toronto · Canada</Pill>
-              <Pill>Open to collaborations</Pill>
+              <Pill>M.Tech in Data Analytics</Pill>
+              <Pill>Mississauga · Canada</Pill>
+              <Pill>Open to engineering roles</Pill>
             </PillRow>
           </PortraitFooter>
         </PortraitCard>
@@ -223,7 +223,7 @@ const About = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.75, ease: "easeOut" }}
           >
-            <NarrativeHeading>A human-centered data storyteller</NarrativeHeading>
+            <NarrativeHeading>A product-minded software engineer</NarrativeHeading>
             {narrative.map((item, index) => (
               <NarrativeParagraph key={index}>{item}</NarrativeParagraph>
             ))}

@@ -117,7 +117,7 @@ const HighlightItem = styled.li`
     height: 0.45rem;
     border-radius: 50%;
     background: ${({ theme }) => theme.accent};
-    box-shadow: 0 0 0 6px rgba(249, 115, 22, 0.12);
+    box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.12);
   }
 `;
 
@@ -130,7 +130,7 @@ const ChipSet = styled.div`
 const Chip = styled.span`
   padding: 0.45rem 0.85rem;
   border-radius: 999px;
-  background: rgba(249, 115, 22, 0.16);
+  background: rgba(34, 211, 238, 0.16);
   color: ${({ theme }) => theme.accent};
   font-size: 0.8rem;
   font-weight: 600;
@@ -177,69 +177,69 @@ const ToolkitLabel = styled.span`
 `;
 
 const stats = [
-  { value: "20+", label: "Dashboards & analytical apps delivered" },
-  { value: "15+", label: "Production ML & automation initiatives" },
-  { value: "8+", label: "End-to-end product launches" },
+  { value: "25+", label: "Production releases shipped" },
+  { value: "6+", label: "End-to-end products delivered" },
+  { value: "Multi-stack", label: "Web · Mobile · Cloud" },
 ];
 
 const skillGroups = [
   {
-    title: "Data Intelligence & BI Storytelling",
-    subtitle: "Analytics · Warehousing · Visualization",
+    title: "Platform & Backend Engineering",
+    subtitle: "Services · APIs · Reliability",
     description:
-      "Designing analytics ecosystems that move from raw data to insight with velocity and clarity.",
+      "Designing services and data flows that stay fast, observable, and easy to evolve.",
     highlights: [
-      "Modelled complex datasets into analytics-ready layers, driving faster decision cycles.",
-      "Built executive dashboards that translate KPIs into narrative insights for business partners.",
-      "Operationalised quality checks and governance to keep self-serve data trustworthy.",
+      "Build REST and GraphQL services with structured logging and defensive error handling.",
+      "Design data models for PostgreSQL/MongoDB, with caching and queues where it counts.",
+      "Instrument services with metrics and tracing to catch regressions before users do.",
     ],
-    tools: ["Python", "SQL", "Power BI", "Tableau", "dbt", "Snowflake"],
-    accent: "linear-gradient(135deg, rgba(249, 115, 22, 0.18), transparent)",
+    tools: ["Node.js", "Go", "PostgreSQL", "MongoDB", "Redis", "Docker"],
+    accent: "linear-gradient(135deg, rgba(34, 211, 238, 0.16), transparent)",
   },
   {
-    title: "AI, LLMOps & Automation",
-    subtitle: "Generative AI · RAG · LLM Engineering",
+    title: "Frontend Engineering & UX",
+    subtitle: "Web · Mobile · Design systems",
     description:
-      "Shaping intelligent assistants and knowledge engines that reduce manual legal and business workflows.",
+      "Crafting responsive interfaces that stay performant and accessible across devices.",
     highlights: [
-      "Built domain-specific LLM pipelines and retrieval layers to extract legal clauses at scale.",
-      "Prototyped conversational copilots powered by LangChain, vector search, and custom prompts.",
-      "Measured AI output quality with human-in-the-loop reviews to continually raise trust.",
+      "Ship React/Next.js experiences with reusable components and accessible patterns.",
+      "Balance performance budgets with rich motion via Framer Motion and thoughtful asset loading.",
+      "Evolve design systems and theming so teams move quickly without sacrificing polish.",
     ],
-    tools: ["LangChain", "OpenAI API", "Azure OpenAI", "RAG Pipelines", "Vector Stores", "Prompt Engineering"],
-    accent: "linear-gradient(135deg, rgba(244, 63, 94, 0.2), transparent)",
+    tools: ["React", "Next.js", "TypeScript", "React Native", "Styled Components", "Framer Motion"],
+    accent: "linear-gradient(135deg, rgba(168, 85, 247, 0.18), transparent)",
   },
   {
-    title: "Product Engineering & Delivery",
-    subtitle: "Full-stack · Cloud · Ops",
+    title: "AI & Automation",
+    subtitle: "LLM features · Workflows · Ops",
     description:
-      "Shipping resilient digital experiences that blend thoughtful UX with maintainable engineering.",
+      "Bringing AI-assisted features into products with the guardrails they need to stay trustworthy.",
     highlights: [
-      "Implemented full-stack web and mobile products across React, Node, and cloud-native services.",
-      "Introduced CI/CD pipelines, testing practices, and release rituals that keep teams shipping confidently.",
-      "Collaborated with stakeholders to translate requirements into roadmap-ready user stories.",
+      "Ship RAG-powered assistants with evaluation harnesses and feedback loops.",
+      "Automate data refresh pipelines and background jobs to keep features fresh.",
+      "Build task runners and integrations in Python/TypeScript to remove manual toil.",
     ],
-    tools: ["React", "TypeScript", "Node.js", "GraphQL", "Docker", "GitHub Actions"],
-    accent: "linear-gradient(135deg, rgba(251, 191, 36, 0.2), transparent)",
+    tools: ["LangChain", "OpenAI API", "Azure OpenAI", "FastAPI", "Python", "RAG Pipelines"],
+    accent: "linear-gradient(135deg, rgba(59, 130, 246, 0.18), transparent)",
   },
 ];
 
 const toolkitSections = [
   {
-    label: "Analytics Toolkit",
-    items: ["Pandas", "NumPy", "scikit-learn", "Power Query", "SQL Server", "PostgreSQL"],
+    label: "Backend & Infra",
+    items: ["Node.js", "Go", "PostgreSQL", "MongoDB", "Redis", "Docker"],
   },
   {
-    label: "AI & Automation",
-    items: ["LLMOps", "LangChain", "RAG Architectures", "Prompt Design", "Pinecone", "Azure AI Studio"],
+    label: "Frontend & Mobile",
+    items: ["React", "Next.js", "TypeScript", "React Native", "Styled-components", "Framer Motion"],
   },
   {
-    label: "Visualization & Storytelling",
-    items: ["Power BI", "Tableau", "DAX", "Storyboarding", "Data Journalism"],
+    label: "DevOps & Quality",
+    items: ["GitHub Actions", "CI/CD", "Testing Automation", "Linting/Prettier", "Monitoring", "Technical Writing"],
   },
   {
-    label: "Engineering Craft",
-    items: ["TypeScript", "React", "Next.js", "Node.js", "REST APIs", "Agile Delivery"],
+    label: "AI & Data",
+    items: ["LangChain", "Vector Search", "Prompt Engineering", "Python", "Power BI", "SQL"],
   },
 ];
 
@@ -253,7 +253,7 @@ const Skills = () => (
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
       >
-        Full-stack data craftsmanship that blends analytics, AI, and product rigor.
+        Software engineering toolkit built to ship and scale products.
       </SectionHeading>
       <SectionDescription
         initial={{ opacity: 0, y: 16 }}
@@ -261,8 +261,8 @@ const Skills = () => (
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
       >
-        I thrive at the intersection of quantitative insight, intelligent automation, and
-        delightful user experiences—building end-to-end solutions that people rely on.
+        I design APIs, craft interfaces, and wire up automation so features move from
+        idea to production with confidence - and keep performing once they’re live.
       </SectionDescription>
     </SectionIntro>
 
@@ -325,8 +325,8 @@ const Skills = () => (
         initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
       >
-        Beyond the spotlight areas, I stay hands-on with the tools that keep delivery fast,
-        collaborative, and production-ready.
+        Beyond the spotlight areas, these are the stacks I lean on to keep delivery fast,
+        observable, and maintainable.
       </SectionDescription>
       <ToolkitGrid>
         {toolkitSections.map((section) => (

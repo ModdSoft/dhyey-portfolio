@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { darkTheme } from "./utils/Theme";
 import { GlobalStyles } from "./styles/GlobalStyles";
@@ -35,10 +36,10 @@ const GridOverlay = styled.div`
   pointer-events: none;
   background-size: 120px 120px;
   background-image: linear-gradient(
-      rgba(255, 211, 182, 0.08) 1px,
+      rgba(148, 163, 184, 0.08) 1px,
       transparent 1px
     ),
-    linear-gradient(90deg, rgba(255, 211, 182, 0.08) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
   mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
   z-index: 0;
 `;
@@ -71,6 +72,34 @@ const SectionDivider = styled.div`
 `;
 
 function App() {
+  useEffect(() => {
+    const url = "/.netlify/functions/track";
+    const payload = {
+      path: window.location.pathname + window.location.search,
+      referrer: document.referrer || "direct",
+      ts: Date.now(),
+      ua: navigator.userAgent,
+    };
+
+    try {
+      if (navigator.sendBeacon) {
+        const blob = new Blob([JSON.stringify(payload)], {
+          type: "application/json",
+        });
+        navigator.sendBeacon(url, blob);
+      } else {
+        fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+          keepalive: true,
+        }).catch(() => {});
+      }
+    } catch (error) {
+      // Ignore tracking failures to avoid impacting UX
+    }
+  }, []);
+
   return (
     <ThemeProvider theme={darkTheme}>
       <GlobalStyles />

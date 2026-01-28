@@ -159,67 +159,42 @@ const iconMap = {
 
 const projects = [
   {
-    title: "House Price Prediction Platform",
-    category: "Applied Machine Learning",
+    title: "Nobel AI Legal Platform",
+    category: "Web, iOS & Android",
     description:
-      "End-to-end system forecasting home valuations with XGBoost, a React experience, and a production-ready Flask API.",
-    stack: ["Python", "XGBoost", "React", "Flask", "Power BI"],
-    image: Images.house_price_website,
+      "Built the marketing site plus cross-platform mobile apps for an AI-powered legal research platform with custom LLMs and RAG.",
+    stack: ["Next.js", "React Native", "FastAPI", "LangChain", "Custom LLM", "Azure"],
+    image: Images.nobel_site,
     metrics: [
-      { value: "0.9146 R²", label: "Model accuracy" },
-      { value: "Full-stack", label: "Web · API · BI" },
+      { value: "Testing", label: "Pre-launch QA" },
+      { value: "Cross-platform", label: "Web · iOS · Android" },
     ],
     links: [
-      { type: "launch", label: "Live app", url: projectData.housePriceLive },
-      { type: "kaggle", label: "Kaggle dataset", url: projectData.housePriceKaggle },
-      { type: "article", label: "Case study", url: projectData.housePriceMedium },
+      {
+        type: "launch",
+        label: "Website",
+        url: "https://nobelailegal.com",
+      },
+      {
+        type: "launch",
+        label: "Request demo",
+        url: "mailto:dhyeymodi21@gmail.com?subject=Nobel%20AI%20Legal%20demo&body=Hi%20Dhyey%2C%20I%27d%20like%20to%20see%20a%20demo%20of%20the%20Nobel%20AI%20Legal%20apps.",
+      },
     ],
   },
   {
-    title: "Bus Route Optimization",
-    category: "Analytics Engineering",
+    title: "JJSG - Community Apps",
+    category: "Mobile Platform",
     description:
-      "Power BI dashboards, predictive analysis, and a web explorer to identify optimal transit routes and demand clusters.",
-    stack: ["Power BI", "Python", "React", "Automation"],
-    image: Images.bus_route_main,
-    metrics: [
-      { value: "15+ KPIs", label: "Operational insights" },
-      { value: "Realtime", label: "Dynamic dashboards" },
-    ],
-    links: [
-      { type: "launch", label: "Interactive app", url: projectData.busRouteLive },
-      { type: "article", label: "Article", url: projectData.busRouteMedium },
-    ],
-  },
-  {
-    title: "Retail Intelligence Suite",
-    category: "Business Intelligence",
-    description:
-      "Walmart & Blinkit analytics at scale—automated ETL, forecasting, and decision dashboards for commercial leaders.",
-    stack: ["Power BI", "Python", "SQL"],
-    image: Images.walmart_second,
-    metrics: [
-      { value: "3 Domains", label: "Revenue · Inventory · Demand" },
-      { value: "Self-serve", label: "Executive dashboards" },
-    ],
-    links: [
-      { type: "github", label: "Walmart analysis", url: projectData.walmartGithub },
-      { type: "github", label: "Blinkit analysis", url: projectData.blinkitGithub },
-    ],
-  },
-  {
-    title: "JJSG - School ERP Apps",
-    category: "Full-stack Mobile",
-    description:
-      "Dual Android applications for parents and administrators featuring live attendance, analytics, and async messaging.",
+      "User- and admin-facing Android apps for a community platform, handling announcements, async messaging, and engagement workflows.",
     stack: ["React Native", "Firebase", "Redux"],
     image: Images.jjsgmultiscreen,
     metrics: [
       { value: "10K+", label: "Active users" },
-      { value: "2 Apps", label: "Parents · Admin" },
+      { value: "Realtime", label: "User · Admin" },
     ],
     links: [
-      { type: "launch", label: "Parents app", url: projectData.jjsgUserPlayStore },
+      { type: "launch", label: "User app", url: projectData.jjsgUserPlayStore },
       { type: "launch", label: "Admin app", url: projectData.jjsgAdminPlayStore },
     ],
   },
@@ -227,12 +202,12 @@ const projects = [
     title: "Atharava Vidyalaya Platform",
     category: "EdTech Engineering",
     description:
-      "Integrated web presence plus teacher & student apps that streamline school operations and parent engagement.",
+      "Integrated website plus teacher & student apps powering performance tracking, shared auth, and parent engagement.",
     stack: ["React Native", "Firebase", "Node.js"],
     image: Images.avwebsite,
     metrics: [
       { value: "3 Products", label: "Web · Student · Teacher" },
-      { value: "Realtime", label: "Performance tracking" },
+      { value: "Shared", label: "Auth & messaging" },
     ],
     links: [
       { type: "launch", label: "Website", url: projectData.atharavaWebsite },
@@ -244,16 +219,65 @@ const projects = [
     title: "Fun ABC Learning",
     category: "Creative Learning",
     description:
-      "Gamified Android experience that helps children grasp alphabets through interactive storytelling and rewards.",
+      "Gamified Android experience with animations and progress tracking to help children grasp alphabets through interactive storytelling.",
     stack: ["React Native", "Animations"],
     image: Images.kidsApp,
     metrics: [
       { value: "Play Store", label: "Published" },
-      { value: "Kid-centric", label: "UX & Visuals" },
+      { value: "Kid-first", label: "UX & visuals" },
     ],
     links: [
       { type: "launch", label: "Live on Play Store", url: projectData.kidsPlayStore },
       { type: "github", label: "Source code", url: projectData.kidsGithub },
+    ],
+  },
+  {
+    title: "House Price Prediction Platform",
+    category: "Full-stack Engineering",
+    description:
+      "Production-ready ML feature with a React UI, Flask API, and Dockerized deployment pipeline for quick experiments.",
+    stack: ["Python", "XGBoost", "React", "Flask", "Docker"],
+    image: Images.house_price_website,
+    metrics: [
+      { value: "0.9146 R²", label: "Model accuracy" },
+      { value: "API-first", label: "React · Flask" },
+    ],
+    links: [
+      { type: "launch", label: "Live app", url: projectData.housePriceLive },
+      { type: "kaggle", label: "Kaggle dataset", url: projectData.housePriceKaggle },
+      { type: "article", label: "Case study", url: projectData.housePriceMedium },
+    ],
+  },
+  {
+    title: "Bus Route Optimization",
+    category: "Systems + Dashboards",
+    description:
+      "React front-end plus automation scripts that surface optimal transit routes through API-fed Power BI dashboards.",
+    stack: ["React", "Automation", "Power BI", "Python"],
+    image: Images.bus_route_main,
+    metrics: [
+      { value: "15+ KPIs", label: "Operational insights" },
+      { value: "API-backed", label: "Dynamic dashboards" },
+    ],
+    links: [
+      { type: "launch", label: "Interactive app", url: projectData.busRouteLive },
+      { type: "article", label: "Article", url: projectData.busRouteMedium },
+    ],
+  },
+  {
+    title: "Retail Intelligence Suite",
+    category: "Data Platform Engineering",
+    description:
+      "Engineered ETL plus dashboard stack for Walmart/Blinkit, enabling revenue and demand monitoring with reusable SQL/Python pipelines.",
+    stack: ["Python", "SQL", "dbt", "Power BI"],
+    image: Images.walmart_second,
+    metrics: [
+      { value: "3 Domains", label: "Revenue · Inventory · Demand" },
+      { value: "Reusable", label: "Pipelines & dashboards" },
+    ],
+    links: [
+      { type: "github", label: "Walmart analysis", url: projectData.walmartGithub },
+      { type: "github", label: "Blinkit analysis", url: projectData.blinkitGithub },
     ],
   },
 ];
@@ -269,7 +293,7 @@ const Projects = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          Blending analytics and engineering into products people can trust.
+          Shipping resilient software across web, mobile, and AI-driven experiences.
         </SectionHeading>
         <SectionDescription
           initial={{ opacity: 0, y: 16 }}
@@ -277,8 +301,8 @@ const Projects = () => {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
         >
-          A curation of recent products that demonstrate my range—from predictive
-          intelligence to large-scale mobile ecosystems.
+          A selection of builds that show how I approach distributed services,
+          polished interfaces, and automation that keeps teams shipping faster.
         </SectionDescription>
       </SectionIntro>
 

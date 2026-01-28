@@ -171,8 +171,8 @@ const InfoPanel = styled(motion.div)`
   padding: clamp(1.2rem, 2.5vw, 1.8rem);
   border-radius: clamp(16px, 2.5vw, 20px);
   backdrop-filter: blur(18px);
-  background: rgba(28, 21, 18, 0.68);
-  border: 1px solid rgba(251, 191, 36, 0.28);
+  background: rgba(7, 11, 22, 0.72);
+  border: 1px solid rgba(34, 211, 238, 0.32);
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
@@ -208,7 +208,7 @@ const GlowAccent = styled.div`
   inset: -40%;
   background: radial-gradient(
     circle at top right,
-    rgba(249, 115, 22, 0.25),
+    rgba(34, 211, 238, 0.28),
     transparent 65%
   );
   filter: blur(80px);
@@ -232,7 +232,7 @@ const HeroScene = () => {
 
   return (
     <Canvas dpr={[1, 2]}>
-      <color attach="background" args={["#020617"]} />
+      <color attach="background" args={["#030712"]} />
       <ambientLight intensity={0.3} />
       <spotLight
         position={[8, 12, 15]}
@@ -240,17 +240,17 @@ const HeroScene = () => {
         intensity={1.4}
         penumbra={1}
         castShadow
-        color="#f97316"
+        color="#22d3ee"
       />
-      <pointLight position={[-8, -6, -10]} intensity={1.1} color="#f43f5e" />
+      <pointLight position={[-8, -6, -10]} intensity={1.1} color="#a855f7" />
       <Suspense fallback={null}>
         <Float speed={1.5} rotationIntensity={1.2} floatIntensity={2.3}>
           <mesh castShadow>
             <icosahedronGeometry args={[1.15, 1]} />
             <meshStandardMaterial
-              color="#fb923c"
-              metalness={0.55}
-              roughness={0.25}
+              color="#22d3ee"
+              metalness={0.6}
+              roughness={0.2}
               envMapIntensity={1}
             />
           </mesh>
@@ -260,9 +260,9 @@ const HeroScene = () => {
           <mesh scale={[2.4, 2.4, 2.4]}>
             <torusKnotGeometry args={[0.48, 0.14, 220, 32]} />
             <meshStandardMaterial
-              color="#f43f5e"
-              metalness={0.3}
-              roughness={0.1}
+              color="#8b5cf6"
+              metalness={0.35}
+              roughness={0.15}
               transparent
               opacity={0.45}
             />
@@ -278,15 +278,15 @@ const HeroScene = () => {
               itemSize={3}
             />
           </bufferGeometry>
-          <pointsMaterial
-            size={0.035}
-            sizeAttenuation
-            color="#facc15"
-            transparent
-            opacity={0.85}
-          />
-        </points>
-      </Suspense>
+        <pointsMaterial
+          size={0.035}
+          sizeAttenuation
+          color="#38bdf8"
+          transparent
+          opacity={0.85}
+        />
+      </points>
+    </Suspense>
       <OrbitControls enableZoom={false} enablePan={false} />
     </Canvas>
   );
@@ -297,24 +297,24 @@ function Home() {
     <Section id="home">
       <GlowAccent />
       <LeftColumn>
-        <Badge>Data Analyst · Builder</Badge>
+        <Badge>Software Engineer · Builder</Badge>
         <Heading
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          Hello, I’m <Accent>{personalData.name}</Accent>. I design intelligent
-          data products that bridge <Accent>analytics</Accent> and{" "}
-          <Accent>software craftsmanship</Accent>.
+          Hello, I’m <Accent>{personalData.name}</Accent>. I build resilient{" "}
+          <Accent>software</Accent> across the web, cloud, and{" "}
+          <Accent>AI-first</Accent> products.
         </Heading>
         <SubHeading
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
         >
-          With a strong foundation in full-stack engineering and advanced data
-          analysis, I turn complex datasets into elegant, actionable solutions
-          that drive business impact.
+          Full-stack engineer focused on TypeScript, cloud-native services, and
+          developer experience. I prototype fast, automate quality, and deliver
+          production-ready features that ship to real users.
         </SubHeading>
         <Actions>
           <Link to="contactus" smooth duration={600} offset={-60}>
@@ -378,10 +378,10 @@ function Home() {
         >
           <InfoTitle>Currently</InfoTitle>
           <InfoContent>
-            <InfoHighlight>Exploring intelligent analytics pipelines</InfoHighlight>
+            <InfoHighlight>Building distributed features for AI-backed platforms</InfoHighlight>
             <InfoSubtext>
-              Building systems that blend predictive modelling, dashboarding, and
-              user-focused engineering.
+              Designing TypeScript and Go services, event-driven pipelines, and UI layers
+              that keep cross-functional teams shipping with confidence.
             </InfoSubtext>
           </InfoContent>
         </InfoPanel>

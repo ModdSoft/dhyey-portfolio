@@ -28,6 +28,7 @@ const Images = {
   bus_route_web1: require("./bus_route_website1.png"),
   bus_route_web2: require("./bus_route_website2.png"),
   bus_route_main: require("./bus_route_optimization.jpg"),
+  nobel_site: require("./nobel_ai_legal_website.png"),
 };
 
 export default Images;

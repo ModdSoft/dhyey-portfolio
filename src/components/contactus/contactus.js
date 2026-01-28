@@ -59,8 +59,8 @@ const InfoItem = styled.a`
   gap: 0.9rem;
   padding: 1rem 1.2rem;
   border-radius: 18px;
-  border: 1px solid rgba(255, 211, 182, 0.2);
-  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid ${({ theme }) => theme.border};
+  background: rgba(7, 11, 22, 0.65);
   color: ${({ theme }) => theme.textPrimary};
   transition: transform 0.25s ease, border 0.25s ease, color 0.25s ease;
   text-decoration: none;
@@ -96,7 +96,7 @@ const IconWrapper = styled.span`
   border-radius: 14px;
   display: grid;
   place-items: center;
-  background: rgba(249, 115, 22, 0.16);
+  background: rgba(34, 211, 238, 0.16);
   color: ${({ theme }) => theme.accent};
 `;
 
@@ -143,7 +143,7 @@ const Input = styled.input`
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.accent};
-    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.25);
+    box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.25);
   }
 `;
 
@@ -162,7 +162,7 @@ const TextArea = styled.textarea`
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.accent};
-    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.25);
+    box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.25);
   }
 `;
 
@@ -246,7 +246,7 @@ const ContactUs = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          Let’s build the next data-driven experience together.
+          Let’s ship the next software release together.
         </SectionHeading>
         <SectionDescription
           initial={{ opacity: 0, y: 16 }}
@@ -254,8 +254,8 @@ const ContactUs = () => {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
         >
-          Whether you want to validate an idea, modernize analytics, or collaborate
-          on novel experiences, I’d love to hear from you.
+          Have a feature to launch, a platform to modernize, or AI to integrate? I’d
+          love to hear from you.
         </SectionDescription>
       </SectionIntro>
 
@@ -339,7 +339,7 @@ const ContactUs = () => {
         >
           <FormHeading>Send a message</FormHeading>
           <FormCopy>
-            Share a short brief, your desired timeline, or the challenge you’re solving.
+            Share a quick brief, current stack, and the outcome you’re targeting.
             I’ll respond within 24 hours to plan next steps.
           </FormCopy>
           <InputGroup>
@@ -370,7 +370,7 @@ const ContactUs = () => {
           <SubmitButton type="submit">Send message</SubmitButton>
           {status === "success" && (
             <StatusMessage success>
-              Thanks for reaching out—I’ll get back to you within the next business day.
+              Thanks for reaching out - I’ll get back to you within the next business day.
             </StatusMessage>
           )}
           {status === "error" && (

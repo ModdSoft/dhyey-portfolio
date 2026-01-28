@@ -36,9 +36,9 @@ const Timeline = styled.div`
     width: 2px;
     background: linear-gradient(
       180deg,
-      rgba(249, 115, 22, 0),
-      rgba(249, 115, 22, 0.45),
-      rgba(244, 63, 94, 0)
+      rgba(34, 211, 238, 0),
+      rgba(34, 211, 238, 0.45),
+      rgba(168, 85, 247, 0)
     );
   }
 `;
@@ -68,7 +68,7 @@ const TimelineItem = styled(motion.article)`
       ${({ theme }) => theme.accent},
       ${({ theme }) => theme.accentAlt}
     );
-    box-shadow: 0 0 0 6px rgba(249, 115, 22, 0.15);
+    box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.15);
   }
 `;
 
@@ -156,15 +156,15 @@ const SummaryItem = styled.li`
       ${({ theme }) => theme.accent},
       ${({ theme }) => theme.accentAlt}
     );
-    box-shadow: 0 0 0 6px rgba(249, 115, 22, 0.1);
+    box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.12);
   }
 `;
 
 const Education = () => {
   const focus = [
-    "Machine learning experimentation with measurable business outcomes",
-    "Advanced analytics & visualization for strategic storytelling",
-    "Graduate research exploring predictive modelling and automation",
+    "Systems thinking across hardware, software, and data layers",
+    "Applied algorithms, data structures, and cloud design patterns",
+    "Building reliable data and software pipelines to support products",
   ];
 
   const capsuleMap = {
@@ -182,8 +182,7 @@ const Education = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          A rigorous academic journey blending analytics, engineering, and
-          leadership.
+          Engineering foundations shaped by analytics and systems thinking.
         </SectionHeading>
         <SectionDescription
           initial={{ opacity: 0, y: 16 }}
@@ -191,8 +190,8 @@ const Education = () => {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
         >
-          Each program sharpened my ability to translate complex data into
-          solutions that move organizations forward.
+          Each program sharpened how I design, debug, and deliver software - from
+          low-level fundamentals to cloud-era product development.
         </SectionDescription>
       </SectionIntro>
 
@@ -229,7 +228,7 @@ const Education = () => {
           <SummaryHeading>Academic Focus</SummaryHeading>
           <SummaryText>
             I invest my academic energy in blending technical depth with strategic
-            thinking—building a toolkit that spans quantitative reasoning,
+            thinking - building a toolkit that spans quantitative reasoning,
             engineering discipline, and human-centered storytelling.
           </SummaryText>
           <SummaryList>

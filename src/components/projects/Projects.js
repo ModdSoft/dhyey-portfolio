@@ -33,7 +33,7 @@ const ProjectCard = styled(motion.article)`
 
   &:hover {
     transform: translateY(-8px);
-    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.45);
+    box-shadow: ${({ theme }) => theme.cardGlow};
   }
 `;
 
@@ -42,7 +42,7 @@ const ProjectImageWrapper = styled.div`
   width: 100%;
   padding-top: 62%;
   overflow: hidden;
-  background: rgba(15, 23, 42, 0.65);
+  background: ${({ theme }) => theme.surfaceSolid};
 `;
 
 const ProjectImage = styled.img`

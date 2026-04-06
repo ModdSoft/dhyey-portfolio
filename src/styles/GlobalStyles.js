@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
   *, *::before, *::after {
     box-sizing: border-box;
@@ -11,15 +11,20 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 16px;
     scroll-behavior: smooth;
     background-color: ${({ theme }) => theme.body};
+    color-scheme: ${({ theme }) => theme.mode};
   }
 
   body {
     margin: 0;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Manrope', 'Space Grotesk', sans-serif;
     background-color: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.textPrimary};
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', 'Manrope', sans-serif;
   }
 
   ::selection {
@@ -54,7 +59,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-track {
-    background: rgba(15, 23, 42, 0.35);
+    background: ${({ theme }) => theme.surface};
   }
 
   ::-webkit-scrollbar-thumb {

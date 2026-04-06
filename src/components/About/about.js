@@ -42,19 +42,20 @@ const PortraitImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.88;
-  filter: grayscale(8%);
+  opacity: ${({ theme }) => (theme.mode === "light" ? 0.95 : 0.88)};
+  filter: ${({ theme }) =>
+    theme.mode === "light"
+      ? "grayscale(0%) contrast(1.08) saturate(1.05)"
+      : "grayscale(8%)"};
 `;
 
 const PortraitOverlay = styled.div`
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-      180deg,
-      rgba(15, 23, 42, 0.15),
-      rgba(15, 23, 42, 0.8)
-    ),
-    radial-gradient(circle at top right, rgba(249, 115, 22, 0.3), transparent);
+  background: ${({ theme }) =>
+    theme.mode === "light"
+      ? "linear-gradient(180deg, rgba(15, 23, 42, 0) 35%, rgba(15, 23, 42, 0.45) 78%, rgba(15, 23, 42, 0.7) 100%)"
+      : theme.imageOverlay};
 `;
 
 const PortraitFooter = styled.div`
@@ -64,19 +65,38 @@ const PortraitFooter = styled.div`
   flex-direction: column;
   gap: 0.6rem;
   color: ${({ theme }) => theme.textPrimary};
+  padding: 1rem 1.1rem;
+  border-radius: 16px;
+  background: ${({ theme }) =>
+    theme.mode === "light"
+      ? "linear-gradient(135deg, rgba(15, 23, 42, 0.35), rgba(15, 23, 42, 0.15))"
+      : "linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02))"};
+  border: 1px solid
+    ${({ theme }) =>
+      theme.mode === "light"
+        ? "rgba(248, 250, 252, 0.3)"
+        : "rgba(255, 255, 255, 0.12)"};
+  box-shadow: ${({ theme }) =>
+    theme.mode === "light"
+      ? "0 10px 24px rgba(15, 23, 42, 0.18)"
+      : "0 12px 30px rgba(0, 0, 0, 0.35)"};
+  backdrop-filter: blur(8px);
 `;
 
 const PortraitName = styled.span`
   font-size: clamp(1.35rem, 2.2vw, 1.7rem);
   font-weight: 600;
-  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-family: "Space Grotesk", "Manrope", sans-serif;
+  color: ${({ theme }) =>
+    theme.mode === "light" ? "#f8fafc" : theme.textPrimary};
 `;
 
 const PortraitRole = styled.span`
   font-size: 0.95rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.textMuted};
+  color: ${({ theme }) =>
+    theme.mode === "light" ? "rgba(248, 250, 252, 0.75)" : theme.textMuted};
 `;
 
 const PillRow = styled.div`
@@ -88,10 +108,16 @@ const PillRow = styled.div`
 const Pill = styled.span`
   padding: 0.4rem 0.9rem;
   border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.3);
-  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid
+    ${({ theme }) =>
+      theme.mode === "light"
+        ? "rgba(248, 250, 252, 0.35)"
+        : theme.border};
+  background: ${({ theme }) =>
+    theme.mode === "light" ? "rgba(248, 250, 252, 0.12)" : theme.surfaceAlt};
   font-size: 0.8rem;
-  color: ${({ theme }) => theme.textPrimary};
+  color: ${({ theme }) =>
+    theme.mode === "light" ? "#f8fafc" : theme.textPrimary};
 `;
 
 const DetailsColumn = styled.div`
@@ -123,6 +149,33 @@ const NarrativeParagraph = styled.p`
   font-size: 1rem;
   line-height: 1.65;
   color: ${({ theme }) => theme.textSecondary};
+`;
+
+const BulletList = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.65rem;
+`;
+
+const BulletItem = styled.li`
+  position: relative;
+  padding-left: 1.2rem;
+  color: ${({ theme }) => theme.textSecondary};
+  line-height: 1.6;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.accent};
+    box-shadow: 0 0 0 5px ${({ theme }) => theme.accentSoft};
+  }
 `;
 
 const HighlightsGrid = styled.div`
@@ -157,19 +210,23 @@ const HighlightDescription = styled.p`
 `;
 
 const About = () => {
-  const narrative = [
-    personalData.description,
-    personalData.goals,
-    personalData.extra_curricular,
-    personalData.extra_curricular2,
-    personalData.connect,
-  ];
-
-  const focusAreas = [
-    "Advanced analytics & BI storytelling",
-    "Predictive modelling & machine learning",
-    "Scalable data engineering pipelines",
-    "Full-stack product development",
+  const proofPoints = [
+    {
+      title: "Product Adoption",
+      detail: "10,000+ daily active users across the apps I’ve built.",
+    },
+    {
+      title: "Analytics Impact",
+      detail: "10+ dashboards and analytical apps delivered end-to-end.",
+    },
+    {
+      title: "ML Automation",
+      detail: "5+ ML and automation initiatives shipped with measurable lift.",
+    },
+    {
+      title: "Core Stack",
+      detail: "Python, SQL, Power BI, React, Node.js, dbt, Snowflake.",
+    },
   ];
 
   return (
@@ -182,8 +239,7 @@ const About = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          Crafting insight-led products that align data strategy with human
-          impact.
+          A concise snapshot of how I build data products that drive decisions.
         </SectionHeading>
         <SectionDescription
           initial={{ opacity: 0, y: 16 }}
@@ -191,8 +247,8 @@ const About = () => {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
         >
-          From rigorous analytics to polished software delivery, I translate data
-          complexity into compelling solutions that empower decision-makers.
+          Analytics-first engineering with a bias for clarity, automation, and
+          measurable business impact.
         </SectionDescription>
       </SectionIntro>
 
@@ -209,7 +265,7 @@ const About = () => {
             <PortraitRole>Data Analyst · Software Engineer</PortraitRole>
             <PortraitName>{personalData.name}</PortraitName>
             <PillRow>
-              <Pill>M.Tech in Data Analysis</Pill>
+              <Pill>MS in Data Analytics</Pill>
               <Pill>Toronto · Canada</Pill>
               <Pill>Open to collaborations</Pill>
             </PillRow>
@@ -223,23 +279,42 @@ const About = () => {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.75, ease: "easeOut" }}
           >
-            <NarrativeHeading>A human-centered data storyteller</NarrativeHeading>
-            {narrative.map((item, index) => (
-              <NarrativeParagraph key={index}>{item}</NarrativeParagraph>
-            ))}
+            <NarrativeHeading>At a glance</NarrativeHeading>
+            <NarrativeParagraph>
+              Data Analyst and Product Builder focused on analytics platforms,
+              ML automation, and full-stack delivery.
+            </NarrativeParagraph>
+            <BulletList>
+              <BulletItem>
+                Turn complex datasets into executive-ready dashboards and
+                narrative insights.
+              </BulletItem>
+              <BulletItem>
+                Automate pipelines and quality checks to keep analytics reliable
+                and scalable.
+              </BulletItem>
+              <BulletItem>
+                Ship polished products from prototype to production with
+                stakeholder alignment.
+              </BulletItem>
+            </BulletList>
           </NarrativeCard>
 
           <HighlightsGrid>
-            {focusAreas.map((item, index) => (
+            {proofPoints.map((item, index) => (
               <HighlightCard
-                key={item}
+                key={item.title}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.6, delay: index * 0.08, ease: "easeOut" }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.08,
+                  ease: "easeOut",
+                }}
               >
-                <HighlightTitle>Focus Area</HighlightTitle>
-                <HighlightDescription>{item}</HighlightDescription>
+                <HighlightTitle>{item.title}</HighlightTitle>
+                <HighlightDescription>{item.detail}</HighlightDescription>
               </HighlightCard>
             ))}
           </HighlightsGrid>

@@ -32,7 +32,7 @@ export const SectionHeading = styled(motion.h2)`
   line-height: 1.15;
   color: ${({ theme }) => theme.textPrimary};
   margin: 0;
-  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-family: "Space Grotesk", "Manrope", sans-serif;
   text-wrap: balance;
 `;
 

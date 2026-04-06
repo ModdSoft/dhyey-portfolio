@@ -1,11 +1,11 @@
 export const personalData = {
-  name: "DHYEY MODI",
+  name: "Dhyey Modi",
   profile: "/profile.png",
   designation: "Data Analyst",
   connect:
     "I’m always open to new opportunities, collaborations, and discussions related to data analysis and technology. Feel free to reach out to me!",
   goals:
-    "Currently, I'm pursuing my M.Tech in Data Analysis to strengthen my ability to interpret complex data and derive actionable insights. This unique blend of software development and data analytics allows me to craft not only innovative software solutions but also data-driven strategies that solve real-world problems.",
+    "Currently, I'm pursuing my MS in Data Analytics to strengthen my ability to interpret complex data and derive actionable insights. This unique blend of software development and data analytics allows me to craft not only innovative software solutions but also data-driven strategies that solve real-world problems.",
   extra_curricular:
     "My goal is to continue pushing the boundaries of data science and technology, using my expertise to build solutions that are both analytical and impactful. I’m committed to ongoing learning and exploring the latest methodologies in data analysis and technology.",
   extra_curricular2:

@@ -38,7 +38,7 @@ const ExperienceCard = styled(motion.article)`
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(249, 115, 22, 0.12);
+    background: ${({ theme }) => theme.accentSoftAlt};
     opacity: 0;
     transition: opacity 0.35s ease;
     z-index: 0;
@@ -124,7 +124,7 @@ const BulletItem = styled.li`
     height: 0.45rem;
     border-radius: 50%;
     background: ${({ theme }) => theme.accent};
-    box-shadow: 0 0 0 5px rgba(249, 115, 22, 0.1);
+    box-shadow: 0 0 0 5px ${({ theme }) => theme.accentSoft};
   }
 `;
 
@@ -163,8 +163,8 @@ const Metric = styled.div`
   gap: 0.2rem;
   padding: 0.95rem 1.1rem;
   border-radius: 16px;
-  background: rgba(15, 23, 42, 0.55);
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: ${({ theme }) => theme.surfaceAlt};
+  border: 1px solid ${({ theme }) => theme.border};
 `;
 
 const MetricValue = styled.span`

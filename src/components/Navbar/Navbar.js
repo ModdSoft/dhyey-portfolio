@@ -1,30 +1,31 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
+import { FiMoon, FiSun } from "react-icons/fi";
 
 const Header = styled.header`
   position: sticky;
   top: 0;
   z-index: 10;
   backdrop-filter: blur(18px);
-  background: ${({ elevated }) =>
-    elevated ? "rgba(18, 12, 9, 0.92)" : "rgba(18, 12, 9, 0.55)"};
-  border-bottom: 1px solid rgba(255, 211, 182, 0.18);
+  background: ${({ elevated, theme }) =>
+    elevated ? theme.navBackdropElevated : theme.navBackdrop};
+  border-bottom: 1px solid ${({ theme }) => theme.borderStrong};
   transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: ${({ elevated }) =>
-    elevated ? "0 12px 40px rgba(15, 23, 42, 0.35)" : "none"};
+  box-shadow: ${({ elevated, theme }) =>
+    elevated ? theme.navShadow : theme.navShadowSoft};
 `;
 
 const Nav = styled.nav`
   max-width: 1180px;
   margin: 0 auto;
-  padding: 1.2rem 1.5rem;
+  padding: 0.9rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   @media (max-width: 768px) {
-    padding: 1rem 1.2rem;
+    padding: 0.8rem 1.2rem;
   }
 `;
 
@@ -36,15 +37,15 @@ const Logo = styled(Link)`
   color: ${({ theme }) => theme.accentAlt};
   padding: 0.4rem 0.8rem;
   border-radius: 999px;
-  background: rgba(33, 24, 19, 0.7);
-  border: 1px solid rgba(255, 211, 182, 0.25);
+  background: ${({ theme }) => theme.navPill};
+  border: 1px solid ${({ theme }) => theme.navPillBorder};
   cursor: pointer;
 `;
 
 const NavLinks = styled.ul`
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
 
   @media (max-width: 900px) {
     display: none;
@@ -52,9 +53,9 @@ const NavLinks = styled.ul`
 `;
 
 const NavLink = styled(Link)`
-  padding: 0.65rem 0.9rem;
+  padding: 0.55rem 0.75rem;
   border-radius: 999px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: ${({ theme }) => theme.textSecondary};
@@ -69,10 +70,40 @@ const NavLink = styled(Link)`
   }
 `;
 
+const NavActions = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+`;
+
+const ThemeToggle = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid ${({ theme }) => theme.navPillBorder};
+  background: ${({ theme }) => theme.navPill};
+  color: ${({ theme }) => theme.textPrimary};
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.25s ease, color 0.25s ease, border 0.25s ease,
+    background 0.25s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    border-color: ${({ theme }) => theme.accent};
+    color: ${({ theme }) => theme.accent};
+    background: ${({ theme }) => theme.accentSoft};
+  }
+`;
+
 const MenuButton = styled.button`
   display: none;
-  background: rgba(33, 24, 19, 0.7);
-  border: 1px solid rgba(255, 211, 182, 0.25);
+  background: ${({ theme }) => theme.navPill};
+  border: 1px solid ${({ theme }) => theme.navPillBorder};
   border-radius: 12px;
   padding: 0.6rem 0.7rem;
   cursor: pointer;
@@ -114,8 +145,8 @@ const MobileMenu = styled.div`
     margin: 0 1.2rem 1.2rem;
     padding: 1rem;
     border-radius: 20px;
-    background: rgba(20, 14, 10, 0.92);
-    border: 1px solid rgba(255, 211, 182, 0.2);
+    background: ${({ theme }) => theme.navBackdropElevated};
+    border: 1px solid ${({ theme }) => theme.border};
   }
 `;
 
@@ -138,14 +169,12 @@ const MobileLink = styled(Link)`
 const navItems = [
   { label: "About", to: "about" },
   { label: "Skills", to: "skills" },
-  { label: "Education", to: "education" },
-  { label: "Experience", to: "experience" },
-  { label: "Work", to: "work" },
+  { label: "Journey", to: "journey" },
   { label: "Projects", to: "projects" },
   { label: "Contact", to: "contactus" },
 ];
 
-const Navbar = () => {
+const Navbar = ({ themeMode, onToggleTheme }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [elevated, setElevated] = useState(false);
 
@@ -181,16 +210,22 @@ const Navbar = () => {
             </NavLink>
           ))}
         </NavLinks>
-        <MenuButton
-          type="button"
-          onClick={() => setMenuOpen((prev) => !prev)}
-          className={menuOpen ? "open" : ""}
-          aria-label="Toggle navigation"
-        >
-          <span />
-          <span />
-          <span />
-        </MenuButton>
+        <NavActions>
+          <ThemeToggle type="button" onClick={onToggleTheme} aria-label="Toggle theme">
+            {themeMode === "dark" ? <FiSun size={14} /> : <FiMoon size={14} />}
+            {themeMode === "dark" ? "Light" : "Dark"}
+          </ThemeToggle>
+          <MenuButton
+            type="button"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            className={menuOpen ? "open" : ""}
+            aria-label="Toggle navigation"
+          >
+            <span />
+            <span />
+            <span />
+          </MenuButton>
+        </NavActions>
       </Nav>
       <MobileMenu open={menuOpen}>
         {navItems.map((item) => (

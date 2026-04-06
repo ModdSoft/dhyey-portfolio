@@ -6,9 +6,9 @@ const FooterWrapper = styled.footer`
   position: relative;
   margin-top: 6rem;
   padding: 3rem 1.5rem;
-  background: rgba(20, 14, 10, 0.82);
+  background: ${({ theme }) => theme.navBackdrop};
   backdrop-filter: blur(18px);
-  border-top: 1px solid rgba(255, 211, 182, 0.2);
+  border-top: 1px solid ${({ theme }) => theme.border};
   display: flex;
   flex-direction: column;
   gap: 0.8rem;

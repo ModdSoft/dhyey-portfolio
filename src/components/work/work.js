@@ -44,8 +44,8 @@ const LogoWrapper = styled.div`
   height: clamp(110px, 12vw, 140px);
   border-radius: 24px;
   overflow: hidden;
-  border: 1px solid rgba(255, 211, 182, 0.22);
-  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid ${({ theme }) => theme.border};
+  background: ${({ theme }) => theme.surfaceAlt};
   display: grid;
   place-items: center;
 
@@ -62,12 +62,16 @@ const LogoFallback = styled.div`
   border-radius: 24px;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.6), rgba(244, 63, 94, 0.45));
-  border: 1px solid rgba(255, 211, 182, 0.24);
+  background: linear-gradient(
+    135deg,
+    ${({ theme }) => theme.accent},
+    ${({ theme }) => theme.accentAlt}
+  );
+  border: 1px solid ${({ theme }) => theme.border};
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: #0f172a;
+  color: ${({ theme }) => theme.body};
 `;
 
 const CompanyMeta = styled.div`
@@ -98,9 +102,9 @@ const Tenure = styled.span`
 const Badge = styled.span`
   padding: 0.5rem 1.1rem;
   border-radius: 999px;
-  border: 1px solid rgba(236, 72, 153, 0.3);
-  color: #f472b6;
-  background: rgba(236, 72, 153, 0.12);
+  border: 1px solid ${({ theme }) => theme.accentSoftAlt};
+  color: ${({ theme }) => theme.accentAlt};
+  background: ${({ theme }) => theme.accentSoftAlt};
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -123,11 +127,7 @@ const ImpactCard = styled(motion.div)`
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      135deg,
-    rgba(249, 115, 22, 0.18),
-    rgba(244, 63, 94, 0.12)
-    );
+    background: ${({ theme }) => theme.cardAccents.secondary};
     opacity: 0.25;
   }
 `;
@@ -176,7 +176,7 @@ const BulletItem = styled.li`
     height: 0.5rem;
     border-radius: 50%;
     background: ${({ theme }) => theme.accent};
-    box-shadow: 0 0 0 6px rgba(249, 115, 22, 0.14);
+    box-shadow: 0 0 0 6px ${({ theme }) => theme.accentSoft};
   }
 `;
 
@@ -191,8 +191,8 @@ const MetricGrid = styled.div`
 const Metric = styled.div`
   padding: 1rem 1.2rem;
   border-radius: 18px;
-  background: rgba(15, 23, 42, 0.5);
-  border: 1px solid rgba(255, 211, 182, 0.2);
+  background: ${({ theme }) => theme.surfaceAlt};
+  border: 1px solid ${({ theme }) => theme.border};
   display: flex;
   flex-direction: column;
   gap: 0.25rem;

@@ -59,8 +59,8 @@ const InfoItem = styled.a`
   gap: 0.9rem;
   padding: 1rem 1.2rem;
   border-radius: 18px;
-  border: 1px solid rgba(255, 211, 182, 0.2);
-  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid ${({ theme }) => theme.border};
+  background: ${({ theme }) => theme.surfaceAlt};
   color: ${({ theme }) => theme.textPrimary};
   transition: transform 0.25s ease, border 0.25s ease, color 0.25s ease;
   text-decoration: none;
@@ -96,7 +96,7 @@ const IconWrapper = styled.span`
   border-radius: 14px;
   display: grid;
   place-items: center;
-  background: rgba(249, 115, 22, 0.16);
+  background: ${({ theme }) => theme.accentSoft};
   color: ${({ theme }) => theme.accent};
 `;
 
@@ -135,7 +135,7 @@ const Input = styled.input`
   padding: 0.85rem 1rem;
   border-radius: 12px;
   border: 1px solid ${({ theme }) => theme.border};
-  background: rgba(15, 23, 42, 0.35);
+  background: ${({ theme }) => theme.inputBackground};
   color: ${({ theme }) => theme.textPrimary};
   font-size: 0.95rem;
   transition: border 0.25s ease, box-shadow 0.25s ease;
@@ -143,7 +143,7 @@ const Input = styled.input`
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.accent};
-    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.25);
+    box-shadow: ${({ theme }) => theme.focusRing};
   }
 `;
 
@@ -152,7 +152,7 @@ const TextArea = styled.textarea`
   padding: 0.85rem 1rem;
   border-radius: 12px;
   border: 1px solid ${({ theme }) => theme.border};
-  background: rgba(15, 23, 42, 0.35);
+  background: ${({ theme }) => theme.inputBackground};
   color: ${({ theme }) => theme.textPrimary};
   font-size: 0.95rem;
   resize: vertical;
@@ -162,7 +162,7 @@ const TextArea = styled.textarea`
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.accent};
-    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.25);
+    box-shadow: ${({ theme }) => theme.focusRing};
   }
 `;
 
@@ -181,11 +181,11 @@ const SubmitButton = styled.button`
   font-size: 0.95rem;
   cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 20px 35px rgba(79, 70, 229, 0.35);
+  box-shadow: ${({ theme }) => theme.buttonShadow};
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 22px 40px rgba(79, 70, 229, 0.45);
+    box-shadow: ${({ theme }) => theme.buttonShadowHover};
   }
 
   &:active {
@@ -196,7 +196,7 @@ const SubmitButton = styled.button`
 const StatusMessage = styled.span`
   font-size: 0.9rem;
   color: ${({ success, theme }) =>
-    success ? theme.accent : "rgb(248, 113, 113)"};
+    success ? theme.accent : theme.danger};
 `;
 
 const ContactUs = () => {

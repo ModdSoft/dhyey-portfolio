@@ -1,12 +1,11 @@
+import { useEffect, useMemo, useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { darkTheme } from "./utils/Theme";
+import { darkTheme, lightTheme } from "./utils/Theme";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
-import Experience from "./components/experience";
-import Education from "./components/education";
-import Work from "./components/work";
+import Journey from "./components/journey";
 import ContactUs from "./components/contactus/contactus";
 import Footer from "./components/footer";
 import Projects from "./components/projects";
@@ -34,11 +33,13 @@ const GridOverlay = styled.div`
   inset: 0;
   pointer-events: none;
   background-size: 120px 120px;
-  background-image: linear-gradient(
-      rgba(255, 211, 182, 0.08) 1px,
+  background-image:
+    linear-gradient(${({ theme }) => theme.gridLine} 1px, transparent 1px),
+    linear-gradient(
+      90deg,
+      ${({ theme }) => theme.gridLine} 1px,
       transparent 1px
-    ),
-    linear-gradient(90deg, rgba(255, 211, 182, 0.08) 1px, transparent 1px);
+    );
   mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
   z-index: 0;
 `;
@@ -57,7 +58,7 @@ const Content = styled.main`
 
 const SectionDivider = styled.div`
   height: 1px;
-  margin: 6rem 0;
+  margin: 3rem 0;
   background: linear-gradient(
     90deg,
     transparent,
@@ -66,30 +67,57 @@ const SectionDivider = styled.div`
   );
 
   @media (max-width: 768px) {
-    margin: 4rem 0;
+    margin: 2.2rem 0;
   }
 `;
 
 function App() {
+  const [themeMode, setThemeMode] = useState(() => {
+    if (typeof window === "undefined") {
+      return "dark";
+    }
+    const stored = window.localStorage.getItem("theme");
+    if (stored === "light" || stored === "dark") {
+      return stored;
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  });
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+    window.localStorage.setItem("theme", themeMode);
+    document.documentElement.setAttribute("data-theme", themeMode);
+  }, [themeMode]);
+
+  const theme = useMemo(
+    () => (themeMode === "dark" ? darkTheme : lightTheme),
+    [themeMode],
+  );
+
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <GlobalStyles />
       <AppShell>
         <BackgroundGlimmer />
         <GridOverlay />
-        <Navbar />
+        <Navbar
+          themeMode={themeMode}
+          onToggleTheme={() =>
+            setThemeMode((prev) => (prev === "dark" ? "light" : "dark"))
+          }
+        />
         <Content>
           <Home />
           <SectionDivider />
           <About />
           <SectionDivider />
-          <Skills />
+          {/* <Skills /> */}
           <SectionDivider />
-          <Education />
-          <SectionDivider />
-          <Experience />
-          <SectionDivider />
-          <Work />
+          <Journey />
           <SectionDivider />
           <Projects />
           <SectionDivider />

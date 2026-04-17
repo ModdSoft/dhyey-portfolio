@@ -1,8 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
   *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -10,26 +8,30 @@ export const GlobalStyles = createGlobalStyle`
   html {
     font-size: 16px;
     scroll-behavior: smooth;
-    background-color: ${({ theme }) => theme.body};
-    color-scheme: ${({ theme }) => theme.mode};
+    background-color: ${({ theme }) => theme.background};
   }
 
   body {
     margin: 0;
-    font-family: 'Manrope', 'Space Grotesk', sans-serif;
-    background-color: ${({ theme }) => theme.body};
-    color: ${({ theme }) => theme.textPrimary};
+    font-family: ${({ theme }) => theme.fontBody};
+    font-weight: 400;
+    background-color: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.foreground};
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    transition: background-color 0.35s ease, color 0.35s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', 'Manrope', sans-serif;
+    font-family: ${({ theme }) => theme.fontHeading};
+    font-weight: 700;
+    margin: 0;
   }
 
   ::selection {
     background-color: ${({ theme }) => theme.accent};
-    color: ${({ theme }) => theme.body};
+    color: ${({ theme }) => theme.accentForeground};
   }
 
   a {
@@ -51,6 +53,11 @@ export const GlobalStyles = createGlobalStyle`
 
   button {
     font-family: inherit;
+    cursor: pointer;
+  }
+
+  input, textarea {
+    font-family: inherit;
   }
 
   ::-webkit-scrollbar {
@@ -59,15 +66,81 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.surface};
+    background: ${({ theme }) => theme.muted};
   }
 
   ::-webkit-scrollbar-thumb {
     background: ${({ theme }) => theme.accent};
-    border-radius: 999px;
+    border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: ${({ theme }) => theme.accentAlt};
+    background: ${({ theme }) => theme.secondary};
+  }
+
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.accent},
+      4px 4px 0px 0px ${({ theme }) => theme.accent};
+    border-radius: 4px;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.accent},
+      4px 4px 0px 0px ${({ theme }) => theme.accent};
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  @media print {
+    body {
+      background: #ffffff !important;
+      color: #1E293B !important;
+      font-size: 11pt;
+    }
+
+    nav, footer, .no-print {
+      display: none !important;
+    }
+
+    * {
+      box-shadow: none !important;
+      text-shadow: none !important;
+      border-color: #ccc !important;
+    }
+
+    a[href]::after {
+      content: " (" attr(href) ")";
+      font-size: 0.8em;
+      color: #64748B;
+    }
+
+    a[href^="tel:"]::after,
+    a[href^="mailto:"]::after,
+    a[href^="#"]::after {
+      content: "";
+    }
+
+    section {
+      page-break-inside: avoid;
+    }
+
+    h1, h2, h3 {
+      page-break-after: avoid;
+    }
+
+    img {
+      max-width: 100% !important;
+    }
   }
 `;

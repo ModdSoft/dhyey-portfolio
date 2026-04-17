@@ -8,340 +8,258 @@ import {
   SectionHeading,
   SectionDescription,
 } from "../common/Section";
+import { slideUp, staggerContainer } from "../../styles/animations";
 
-const StatsRow = styled.div`
+const CategoriesGrid = styled(motion.div)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-`;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
 
-const StatCard = styled(motion.div)`
-  border-radius: 18px;
-  padding: 1.1rem 1.4rem;
-  background: ${({ theme }) => theme.surface};
-  border: 1px solid ${({ theme }) => theme.border};
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  box-shadow: ${({ theme }) => theme.shadowSoft};
-`;
-
-const StatValue = styled.span`
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: ${({ theme }) => theme.textPrimary};
-`;
-
-const StatLabel = styled.span`
-  font-size: 0.85rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.textMuted};
-`;
-
-const GroupGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: clamp(1.4rem, 3vw, 2rem);
-`;
-
-const GroupCard = styled(motion.article)`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-  padding: clamp(1.8rem, 3vw, 2.4rem);
-  border-radius: clamp(18px, 2.4vw, 26px);
-  background: ${({ theme }) => theme.surface};
-  border: 1px solid ${({ theme }) => theme.border};
-  overflow: hidden;
-  box-shadow: ${({ theme }) => theme.shadowSoft};
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: ${({ theme, accent }) =>
-      theme.cardAccents[accent] || theme.cardAccents.primary};
-    opacity: 0.2;
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
   }
 `;
 
-const GroupContent = styled.div`
-  position: relative;
-  z-index: 1;
+const categoryColors = ["#8B5CF6", "#F472B6", "#FBBF24"];
+const categoryShadows = [
+  "6px 6px 0px 0px #8B5CF6",
+  "6px 6px 0px 0px #F472B6",
+  "6px 6px 0px 0px #FBBF24",
+];
+
+const CategoryCard = styled(motion.div)`
+  padding: 1.4rem 1.6rem;
+  border-radius: ${({ theme }) => theme.radiusLg};
+  background: ${({ theme }) => theme.card};
+  border: ${({ theme }) => theme.borderWidth} solid
+    ${({ theme }) => theme.borderDark};
+  box-shadow: ${({ $shadow }) => $shadow};
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
-`;
+  gap: 0.9rem;
+  transition: all 300ms ${({ theme }) => theme.bouncyEase};
 
-const GroupTitle = styled.h3`
-  margin: 0;
-  font-size: clamp(1.25rem, 2.2vw, 1.45rem);
-  font-weight: 600;
-  color: ${({ theme }) => theme.textPrimary};
-`;
+  &:hover {
+    transform: translate(-2px, -2px) rotate(-0.5deg);
+  }
 
-const GroupSubtitle = styled.span`
-  font-size: 0.9rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.textMuted};
-`;
-
-const GroupDescription = styled.p`
-  margin: 0;
-  color: ${({ theme }) => theme.textSecondary};
-  line-height: 1.65;
-`;
-
-const HighlightList = styled.ul`
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 0.65rem;
-`;
-
-const HighlightItem = styled.li`
-  position: relative;
-  padding-left: 1.2rem;
-  color: ${({ theme }) => theme.textPrimary};
-  line-height: 1.55;
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.5rem;
-    width: 0.45rem;
-    height: 0.45rem;
-    border-radius: 50%;
-    background: ${({ theme }) => theme.accent};
-    box-shadow: 0 0 0 6px ${({ theme }) => theme.accentSoft};
+  @media (max-width: 768px) {
+    box-shadow: ${({ theme }) => theme.popShadowSm};
+    &:hover {
+      transform: none;
+    }
   }
 `;
+
+const CategoryHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+`;
+
+const CategoryDot = styled.span`
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: ${({ $color }) => $color};
+  border: 2px solid ${({ theme }) => theme.borderDark};
+  flex-shrink: 0;
+`;
+
+const CategoryTitle = styled.h3`
+  margin: 0;
+  font-family: ${({ theme }) => theme.fontHeading};
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: ${({ theme }) => theme.foreground};
+`;
+
+const CategorySubtitle = styled.span`
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.mutedForeground};
+  margin-top: -0.4rem;
+`;
+
+const chipColors = ["#8B5CF6", "#F472B6", "#FBBF24", "#34D399"];
 
 const ChipSet = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.35rem;
 `;
 
 const Chip = styled.span`
-  padding: 0.45rem 0.85rem;
-  border-radius: 999px;
-  background: ${({ theme }) => theme.accentSoft};
-  color: ${({ theme }) => theme.accent};
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  padding: 0.3rem 0.7rem;
+  border-radius: ${({ theme }) => theme.radiusFull};
+  background: ${({ $bg }) => $bg}15;
+  color: ${({ $bg }) => $bg};
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  border: 1.5px solid ${({ $bg }) => $bg}45;
 `;
 
-const ToolkitPanel = styled(motion.div)`
-  margin-top: clamp(2rem, 3vw, 2.6rem);
-  border-radius: clamp(18px, 2.6vw, 26px);
-  padding: clamp(1.8rem, 3vw, 2.4rem);
-  background: ${({ theme }) => theme.surface};
-  border: 1px solid ${({ theme }) => theme.border};
-  box-shadow: ${({ theme }) => theme.shadowSoft};
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-`;
-
-const ToolkitHeading = styled.h4`
-  margin: 0;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: ${({ theme }) => theme.textPrimary};
-`;
-
-const ToolkitGrid = styled.div`
+const ToolkitRow = styled(motion.div)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.1rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.2rem;
+  padding: 1.4rem 1.6rem;
+  border-radius: ${({ theme }) => theme.radiusLg};
+  background: ${({ theme }) => theme.card};
+  border: ${({ theme }) => theme.borderWidth} solid
+    ${({ theme }) => theme.borderDark};
+  box-shadow: ${({ theme }) => theme.cardShadow};
+
+  @media (max-width: 768px) {
+    box-shadow: ${({ theme }) => theme.popShadowSm};
+  }
 `;
 
 const ToolkitColumn = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.5rem;
 `;
 
 const ToolkitLabel = styled.span`
-  font-size: 0.82rem;
-  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.textMuted};
+  color: ${({ theme }) => theme.mutedForeground};
 `;
 
-const stats = [
-  { value: "20+", label: "Dashboards & analytical apps delivered" },
-  { value: "15+", label: "Production ML & automation initiatives" },
-  { value: "8+", label: "End-to-end product launches" },
-];
-
-const skillGroups = [
+const skillCategories = [
   {
-    title: "Data Intelligence & BI Storytelling",
-    subtitle: "Analytics · Warehousing · Visualization",
-    description:
-      "Designing analytics ecosystems that move from raw data to insight with velocity and clarity.",
-    highlights: [
-      "Modelled complex datasets into analytics-ready layers, driving faster decision cycles.",
-      "Built executive dashboards that translate KPIs into narrative insights for business partners.",
-      "Operationalised quality checks and governance to keep self-serve data trustworthy.",
-    ],
+    title: "Data Intelligence & BI",
+    subtitle: "Analytics, warehousing, and visualization",
     tools: ["Python", "SQL", "Power BI", "Tableau", "dbt", "Snowflake"],
-    accent: "primary",
   },
   {
-    title: "AI, LLMOps & Automation",
-    subtitle: "Generative AI · RAG · LLM Engineering",
-    description:
-      "Shaping intelligent assistants and knowledge engines that reduce manual legal and business workflows.",
-    highlights: [
-      "Built domain-specific LLM pipelines and retrieval layers to extract legal clauses at scale.",
-      "Prototyped conversational copilots powered by LangChain, vector search, and custom prompts.",
-      "Measured AI output quality with human-in-the-loop reviews to continually raise trust.",
+    title: "AI & LLM Engineering",
+    subtitle: "Generative AI, RAG, and automation",
+    tools: [
+      "LangChain",
+      "OpenAI API",
+      "Azure AI",
+      "RAG Pipelines",
+      "Prompt Engineering",
     ],
-    tools: ["LangChain", "OpenAI API", "Azure OpenAI", "RAG Pipelines", "Vector Stores", "Prompt Engineering"],
-    accent: "secondary",
   },
   {
-    title: "Product Engineering & Delivery",
-    subtitle: "Full-stack · Cloud · Ops",
-    description:
-      "Shipping resilient digital experiences that blend thoughtful UX with maintainable engineering.",
-    highlights: [
-      "Implemented full-stack web and mobile products across React, Node, and cloud-native services.",
-      "Introduced CI/CD pipelines, testing practices, and release rituals that keep teams shipping confidently.",
-      "Collaborated with stakeholders to translate requirements into roadmap-ready user stories.",
+    title: "Product Engineering",
+    subtitle: "Full-stack, cloud, and delivery",
+    tools: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "GraphQL",
+      "Docker",
+      "GitHub Actions",
     ],
-    tools: ["React", "TypeScript", "Node.js", "GraphQL", "Docker", "GitHub Actions"],
-    accent: "tertiary",
   },
 ];
 
 const toolkitSections = [
   {
-    label: "Analytics Toolkit",
-    items: ["Pandas", "NumPy", "scikit-learn", "Power Query", "SQL Server", "PostgreSQL"],
+    label: "Analytics",
+    items: ["Pandas", "NumPy", "scikit-learn", "Power Query", "PostgreSQL"],
   },
   {
     label: "AI & Automation",
-    items: ["LLMOps", "LangChain", "RAG Architectures", "Prompt Design", "Pinecone", "Azure AI Studio"],
+    items: ["LLMOps", "Pinecone", "Azure AI Studio", "TensorFlow"],
   },
   {
-    label: "Visualization & Storytelling",
-    items: ["Power BI", "Tableau", "DAX", "Storyboarding", "Data Journalism"],
+    label: "Visualization",
+    items: ["DAX", "Storyboarding", "Data Journalism"],
   },
   {
-    label: "Engineering Craft",
-    items: ["TypeScript", "React", "Next.js", "Node.js", "REST APIs", "Agile Delivery"],
+    label: "Craft",
+    items: ["Next.js", "REST APIs", "CI/CD", "Agile"],
   },
 ];
+
+const springIn = { type: "spring", stiffness: 200, damping: 22 };
 
 const Skills = () => (
   <SectionWrapper id="skills">
     <SectionIntro>
-      <SectionEyebrow>Capabilities</SectionEyebrow>
+      <SectionEyebrow
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true }}
+        transition={springIn}
+      >
+        Capabilities
+      </SectionEyebrow>
       <SectionHeading
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
+        transition={{ ...springIn, delay: 0.1 }}
       >
-        Full-stack data craftsmanship that blends analytics, AI, and product rigor.
+        Full-stack data craftsmanship — analytics, AI, and product rigor.
       </SectionHeading>
       <SectionDescription
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+        transition={{ ...springIn, delay: 0.15 }}
       >
-        I thrive at the intersection of quantitative insight, intelligent automation, and
-        delightful user experiences—building end-to-end solutions that people rely on.
+        Quantitative insight meets intelligent automation meets delightful
+        experiences.
       </SectionDescription>
     </SectionIntro>
 
-    <StatsRow>
-      {stats.map((stat, index) => (
-        <StatCard
-          key={stat.label}
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.6, delay: index * 0.08, ease: "easeOut" }}
-          whileHover={{ translateY: -4 }}
-        >
-          <StatValue>{stat.value}</StatValue>
-          <StatLabel>{stat.label}</StatLabel>
-        </StatCard>
-      ))}
-    </StatsRow>
-
-    <GroupGrid>
-      {skillGroups.map((group, index) => (
-        <GroupCard
-          key={group.title}
-          accent={group.accent}
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.65, delay: index * 0.1, ease: "easeOut" }}
-          whileHover={{ translateY: -6 }}
-        >
-          <GroupContent>
-            <div>
-              <GroupSubtitle>{group.subtitle}</GroupSubtitle>
-              <GroupTitle>{group.title}</GroupTitle>
-            </div>
-            <GroupDescription>{group.description}</GroupDescription>
-            <HighlightList>
-              {group.highlights.map((item) => (
-                <HighlightItem key={item}>{item}</HighlightItem>
-              ))}
-            </HighlightList>
-            <ChipSet>
-              {group.tools.map((tool) => (
-                <Chip key={tool}>{tool}</Chip>
-              ))}
-            </ChipSet>
-          </GroupContent>
-        </GroupCard>
-      ))}
-    </GroupGrid>
-
-    <ToolkitPanel
-      initial={{ opacity: 0, y: 26 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.4 }}
-      transition={{ duration: 0.65, ease: "easeOut" }}
+    <CategoriesGrid
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
     >
-      <ToolkitHeading>Expanded toolkit</ToolkitHeading>
-      <SectionDescription
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 1 }}
-      >
-        Beyond the spotlight areas, I stay hands-on with the tools that keep delivery fast,
-        collaborative, and production-ready.
-      </SectionDescription>
-      <ToolkitGrid>
-        {toolkitSections.map((section) => (
-          <ToolkitColumn key={section.label}>
-            <ToolkitLabel>{section.label}</ToolkitLabel>
-            <ChipSet>
-              {section.items.map((item) => (
-                <Chip key={item}>{item}</Chip>
-              ))}
-            </ChipSet>
-          </ToolkitColumn>
-        ))}
-      </ToolkitGrid>
-    </ToolkitPanel>
+      {skillCategories.map((cat, index) => (
+        <CategoryCard
+          key={cat.title}
+          $shadow={categoryShadows[index]}
+          variants={slideUp}
+        >
+          <CategoryHeader>
+            <CategoryDot $color={categoryColors[index]} />
+            <CategoryTitle>{cat.title}</CategoryTitle>
+          </CategoryHeader>
+          <CategorySubtitle>{cat.subtitle}</CategorySubtitle>
+          <ChipSet>
+            {cat.tools.map((tool, ti) => (
+              <Chip key={tool} $bg={chipColors[ti % chipColors.length]}>
+                {tool}
+              </Chip>
+            ))}
+          </ChipSet>
+        </CategoryCard>
+      ))}
+    </CategoriesGrid>
+
+    <ToolkitRow
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ ...springIn, delay: 0.1 }}
+    >
+      {toolkitSections.map((section, si) => (
+        <ToolkitColumn key={section.label}>
+          <ToolkitLabel>{section.label}</ToolkitLabel>
+          <ChipSet>
+            {section.items.map((item, ii) => (
+              <Chip key={item} $bg={chipColors[(si + ii) % chipColors.length]}>
+                {item}
+              </Chip>
+            ))}
+          </ChipSet>
+        </ToolkitColumn>
+      ))}
+    </ToolkitRow>
   </SectionWrapper>
 );
 

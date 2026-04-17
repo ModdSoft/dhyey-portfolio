@@ -1,53 +1,33 @@
-import { useEffect, useMemo, useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { darkTheme, lightTheme } from "./utils/Theme";
+import { lightTheme, darkTheme } from "./utils/Theme";
 import { GlobalStyles } from "./styles/GlobalStyles";
+import { DotGridBg, SquiggleDivider } from "./components/common/Decorations";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
+import Skills from "./components/skills";
 import Journey from "./components/journey";
+import Projects from "./components/projects";
+import Blog from "./components/blog/Blog";
 import ContactUs from "./components/contactus/contactus";
 import Footer from "./components/footer";
-import Projects from "./components/projects";
-import Skills from "./components/skills";
+import ResumeModal from "./components/resume/ResumeModal";
+import useSectionAnalytics from "./hooks/useAnalytics";
 
 const AppShell = styled.div`
   position: relative;
   min-height: 100vh;
   width: 100%;
   overflow: hidden;
-  background-color: ${({ theme }) => theme.body};
-`;
-
-const BackgroundGlimmer = styled.div`
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image: ${({ theme }) => theme.heroGradient};
-  opacity: 0.85;
-  z-index: 0;
-`;
-
-const GridOverlay = styled.div`
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-size: 120px 120px;
-  background-image:
-    linear-gradient(${({ theme }) => theme.gridLine} 1px, transparent 1px),
-    linear-gradient(
-      90deg,
-      ${({ theme }) => theme.gridLine} 1px,
-      transparent 1px
-    );
-  mask-image: radial-gradient(circle at center, black 0%, transparent 70%);
-  z-index: 0;
+  background-color: ${({ theme }) => theme.background};
+  transition: background-color 0.35s ease;
 `;
 
 const Content = styled.main`
   position: relative;
   z-index: 1;
-  max-width: 1180px;
+  max-width: 1152px;
   margin: 0 auto;
   padding: 0 1.5rem 6rem;
 
@@ -56,75 +36,94 @@ const Content = styled.main`
   }
 `;
 
-const SectionDivider = styled.div`
-  height: 1px;
-  margin: 3rem 0;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    ${({ theme }) => theme.border},
-    transparent
-  );
+const DividerWrapper = styled.div`
+  padding: 3rem 0;
 
   @media (max-width: 768px) {
-    margin: 2.2rem 0;
+    padding: 2rem 0;
   }
 `;
 
+function getInitialMode() {
+  try {
+    const stored = localStorage.getItem("theme-mode");
+    if (stored === "dark" || stored === "light") return stored;
+  } catch {
+    /* noop */
+  }
+  return "light";
+}
+
 function App() {
-  const [themeMode, setThemeMode] = useState(() => {
-    if (typeof window === "undefined") {
-      return "dark";
-    }
-    const stored = window.localStorage.getItem("theme");
-    if (stored === "light" || stored === "dark") {
-      return stored;
-    }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  });
+  const [themeMode, setThemeMode] = useState(getInitialMode);
+  const [resumeOpen, setResumeOpen] = useState(false);
+
+  const toggleTheme = useCallback(() => {
+    setThemeMode((prev) => {
+      const next = prev === "light" ? "dark" : "light";
+      try {
+        localStorage.setItem("theme-mode", next);
+      } catch {
+        /* noop */
+      }
+      return next;
+    });
+  }, []);
 
   useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) {
+      meta.setAttribute(
+        "content",
+        themeMode === "dark" ? "#0F172A" : "#FFFDF5",
+      );
     }
-    window.localStorage.setItem("theme", themeMode);
-    document.documentElement.setAttribute("data-theme", themeMode);
   }, [themeMode]);
 
-  const theme = useMemo(
-    () => (themeMode === "dark" ? darkTheme : lightTheme),
-    [themeMode],
-  );
+  useSectionAnalytics();
+
+  const theme = themeMode === "dark" ? darkTheme : lightTheme;
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <AppShell>
-        <BackgroundGlimmer />
-        <GridOverlay />
+        <DotGridBg />
         <Navbar
           themeMode={themeMode}
-          onToggleTheme={() =>
-            setThemeMode((prev) => (prev === "dark" ? "light" : "dark"))
-          }
+          toggleTheme={toggleTheme}
+          onResumeOpen={() => setResumeOpen(true)}
         />
         <Content>
           <Home />
-          <SectionDivider />
+          <DividerWrapper>
+            <SquiggleDivider />
+          </DividerWrapper>
           <About />
-          <SectionDivider />
-          {/* <Skills /> */}
-          <SectionDivider />
+          <DividerWrapper>
+            <SquiggleDivider color={theme.secondary} />
+          </DividerWrapper>
+          <Skills />
+          <DividerWrapper>
+            <SquiggleDivider color={theme.tertiary} />
+          </DividerWrapper>
           <Journey />
-          <SectionDivider />
+          <DividerWrapper>
+            <SquiggleDivider color={theme.quaternary} />
+          </DividerWrapper>
           <Projects />
-          <SectionDivider />
+          <DividerWrapper>
+            <SquiggleDivider color={theme.accent} />
+          </DividerWrapper>
+          <Blog />
+          <DividerWrapper>
+            <SquiggleDivider />
+          </DividerWrapper>
           <ContactUs />
         </Content>
         <Footer />
       </AppShell>
+      <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
     </ThemeProvider>
   );
 }

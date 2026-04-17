@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import {
-  CiSaveUp1 as LaunchIcon,
-} from "react-icons/ci";
+import { CiSaveUp1 as LaunchIcon } from "react-icons/ci";
 import { FaGithub, FaKaggle, FaMedium } from "react-icons/fa";
 import Images from "../../images";
 import { projectData } from "../../data/projects";
@@ -14,35 +12,60 @@ import {
   SectionHeading,
   SectionDescription,
 } from "../common/Section";
+import { FloatingSquare, FloatingTriangle } from "../common/Decorations";
+import { slideUp, staggerContainer } from "../../styles/animations";
 
-const ProjectsGrid = styled.div`
+const ProjectsGrid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: clamp(1.6rem, 3vw, 2.2rem);
+  gap: clamp(1.8rem, 3vw, 2.4rem);
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
 `;
+
+const cardShadows = [
+  "8px 8px 0px 0px #8B5CF6",
+  "8px 8px 0px 0px #F472B6",
+  "8px 8px 0px 0px #FBBF24",
+  "8px 8px 0px 0px #34D399",
+  "8px 8px 0px 0px #8B5CF6",
+  "8px 8px 0px 0px #F472B6",
+];
 
 const ProjectCard = styled(motion.article)`
   display: flex;
   flex-direction: column;
-  border-radius: clamp(18px, 2.4vw, 24px);
-  border: 1px solid ${({ theme }) => theme.border};
-  background: ${({ theme }) => theme.surface};
+  border-radius: ${({ theme }) => theme.radiusLg};
+  border: ${({ theme }) => theme.borderWidth} solid
+    ${({ theme }) => theme.borderDark};
+  background: ${({ theme }) => theme.card};
   overflow: hidden;
-  box-shadow: ${({ theme }) => theme.shadowSoft};
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: ${({ $shadow }) => $shadow};
+  transition: all 300ms ${({ theme }) => theme.bouncyEase};
 
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: ${({ theme }) => theme.cardGlow};
+    transform: rotate(-1deg) scale(1.02);
+  }
+
+  @media (max-width: 768px) {
+    box-shadow: ${({ theme }) => theme.popShadowSm};
+
+    &:hover {
+      transform: none;
+    }
   }
 `;
 
 const ProjectImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  padding-top: 62%;
+  padding-top: 58%;
   overflow: hidden;
-  background: ${({ theme }) => theme.surfaceSolid};
+  background: ${({ theme }) => theme.muted};
+  border-bottom: ${({ theme }) => theme.borderWidth} solid
+    ${({ theme }) => theme.borderDark};
 `;
 
 const ProjectImage = styled.img`
@@ -61,108 +84,207 @@ const ProjectImage = styled.img`
 const ProjectContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: clamp(1.5rem, 3vw, 2rem);
+  gap: 0.8rem;
+  padding: clamp(1.3rem, 2.5vw, 1.8rem);
   flex: 1;
 `;
 
 const ProjectCategory = styled.span`
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-family: ${({ theme }) => theme.fontBody};
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.textMuted};
+  color: ${({ theme }) => theme.mutedForeground};
 `;
 
 const ProjectTitle = styled.h3`
   margin: 0;
-  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
-  color: ${({ theme }) => theme.textPrimary};
-  font-weight: 600;
+  font-family: ${({ theme }) => theme.fontHeading};
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-weight: 700;
+  color: ${({ theme }) => theme.foreground};
 `;
 
-const ProjectDescription = styled.p`
-  margin: 0;
-  color: ${({ theme }) => theme.textSecondary};
-  line-height: 1.65;
+/* ─── Problem → Approach → Result ─── */
+
+const PARList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+`;
+
+const PARRow = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: ${({ theme }) => theme.mutedForeground};
+`;
+
+const PARDot = styled.span`
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: ${({ $color }) => $color};
+  border: 1.5px solid ${({ theme }) => theme.borderDark};
+`;
+
+const PARLabel = styled.span`
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: ${({ $color }) => $color};
+  flex-shrink: 0;
+  min-width: 68px;
 `;
 
 const StackList = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.35rem;
 `;
 
+const chipColors = ["#8B5CF6", "#F472B6", "#FBBF24", "#34D399"];
+
 const StackChip = styled.span`
-  padding: 0.4rem 0.85rem;
-  border-radius: 999px;
-  background: ${({ theme }) => theme.accentSoftAlt};
-  color: ${({ theme }) => theme.accentAlt};
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  padding: 0.25rem 0.6rem;
+  border-radius: ${({ theme }) => theme.radiusFull};
+  background: ${({ $bg }) => $bg}18;
+  color: ${({ $bg }) => $bg};
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  border: 1.5px solid ${({ $bg }) => $bg}60;
 `;
 
 const MetricsRow = styled.div`
-  display: grid;
-  gap: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-top: 2px dashed ${({ theme }) => theme.border};
 `;
 
-const Metric = styled.span`
-  font-size: 0.85rem;
-  color: ${({ theme }) => theme.textPrimary};
+const metricAccents = ["#8B5CF6", "#F472B6", "#FBBF24", "#34D399"];
+
+const Metric = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.1rem;
+`;
+
+const MetricValue = styled.span`
+  font-family: ${({ theme }) => theme.fontHeading};
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: ${({ $accent }) => $accent};
+  line-height: 1.1;
 `;
 
 const MetricLabel = styled.span`
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.textMuted};
+  color: ${({ theme }) => theme.mutedForeground};
+`;
+
+const FilterBar = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+`;
+
+const FilterTab = styled.button`
+  padding: 0.45rem 1rem;
+  border-radius: ${({ theme }) => theme.radiusFull};
+  border: ${({ theme }) => theme.borderWidth} solid
+    ${({ $active, theme }) => ($active ? theme.borderDark : theme.border)};
+  background: ${({ $active, theme }) =>
+    $active ? theme.foreground : theme.card};
+  color: ${({ $active, theme }) =>
+    $active ? theme.background : theme.foreground};
+  font-family: ${({ theme }) => theme.fontBody};
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: all 200ms ease;
+  box-shadow: ${({ $active, theme }) =>
+    $active ? theme.popShadowSm : "none"};
+
+  &:hover {
+    border-color: ${({ theme }) => theme.borderDark};
+    background: ${({ $active, theme }) =>
+      $active ? theme.foreground : theme.tertiary};
+  }
 `;
 
 const LinkRow = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.5rem;
   margin-top: auto;
 `;
 
 const LinkButton = styled.a`
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.55rem 1rem;
-  border-radius: 999px;
-  border: 1px solid ${({ theme }) => theme.border};
-  color: ${({ theme }) => theme.textPrimary};
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: border 0.25s ease, transform 0.25s ease, color 0.25s ease;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: ${({ theme }) => theme.radiusFull};
+  border: ${({ theme }) => theme.borderWidth} solid
+    ${({ theme }) => theme.borderDark};
+  background: transparent;
+  color: ${({ theme }) => theme.foreground};
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 300ms ${({ theme }) => theme.bouncyEase};
 
   &:hover {
-    border-color: ${({ theme }) => theme.accent};
-    color: ${({ theme }) => theme.accent};
+    background: ${({ theme }) => theme.tertiary};
     transform: translateY(-2px);
+    box-shadow: ${({ theme }) => theme.popShadowSm};
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: none;
   }
 `;
 
 const iconMap = {
-  launch: <LaunchIcon size={18} />,
-  github: <FaGithub size={18} />,
-  kaggle: <FaKaggle size={18} />,
-  article: <FaMedium size={18} />,
+  launch: <LaunchIcon size={16} />,
+  github: <FaGithub size={16} />,
+  kaggle: <FaKaggle size={16} />,
+  article: <FaMedium size={16} />,
 };
+
+const filterCategories = [
+  { key: "all", label: "All" },
+  { key: "ml", label: "ML / AI" },
+  { key: "bi", label: "Analytics / BI" },
+  { key: "mobile", label: "Mobile" },
+  { key: "fullstack", label: "Full-stack" },
+];
 
 const projects = [
   {
     title: "House Price Prediction Platform",
     category: "Applied Machine Learning",
-    description:
-      "End-to-end system forecasting home valuations with XGBoost, a React experience, and a production-ready Flask API.",
+    filterTag: "ml",
+    problem:
+      "Buyers and sellers lack accurate, data-driven valuations — manual appraisals are slow and inconsistent.",
+    approach:
+      "Built XGBoost pipeline with 79 features, React frontend, and production Flask API for real-time predictions.",
+    result:
+      "0.9146 R² accuracy deployed as a full-stack web app with interactive Power BI dashboard.",
     stack: ["Python", "XGBoost", "React", "Flask", "Power BI"],
     image: Images.house_price_website,
     metrics: [
@@ -171,15 +293,28 @@ const projects = [
     ],
     links: [
       { type: "launch", label: "Live app", url: projectData.housePriceLive },
-      { type: "kaggle", label: "Kaggle dataset", url: projectData.housePriceKaggle },
-      { type: "article", label: "Case study", url: projectData.housePriceMedium },
+      {
+        type: "kaggle",
+        label: "Kaggle dataset",
+        url: projectData.housePriceKaggle,
+      },
+      {
+        type: "article",
+        label: "Case study",
+        url: projectData.housePriceMedium,
+      },
     ],
   },
   {
     title: "Bus Route Optimization",
     category: "Analytics Engineering",
-    description:
-      "Power BI dashboards, predictive analysis, and a web explorer to identify optimal transit routes and demand clusters.",
+    filterTag: "bi",
+    problem:
+      "City transit planning relied on outdated ridership assumptions, creating underserved routes and wasted capacity.",
+    approach:
+      "Demand clustering + predictive analytics + Power BI dashboards for real-time route evaluation.",
+    result:
+      "15+ KPIs surfaced — dynamic dashboards adopted by transit planners for route decisions.",
     stack: ["Power BI", "Python", "React", "Automation"],
     image: Images.bus_route_main,
     metrics: [
@@ -187,15 +322,24 @@ const projects = [
       { value: "Realtime", label: "Dynamic dashboards" },
     ],
     links: [
-      { type: "launch", label: "Interactive app", url: projectData.busRouteLive },
+      {
+        type: "launch",
+        label: "Interactive app",
+        url: projectData.busRouteLive,
+      },
       { type: "article", label: "Article", url: projectData.busRouteMedium },
     ],
   },
   {
     title: "Retail Intelligence Suite",
     category: "Business Intelligence",
-    description:
-      "Walmart & Blinkit analytics at scale—automated ETL, forecasting, and decision dashboards for commercial leaders.",
+    filterTag: "bi",
+    problem:
+      "Walmart & Blinkit teams lacked unified visibility into revenue, inventory, and demand trends across stores.",
+    approach:
+      "Automated ETL pipelines + forecasting models + self-serve Power BI dashboards across 3 business domains.",
+    result:
+      "3-domain analytics (Revenue · Inventory · Demand) — executive-ready, self-serve dashboards.",
     stack: ["Power BI", "Python", "SQL"],
     image: Images.walmart_second,
     metrics: [
@@ -203,15 +347,28 @@ const projects = [
       { value: "Self-serve", label: "Executive dashboards" },
     ],
     links: [
-      { type: "github", label: "Walmart analysis", url: projectData.walmartGithub },
-      { type: "github", label: "Blinkit analysis", url: projectData.blinkitGithub },
+      {
+        type: "github",
+        label: "Walmart analysis",
+        url: projectData.walmartGithub,
+      },
+      {
+        type: "github",
+        label: "Blinkit analysis",
+        url: projectData.blinkitGithub,
+      },
     ],
   },
   {
     title: "JJSG - School ERP Apps",
     category: "Full-stack Mobile",
-    description:
-      "Dual Android applications for parents and administrators featuring live attendance, analytics, and async messaging.",
+    filterTag: "mobile",
+    problem:
+      "Parents had zero real-time visibility into attendance, grades, or school communications.",
+    approach:
+      "Dual React Native apps (parent + admin) with Firebase real-time sync and async messaging.",
+    result:
+      "10K+ active users — 2 published Play Store apps serving an entire school ecosystem.",
     stack: ["React Native", "Firebase", "Redux"],
     image: Images.jjsgmultiscreen,
     metrics: [
@@ -219,15 +376,28 @@ const projects = [
       { value: "2 Apps", label: "Parents · Admin" },
     ],
     links: [
-      { type: "launch", label: "Parents app", url: projectData.jjsgUserPlayStore },
-      { type: "launch", label: "Admin app", url: projectData.jjsgAdminPlayStore },
+      {
+        type: "launch",
+        label: "Parents app",
+        url: projectData.jjsgUserPlayStore,
+      },
+      {
+        type: "launch",
+        label: "Admin app",
+        url: projectData.jjsgAdminPlayStore,
+      },
     ],
   },
   {
     title: "Atharava Vidyalaya Platform",
     category: "EdTech Engineering",
-    description:
-      "Integrated web presence plus teacher & student apps that streamline school operations and parent engagement.",
+    filterTag: "fullstack",
+    problem:
+      "School operations fragmented across paper, WhatsApp, and disconnected tools — no single source of truth.",
+    approach:
+      "Integrated website + teacher & student apps built on React Native + Firebase with real-time sync.",
+    result:
+      "3 products shipped — real-time performance tracking adopted school-wide.",
     stack: ["React Native", "Firebase", "Node.js"],
     image: Images.avwebsite,
     metrics: [
@@ -235,16 +405,33 @@ const projects = [
       { value: "Realtime", label: "Performance tracking" },
     ],
     links: [
-      { type: "launch", label: "Website", url: projectData.atharavaWebsite },
-      { type: "launch", label: "Student app", url: projectData.atharavaStudentPlayStore },
-      { type: "launch", label: "Teacher app", url: projectData.atharavaTeacherPlayStore },
+      {
+        type: "launch",
+        label: "Website",
+        url: projectData.atharavaWebsite,
+      },
+      {
+        type: "launch",
+        label: "Student app",
+        url: projectData.atharavaStudentPlayStore,
+      },
+      {
+        type: "launch",
+        label: "Teacher app",
+        url: projectData.atharavaTeacherPlayStore,
+      },
     ],
   },
   {
     title: "Fun ABC Learning",
     category: "Creative Learning",
-    description:
-      "Gamified Android experience that helps children grasp alphabets through interactive storytelling and rewards.",
+    filterTag: "mobile",
+    problem:
+      "Existing alphabet apps were boring with low engagement, not designed for children's attention spans.",
+    approach:
+      "Gamified experience with interactive storytelling, rewards, and kid-friendly animations.",
+    result:
+      "Published on Play Store — kid-centric UX with positive parent feedback.",
     stack: ["React Native", "Animations"],
     image: Images.kidsApp,
     metrics: [
@@ -252,22 +439,64 @@ const projects = [
       { value: "Kid-centric", label: "UX & Visuals" },
     ],
     links: [
-      { type: "launch", label: "Live on Play Store", url: projectData.kidsPlayStore },
+      {
+        type: "launch",
+        label: "Live on Play Store",
+        url: projectData.kidsPlayStore,
+      },
       { type: "github", label: "Source code", url: projectData.kidsGithub },
     ],
   },
 ];
 
+const parColors = {
+  problem: "#EF4444",
+  approach: "#8B5CF6",
+  result: "#34D399",
+};
+
+const springIn = { type: "spring", stiffness: 200, damping: 22 };
+
 const Projects = () => {
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  const filtered =
+    activeFilter === "all"
+      ? projects
+      : projects.filter((p) => p.filterTag === activeFilter);
+
   return (
-    <SectionWrapper id="projects">
+    <SectionWrapper id="projects" style={{ position: "relative" }}>
+      <FloatingSquare
+        $color="#8B5CF6"
+        size="32px"
+        style={{ top: "-2rem", right: "8%" }}
+        $duration="18s"
+      />
+      <FloatingTriangle
+        $color="#F472B6"
+        size="28"
+        $rotation={40}
+        $opacity={0.45}
+        style={{ bottom: "5%", left: "0%" }}
+        $duration="10s"
+        $delay="3s"
+      />
+
       <SectionIntro>
-        <SectionEyebrow>Selected Work</SectionEyebrow>
+        <SectionEyebrow
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true }}
+          transition={springIn}
+        >
+          Selected Work
+        </SectionEyebrow>
         <SectionHeading
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ ...springIn, delay: 0.1 }}
         >
           Blending analytics and engineering into products people can trust.
         </SectionHeading>
@@ -275,38 +504,94 @@ const Projects = () => {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+          transition={{ ...springIn, delay: 0.15 }}
         >
-          A curation of recent products that demonstrate my range—from predictive
-          intelligence to large-scale mobile ecosystems.
+          Every project follows the same discipline: define the problem, choose
+          the right tools, and measure the impact.
         </SectionDescription>
       </SectionIntro>
 
-      <ProjectsGrid>
-        {projects.map((project, index) => (
+      <FilterBar>
+        {filterCategories.map((cat) => (
+          <FilterTab
+            key={cat.key}
+            $active={activeFilter === cat.key}
+            onClick={() => setActiveFilter(cat.key)}
+          >
+            {cat.label}
+          </FilterTab>
+        ))}
+      </FilterBar>
+
+      <ProjectsGrid
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.15 }}
+      >
+        {filtered.map((project, index) => (
           <ProjectCard
             key={project.title}
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.35 }}
-            transition={{ duration: 0.65, delay: index * 0.05, ease: "easeOut" }}
+            $shadow={cardShadows[index % cardShadows.length]}
+            variants={slideUp}
+            layout
           >
             <ProjectImageWrapper>
-              <ProjectImage src={project.image} alt={project.title} />
+              <ProjectImage
+                src={project.image}
+                alt={project.title}
+                loading="lazy"
+              />
             </ProjectImageWrapper>
             <ProjectContent>
               <ProjectCategory>{project.category}</ProjectCategory>
               <ProjectTitle>{project.title}</ProjectTitle>
-              <ProjectDescription>{project.description}</ProjectDescription>
+
+              <PARList>
+                <PARRow>
+                  <PARDot $color={parColors.problem} />
+                  <div>
+                    <PARLabel $color={parColors.problem}>Challenge</PARLabel>
+                    <br />
+                    {project.problem}
+                  </div>
+                </PARRow>
+                <PARRow>
+                  <PARDot $color={parColors.approach} />
+                  <div>
+                    <PARLabel $color={parColors.approach}>Approach</PARLabel>
+                    <br />
+                    {project.approach}
+                  </div>
+                </PARRow>
+                <PARRow>
+                  <PARDot $color={parColors.result} />
+                  <div>
+                    <PARLabel $color={parColors.result}>Impact</PARLabel>
+                    <br />
+                    {project.result}
+                  </div>
+                </PARRow>
+              </PARList>
+
               <StackList>
-                {project.stack.map((item) => (
-                  <StackChip key={item}>{item}</StackChip>
+                {project.stack.map((item, si) => (
+                  <StackChip
+                    key={item}
+                    $bg={chipColors[si % chipColors.length]}
+                  >
+                    {item}
+                  </StackChip>
                 ))}
               </StackList>
               <MetricsRow>
-                {project.metrics.map((metric) => (
+                {project.metrics.map((metric, mi) => (
                   <Metric key={metric.label}>
-                    {metric.value}
+                    <MetricValue
+                      $accent={metricAccents[mi % metricAccents.length]}
+                    >
+                      {metric.value}
+                    </MetricValue>
                     <MetricLabel>{metric.label}</MetricLabel>
                   </Metric>
                 ))}
